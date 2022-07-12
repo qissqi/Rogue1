@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ActionManager" Collapsed="true">
+    <Position X="0.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAECAAAAAAAARAAAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Manager\ActionManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Actions" Collapsed="true">
+    <Position X="3.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Manager\Actions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Attack" Collapsed="true">
+    <Position X="7" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAABAAAAEAAAAAAgAAEAAAAAAAAAAEAAA=</HashCode>
+      <FileName>Assets\Library\Cards\Attack.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BattleInfo" Collapsed="true">
+    <Position X="5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAAAAAAAAgAAAAAAAAAABAAAAAAAAAIA=</HashCode>
+      <FileName>Assets\Scripts\Manager\BattleInfo.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BattleManager" Collapsed="true">
+    <Position X="7.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>MAQAEAAAACiAASAAAAAAAEAAEAJQAIAEAAAAkAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Manager\BattleManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BattleMouseEvent" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAgAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Manager\BattleMouseEvent.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Card" Collapsed="true">
+    <Position X="7" Y="6.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="Card.CardType" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Library\Card.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="Card.Position" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Library\Card.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="Card.Rare" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Library\Card.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="Card.Target" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Library\Card.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>CAAAAEBIABAAgIAAIgEgIAAAEBAREAAAAAAIBAAEAEQ=</HashCode>
+      <FileName>Assets\Library\Card.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CardInfo" Collapsed="true">
+    <Position X="12.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\CardInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CardList" Collapsed="true">
+    <Position X="14.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\CardList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Character" Collapsed="true">
+    <Position X="2.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAgAAAAAACAAAAAEQCEBAAAAAAAAAAAABAI=</HashCode>
+      <FileName>Assets\Scripts\Character\Character.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DamageInfo" Collapsed="true">
+    <Position X="2.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgACAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Manager\Actions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EndPhase" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAEAAACAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Manager\Actions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EndTurnButton" Collapsed="true">
+    <Position X="12.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\UI\BattleScene\EndTurnButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnemyBase" Collapsed="true">
+    <Position X="1.5" Y="8" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Delegate Name="EnemyBase.enemySkillDele" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\Character\EnemyBase.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>gAAAAACAACIAAAAAQAEAAAAgQMAAIAAAAAAAAAAAEEA=</HashCode>
+      <FileName>Assets\Scripts\Character\EnemyBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnemySkill" Collapsed="true">
+    <Position X="7.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAEAAAAQAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Character\Enemy\EnemySkill.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnemySkillGroup" Collapsed="true">
+    <Position X="14.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAQAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Character\Enemy\EnemySkillGroup.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameManager" Collapsed="true">
+    <Position X="2.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Manager\GameManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HandGrid" Collapsed="true">
+    <Position X="16.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\UI\BattleScene\HandGrid.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MakeDamage" Collapsed="true">
+    <Position X="2.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAIAAEAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Manager\Actions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MakeDefend" Collapsed="true">
+    <Position X="5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAEgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Manager\Actions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Player" Collapsed="true">
+    <Position X="5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAEAAAAAAAAQAAAAAIAAQAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Character\Player\Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Singleton&lt;T&gt;" Collapsed="true">
+    <Position X="3.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Manager\Singleton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Slime" Collapsed="true">
+    <Position X="17" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Library\Enemies\Slime.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TestEnemy" Collapsed="true">
+    <Position X="1.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAQAEAAAAgQIAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Character\Enemy\TestEnemy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="BattlePhase" Collapsed="true">
+    <Position X="10.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAgAAAAAAIAAAAAAAAAAAAAAAABAACAAAEgAAA=</HashCode>
+      <FileName>Assets\Scripts\Manager\BattleManager.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="DamageType" Collapsed="true">
+    <Position X="12.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAEAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Manager\Actions.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="EnemyIntentType" Collapsed="true">
+    <Position X="14.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAgAAAAAAAAAAAAIAAAAAABAAAAAAAQBA=</HashCode>
+      <FileName>Assets\Scripts\Character\EnemyBase.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Microsoft YaHei UI" Size="9" />
+</ClassDiagram>
