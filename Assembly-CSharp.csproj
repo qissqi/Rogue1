@@ -47,7 +47,7 @@
   <PropertyGroup>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <UnityProjectGenerator>Package</UnityProjectGenerator>
-    <UnityProjectGeneratorVersion>2.0.12</UnityProjectGeneratorVersion>
+    <UnityProjectGeneratorVersion>2.0.16</UnityProjectGeneratorVersion>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2021.1.25f1c1</UnityVersion>
@@ -56,36 +56,64 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Card\Card_Angry.cs" />
+    <Compile Include="Assets\Scripts\Card\Test\Card_Angry.cs" />
     <Compile Include="Assets\Scripts\Manager\BattleInfo.cs" />
     <Compile Include="Assets\Scripts\Buff.cs" />
+    <Compile Include="Assets\Scripts\other\Developer.cs" />
     <Compile Include="Assets\Scripts\SpriteList.cs" />
-    <Compile Include="Assets\Scripts\Card\挠胳肢窝.cs" />
+    <Compile Include="Assets\Scripts\Card\Test\挠胳肢窝.cs" />
+    <Compile Include="Assets\Scripts\UI\Menu\Menu_Exit.cs" />
     <Compile Include="Assets\Scripts\Character\EnemyBase.cs" />
     <Compile Include="Assets\Scripts\Manager\BattleUI.cs" />
+    <Compile Include="Assets\Scripts\Map\Enemy_OnMap.cs" />
     <Compile Include="Assets\Scripts\Buffs\易伤_buff.cs" />
+    <Compile Include="Assets\Scripts\Manager\InventoryManager.cs" />
     <Compile Include="Assets\Library\Card.cs" />
+    <Compile Include="Assets\Scripts\GO_List.cs" />
     <Compile Include="Assets\Scripts\CardInfo.cs" />
+    <Compile Include="Assets\Scripts\SO_SO.cs" />
+    <Compile Include="Assets\Scripts\other\ExplainBox.cs" />
     <Compile Include="Assets\Scripts\Actions\BasicAction\AddBuff.cs" />
+    <Compile Include="Assets\Scripts\GameEvents\GameEvent.cs" />
+    <Compile Include="Assets\Scripts\Items\Relic.cs" />
     <Compile Include="Assets\Scripts\Actions\BasicAction\Actions.cs" />
+    <Compile Include="Assets\Scripts\UI\Menu\Menu_Start.cs" />
+    <Compile Include="Assets\Scripts\Manager\MapManager.cs" />
+    <Compile Include="Assets\Scripts\other\MyTool.cs" />
     <Compile Include="Assets\Scripts\UI\BattleScene\EndButton.cs" />
     <Compile Include="Assets\Scripts\Character\Player\Player.cs" />
+    <Compile Include="Assets\Scripts\Map\MapBuilder.cs" />
+    <Compile Include="Assets\Scripts\Items\Item.cs" />
+    <Compile Include="Assets\Scripts\Map\CharacterControl.cs" />
     <Compile Include="Assets\Scripts\Manager\ActionManager.cs" />
     <Compile Include="Assets\Scripts\UI\BattleScene\HandGrid.cs" />
     <Compile Include="Assets\Scripts\Manager\Singleton.cs" />
     <Compile Include="Assets\Scripts\Character\Enemy\EnemySkillGroup.cs" />
+    <Compile Include="Assets\Scripts\other\ShowExplain.cs" />
+    <Compile Include="Assets\Scripts\Items\Relic\Test_Relic.cs" />
+    <Compile Include="Assets\Scripts\IBattleActive.cs" />
+    <Compile Include="Assets\Scripts\Manager\SaveManager.cs" />
     <Compile Include="Assets\Scripts\Manager\GameManager.cs" />
+    <Compile Include="Assets\Scripts\GameEvents\ShopEvent.cs" />
     <Compile Include="Assets\Scripts\Actions\BasicAction\DrawCardAction.cs" />
+    <Compile Include="Assets\Scripts\Map\Room.cs" />
+    <Compile Include="Assets\Scripts\Items\Relic\Relic_不休陀螺.cs" />
+    <Compile Include="Assets\Scripts\UI\Menu\SelectCharacter.cs" />
+    <Compile Include="Assets\Scripts\Character\Player\PlayerInfo.cs" />
     <Compile Include="Assets\Scripts\Character\Enemy\TestEnemy.cs" />
-    <Compile Include="Assets\Scripts\Card\Attack.cs" />
-    <Compile Include="Assets\Scripts\Card\Defend.cs" />
+    <Compile Include="Assets\Scripts\Card\Test\Attack.cs" />
+    <Compile Include="Assets\Scripts\Card\Test\Defend.cs" />
     <Compile Include="Assets\Scripts\Manager\BattleManager.cs" />
     <Compile Include="Assets\Scripts\Character\Enemy\EnemySkill.cs" />
+    <Compile Include="Assets\Scripts\UI\Menu\Menu_Setting.cs" />
+    <Compile Include="Assets\Scripts\other\IShowExplain.cs" />
     <Compile Include="Assets\Scripts\Manager\BuffSystem.cs" />
-    <Compile Include="Assets\Scripts\Card\全力一击.cs" />
-    <Compile Include="Assets\Scripts\CardList.cs" />
+    <Compile Include="Assets\Scripts\Card\Test\全力一击.cs" />
+    <Compile Include="Assets\Scripts\UI\Menu\Menu_Continue.cs" />
+    <Compile Include="Assets\Scripts\Items\Equipment.cs" />
     <Compile Include="Assets\Scripts\Buffs\Weak_Buff.cs" />
     <Compile Include="Assets\Scripts\Character\Character.cs" />
+    <Compile Include="Assets\Scripts\Items\ConsumableItem.cs" />
     <Compile Include="Assets\Scripts\Manager\BattleMouseEvent.cs" />
   </ItemGroup>
   <ItemGroup>

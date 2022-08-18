@@ -8,21 +8,25 @@ using DG.Tweening;
 
 public abstract class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
-    public bool scaled;
-    public Vector3 targetPosition;
-    [Header("卡牌属性")]
-    public bool takeUp = false;
-    RectTransform rect;
-    public int handIndex;
+    [HideInInspector]public bool scaled;
+    [HideInInspector]public Vector3 targetPosition;
+    [HideInInspector]public bool takeUp = false;
+    [HideInInspector]public int handIndex;
+    [HideInInspector]public string explain;
+    public delegate void Call(Card card);
+    public Call CardRespone;
+
+    private Vector3 oriScaleValue;
+    private Vector3 endSclaeValue;
 
     #region 卡牌属性
     public enum CardType
     {
-        Attack, Skill, Ability, Status, Curse
+        Attack, Skill, Power, Status, Curse
     }
     public enum Target
     {
-        None, Enemy, NoNeed, PlayerNEnemy
+        None, Enemy, NoNeed, PlayerNEnemy,Player,AllEnemies
     }
     public enum Rare
     {
@@ -32,9 +36,15 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterH
     {
         Detail, Hand, Uncaught, Thrown, Destroyed
     }
+    [Header("卡牌属性")]
+    public bool hasExplain;
     public CardType type;
     public Target target;
     public Rare rare;
+    public int price = 0;
+    public bool inReward = false;
+    public bool inSelect = false;
+    public bool inShop = false;
     #endregion
 
     [Header("卡牌特性")]
@@ -42,13 +52,13 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterH
     public bool destroyAfterUse;
     public bool destroyAfterTurn;
 
+    [HideInInspector] public Button button_Get;
     #region 卡面信息
     [Header("卡面")]
-    //public Image image;
-    public Text text_cardName;
-    public Text text_description;
-    public Text text_cost;
-    //public Sprite sprite;
+    [HideInInspector]public Text text_cardName;
+    [HideInInspector]public Text text_description;
+    [HideInInspector]public Text text_cost;
+
 
 
     public string cardName;
@@ -63,18 +73,39 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterH
     /// </summary>
     public virtual void Awake()
     {
-        rect = GetComponent<RectTransform>();
+        oriScaleValue = transform.localScale;
+        endSclaeValue = transform.localScale * 1.2f;
+        button_Get = transform.Find("Get").GetComponent<Button>();
+        text_cardName = transform.Find("Name").GetComponent<Text>();
+        text_description = transform.Find("Description").GetComponent<Text>();
+        text_cost = transform.Find("Cost").GetComponent<Text>();
+        //rect = GetComponent<RectTransform>();
+        CardFaceFix();
+        Initialize();
+    }
+
+    private void Start()
+    {
+        RefreshDescription();
+    }
+
+    public void CardFaceFix()
+    {
         text_cardName.text = cardName;
         text_description.text = description;
         text_cost.text = cost.ToString();
-        initialize();
+
+        Transform _typeG = transform.Find("Type");
+        _typeG.GetChild((int)type)?.gameObject.SetActive(true);
+        
     }
 
-
     /// <summary>
-    /// 初始化：值values，指向target，[可略]花费cost，以及各类卡面信息
+    /// 初始化：需要的初始值，以及explain
     /// </summary>
-    public abstract void initialize();
+    public abstract void Initialize();
+
+
 
 
     public void UseCard()
@@ -96,16 +127,30 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterH
         BattleManager.Instance.AllCardRefresh();
         HandGrid.Instance.SetCardposition();
         HandGrid.Instance.AllCardMove();
-
     }
 
+    public void AfterCardUse()
+    {
+        foreach (var item in BattleInfo.Instance.player.buffs)
+        {
+            item.AfterCardUse(this);
+        }
+    }
 
-    /// <summary>
-    /// 卡牌效果，添加至ActionManager
-    /// </summary>
+    /// <summary> 卡牌效果，添加至ActionManager </summary>
     public abstract void CardEffect();
+    
+    //卡牌位置
 
-    #region 卡牌移动
+    public void AddToPack()
+    {
+        gameObject.transform.SetParent(BattleManager.Instance.cards_Pack.transform);
+        gameObject.GetComponent<RectTransform>().anchorMin = new Vector2(0.5f, 0.5f);
+        gameObject.GetComponent<RectTransform>().anchorMax = new Vector2(0.5f, 0.5f);
+        transform.localScale = new Vector3(1.5f, 1.5f);
+        inReward = false;
+    }
+
     public void CardThrow()
     {
         UnFocus();
@@ -135,10 +180,10 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterH
 
     public void DrawCard()
     {
-        UnFocus();
+        //UnFocus();
         gameObject.transform.SetParent(BattleManager.Instance.cards_Hand.transform, false);
-        HandGrid.Instance.SetCardposition();
         gameObject.SetActive(true);
+        HandGrid.Instance.SetCardposition();
         RefreshDescription();
         HandGrid.Instance.AllCardMove();
         //抽卡后加入卡牌丢弃特性
@@ -147,10 +192,9 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterH
 
     public void CardMoveBack(float time = 0.3f)
     {
-        transform.DOMove(targetPosition, time);
+        //transform.DOMove(targetPosition, time);
+        GetComponent<RectTransform>().DOAnchorPos(targetPosition, time);
     }
-
-    #endregion
 
 
     /// <summary>
@@ -211,14 +255,25 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterH
                 BattleUI.Instance.SetCursorAttack();
                 foreach (var _e in BattleInfo.Instance.enemies)
                 {
-                    _e.CanChoose = true;
+                    _e.GetComponent<EnemyBase>().CanChoose = true;
                 }
                 break;
 
-            case Target.NoNeed:
+            case Target.Player:
                 //协程跟随移动
                 takeUp = true;
                 StartCoroutine(CardOnHand());
+                BattleInfo.Instance.player.selectBox.SetActive(true);
+                break;
+
+            case Target.AllEnemies:
+                //协程跟随移动
+                takeUp = true;
+                StartCoroutine(CardOnHand());
+                foreach (var _e in BattleInfo.Instance.enemies)
+                {
+                    _e.GetComponent<EnemyBase>().selectBox.SetActive(true);
+                }
                 break;
 
             case Target.PlayerNEnemy:
@@ -226,7 +281,7 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterH
                 BattleInfo.Instance.player.CanChoose = true;
                 foreach (var _e in BattleInfo.Instance.enemies)
                 {
-                    _e.CanChoose = true;
+                    _e.GetComponent<EnemyBase>().CanChoose = true;
                 }
                 break;
 
@@ -261,15 +316,34 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterH
 
         //可选全关
         BattleInfo.Instance.player.CanChoose = false;
+        BattleInfo.Instance.player.selectBox.SetActive(false);
         foreach (var _e in BattleInfo.Instance.enemies)
         {
-            _e.CanChoose = false;
+            _e.GetComponent<EnemyBase>().CanChoose = false;
+            _e.GetComponent<EnemyBase>().selectBox.SetActive(false);
         }
 
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        if(inReward)
+        {
+            AddToPack();
+            BattleManager.Instance.ClearRewardCard();
+            return;
+        }
+        if(inSelect)
+        {
+
+            return;
+        }
+        if(inShop)
+        {
+            CardRespone(this);
+            return;
+        }
+
         BattleInfo infoSys = BattleInfo.Instance;
         //左键点击选择，抬起，待选择指定目标
         if (eventData.button == PointerEventData.InputButton.Left)
@@ -285,8 +359,11 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterH
                 //再抬起
                 Choose();
             }
-            //技能卡复选检查是否释放
-            else if(target == Target.NoNeed && transform.position.y>-1)
+            //技能卡复选 检查是否释放
+            else if((target == Target.NoNeed|| 
+                target == Target.Player ||
+                target == Target.AllEnemies) && 
+                GetComponent<RectTransform>().anchoredPosition.y>150)
             {
                 takeUp = false;
                 UseCard();
@@ -297,14 +374,6 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterH
                 Drop();
             }
         }
-        //右键放下 移动至battleInfo脚本
-
-        //右键放下(对已选择卡生效)
-        //else if(infoSys.ChosenCard!=null)
-        //{
-        //    BattleInfo.Instance.ChosenCard.Drop();
-        //    BattleInfo.Instance.ChosenCard = null;
-        //}
 
     }
 
@@ -322,6 +391,7 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterH
             Vector3 delt = pos2 - pos1;
             //rect.anchoredPosition += delt;
             transform.position += delt;
+            //Debug.Log(GetComponent<RectTransform>().anchoredPosition);
         }
         transform.position = oPos + new Vector3(0, -0.5f, 1);
 
@@ -332,14 +402,25 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterH
     }
     public void OnPointerExit(PointerEventData eventData)
     {
-        UnFocus();
+        if(!inReward&&!inSelect&&!inShop)
+            UnFocus();
+
+        if(hasExplain)
+        {
+            GameManager.Instance.CloseExplainBox();
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Focus();
-    }
+        if(!inReward&&!inSelect&&!inShop)
+            Focus();
 
+        if(hasExplain)
+        {
+            GameManager.Instance.OpenExplainBox(explain, eventData,transform.parent);
+        }
+    }
 
     public void Focus()
     {
@@ -357,7 +438,8 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterH
         transform.SetAsLastSibling();
         if (!scaled)
         {
-            transform.DOScale(1.1f, 0.1f);
+            //transform.DOScale(1.1f, 0.1f);
+            transform.DOScale(endSclaeValue, 0.1f);
             scaled = true;
         }
     }
@@ -375,7 +457,8 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterH
         if(scaled)
         {
             scaled = false;
-            transform.DOScale(new Vector3(0.88f,0.88f), 0.1f);
+            //transform.DOScale(new Vector3(0.88f,0.88f), 0.1f);
+            transform.DOScale(oriScaleValue, 0.1f);
         }
     }
 

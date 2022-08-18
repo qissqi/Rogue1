@@ -40,4 +40,16 @@ public class Player : Character
         BattleUI.Instance.RefreshEnergy();
     }
 
+    public override void Die()
+    {
+        //²âÊÔ½×¶Î
+        HP = 10;
+        foreach (var _e in BattleInfo.Instance.enemies)
+        {
+            Destroy(_e.gameObject);
+        }
+        Destroy(gameObject);
+        BattleManager.Instance.transform.parent.gameObject.SetActive(false);
+        BattleManager.Instance.battleStart = false;
+    }
 }

@@ -13,8 +13,10 @@ public class EndButton : MonoBehaviour
         button = GetComponent<Button>();
     }
 
-    private void Start()
+    private void OnEnable()
     {
+        if (!GameManager.Instance.inBattle)
+            return;
         BattleManager.Instance.phaseEvent += PTstart;
     }
 

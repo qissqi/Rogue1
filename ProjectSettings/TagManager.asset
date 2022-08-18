@@ -13,6 +13,10 @@ TagManager:
   - EndButton
   - Deck
   - BuffArea
+  - Player_Map
+  - Item
+  - MapMark
+  - MapCamera
   layers:
   - Default
   - TransparentFX
@@ -20,9 +24,9 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Room
+  - Visiable
+  - Mark
   - 
   - 
   - 
@@ -49,4 +53,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: BackGround
+    uniqueID: 2507791865
+    locked: 0
+  - name: Player
+    uniqueID: 2884266043
+    locked: 0
+  - name: Fog
+    uniqueID: 3819364165
+    locked: 0
+  - name: UI
+    uniqueID: 3206207895
     locked: 0

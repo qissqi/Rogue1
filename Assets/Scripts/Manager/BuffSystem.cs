@@ -13,8 +13,9 @@ public static class BuffSystem
         if(_buff.increasable)
         {
             //查找是否已有此Buff
-            foreach (var _b in _target.buffs)
+            foreach (var __b in _target.buffs)
             {
+                var _b = __b as Buff;
                 //已有buff则叠加
                 if(_b.GetType()==_buff.GetType())
                 {
@@ -28,12 +29,18 @@ public static class BuffSystem
         }
         //buff不可叠加或buff不存在，直接增添
         Debug.Log("AddBuff:\n" + _buff.GetType());
-        _target.buffs.Add(_buff);
+        //按优先级加入buffs
+        if (_buff.Prior())
+            _target.buffs.Insert(0, _buff);
+        else
+            _target.buffs.Add(_buff);
+
         _buff.Effective();
         
         //UI部分实现
         var _g = GameObject.Instantiate(new GameObject(_buff.ToString()), _target.BuffArea.transform);
         _g.AddComponent<Image>().sprite = _buff.buffSprite;
+        _g.AddComponent<ShowExplain>().explainInfo = _buff.GetIntro();
         _buff.Combine_GO = _g;
 
         if(_buff.increasable)
@@ -56,7 +63,7 @@ public static class BuffSystem
         //刷新所有敌人显示
         foreach (var _e in BattleInfo.Instance.enemies)
         {
-            _e.curSkill.ShowIntent();
+            _e.GetComponent<EnemyBase>().ShowIntent();
         }
         //刷新所有卡牌显示
         BattleManager.Instance.AllCardRefresh();

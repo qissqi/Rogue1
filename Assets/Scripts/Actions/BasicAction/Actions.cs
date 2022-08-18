@@ -53,21 +53,21 @@ public class MakeDamage : Actions
     {
         target = _target;
         //buffÏìÓ¦£¬ÉËº¦¸øÓèÇ°
-        _info.commonDamage = (int)AtDamageGive(_info);
+        _info.commonDamage = Mathf.FloorToInt(AtDamageGive(_info));
         info = _info;
     }
     
     public float AtDamageGive(DamageInfo info)
     {
-        float _damage = info.commonDamage;
+        //float _damage = info.commonDamage;
         if(info.source.buffs.Count>0)
         {
             foreach (var _b in info.source.buffs)
             {
-                _damage = _b.AtDamageGive(info);
+                info.commonDamage = (int)_b.AtDamageGive(info);
             }
         }
-        return _damage;
+        return info.commonDamage;
     }
 
     public override void execute()

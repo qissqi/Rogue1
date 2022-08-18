@@ -1,0 +1,19 @@
+{
+    "cSpell.words": [
+        "aimpos",
+        "Behaviour",
+        "Rigidbody",
+        "Tweening",
+        "typeparam"
+    ],
+    "files.exclude": {
+        "**/*.asset": true,
+        "**/*.meta": true,
+        "**/*.png": true,
+        "**/*.unity": true,
+        "**/audio": true,
+        "**/video": true
+    },
+    "editor.mouseWheelZoom": true,
+    "files.encoding": "gb2312"
+}

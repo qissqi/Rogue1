@@ -15,6 +15,9 @@ public class BattleUI : Singleton<BattleUI>
     public GameObject FloatingTips;
     public SpriteList BuffSprites;
     public Font Font;
+    public Button item_Left, item_Right;
+    public RectTransform relicRect;
+    public RectTransform Inventory_Scene;
 
     public void SetInfluencedUI(bool on)
     {
@@ -74,6 +77,40 @@ public class BattleUI : Singleton<BattleUI>
     public void SetCursorNormal()
     {
         Cursor.SetCursor(CursorNormal, new Vector2(0, 0), CursorMode.Auto);
+    }
+
+    #endregion
+
+    #region ÎïÆ·¸ñ
+    public void Item_Reset()
+    {
+        relicRect.anchoredPosition = new Vector2(0, 0);
+        if(relicRect.rect.xMax>=0)
+        {
+            item_Left.gameObject.SetActive(false);
+            item_Right.gameObject.SetActive(false);
+        }
+        else
+        {
+            item_Left.gameObject.SetActive(true);
+            item_Right.gameObject.SetActive(true);
+        }
+    }
+
+    public void Item_Left()
+    {
+        //if(relicRect.rect.xMin<0)
+        //{
+        //    relicRect.anchoredPosition += new Vector2(100, 0);
+        //}
+        if(relicRect.anchoredPosition.x<0)
+            relicRect.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, relicRect.anchoredPosition.x+125, 50);
+    }
+
+    public void Item_Right()
+    {
+        if(relicRect.rect.width+relicRect.anchoredPosition.x-(Inventory_Scene.rect.width-920)>0)
+            relicRect.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, relicRect.anchoredPosition.x-125, 50);
     }
 
     #endregion

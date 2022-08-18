@@ -5,6 +5,7 @@ using UnityEngine;
 public class Weak_Buff : Buff
 {
     public bool justApplied;
+    public new static string intro = "虚弱：造成的伤害减少25%";
 
     public Weak_Buff(Character target, int count, bool jp=false)
         :base(target,true,BuffType.Debuff,BattleUI.Instance.BuffSprites.sprites[0])
@@ -57,4 +58,8 @@ public class Weak_Buff : Buff
         Object.Destroy(Combine_GO);
     }
 
+    public override string GetIntro()
+    {
+        return intro;
+    }
 }

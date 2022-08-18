@@ -25,12 +25,17 @@ public abstract class Character : MonoBehaviour, IPointerClickHandler,IPointerEn
 
     public bool CanChoose;
 
-    public List<Buff> buffs = new List<Buff>();
+    public List<IBattleActive> buffs = new List<IBattleActive>();
 
     protected void Update()
     {
         //进行一个懒的偷
         FreshAllUI();
+        if(HP<=0)
+        {
+            HP = 0;
+            Die();
+        }
 
     }
 
@@ -40,21 +45,21 @@ public abstract class Character : MonoBehaviour, IPointerClickHandler,IPointerEn
 
     public float AtDamageReceive(DamageInfo info)
     {
-        float _damage = info.commonDamage;
+        //float _damage = info.commonDamage;
         if(buffs.Count>0)
         {
             foreach (var _b in buffs)
             {
-                _damage = (int)_b.AtDamageReceive(info);
+                info.commonDamage = Mathf.FloorToInt(_b.AtDamageReceive(info));
             }
         }
-        return _damage;
+        return info.commonDamage;
     }
 
     public virtual void ReceiveDamage(DamageInfo info)
     {
         //buff响应，收到伤害前
-        info.commonDamage = (int)AtDamageReceive(info);
+        info.commonDamage = Mathf.FloorToInt(AtDamageReceive(info));
 
         //盾大于伤害，只打盾
         if (blocks >= info.commonDamage)
@@ -74,6 +79,7 @@ public abstract class Character : MonoBehaviour, IPointerClickHandler,IPointerEn
             LoseHP(info.commonDamage);
         }
         //buff响应，收到伤害后
+
         transform.DOPunchPosition(transform.position, 0.3f,1);
     }
 
@@ -117,6 +123,8 @@ public abstract class Character : MonoBehaviour, IPointerClickHandler,IPointerEn
     }
 
     #endregion
+
+    public abstract void Die();
 
 
     #region 光标事件

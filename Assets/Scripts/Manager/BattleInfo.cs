@@ -15,7 +15,7 @@ public class BattleInfo : Singleton<BattleInfo>
     #endregion
 
     #region µ–»À
-    public List<EnemyBase> enemies = new List<EnemyBase>(9);
+    public List<GameObject> enemies = new List<GameObject>();
     #endregion
 
     private void Update()
@@ -31,24 +31,34 @@ public class BattleInfo : Singleton<BattleInfo>
                 BattleManager.Instance.AllCardRefresh();
             }
         }
+    }
+
+    public void ClearInfo()
+    {
+        player = null;
+        enemies.Clear();
 
     }
+
 
     #region º∆À„∆˜
 
     public int CaculateCardDamage(int damage)
     {
+        if (!BattleManager.Instance.battleStart)
+            return damage;
+
         Character target = aim;
         DamageInfo info = new DamageInfo(player, damage);
         foreach (var _b in player.buffs)
         {
-            info.commonDamage = (int)_b.AtDamageGive(info);
+            info.commonDamage = Mathf.FloorToInt(_b.AtDamageGive(info));
         }
         if(target!=null)
         {
             foreach (var _b in target.buffs)
             {
-                info.commonDamage = (int)_b.AtDamageReceive(info);
+                info.commonDamage = Mathf.FloorToInt(_b.AtDamageReceive(info));
             }
         }
 
@@ -61,12 +71,12 @@ public class BattleInfo : Singleton<BattleInfo>
 
         foreach (var _b in source.buffs)
         {
-            info.commonDamage = (int)_b.AtDamageGive(info);
+            info.commonDamage = Mathf.FloorToInt(_b.AtDamageGive(info));
         }
 
         foreach (var _b in player.buffs)
         {
-            info.commonDamage = (int)_b.AtDamageReceive(info);
+            info.commonDamage = Mathf.FloorToInt(_b.AtDamageReceive(info));
         }
 
         return info.commonDamage;

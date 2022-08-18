@@ -5,6 +5,7 @@ using UnityEngine;
 public class 易伤_buff : Buff
 {
     bool justApplied;
+    public static new string intro = "易伤：受到伤害增加50%";
     public 易伤_buff(Character target,int counts,bool jp=false)
         :base(target,true,BuffType.Debuff,BattleUI.Instance.BuffSprites.sprites[1])
     {
@@ -54,5 +55,10 @@ public class 易伤_buff : Buff
         BattleManager.Instance.phaseEvent -= PhaseCount;
         Object.Destroy(Combine_GO);
         owner.buffs.Remove(this);
+    }
+
+    public override string GetIntro()
+    {
+        return intro;
     }
 }

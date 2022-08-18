@@ -17,15 +17,26 @@ public abstract class EnemyBase : Character
     public delegate void enemySkillDele();
     public EnemySkill curSkill;
 
+    [Header("Debug")]
+    public GameObject GO_;
     public void Awake()
     {
         selectBox = GetComponentsInChildren<Image>(true)[1].gameObject;
+        GO_ = gameObject;
     }
 
     /// <summary>
     /// 战斗开始：订阅响应，设置技能组，初始化
     /// </summary>
     public void Start()
+    {
+        //BattleManager.Instance.phaseEvent += RespondPhase;
+        //BattleManager.Instance.phaseEvent += LoseBlockAtStart;
+        //SetSkillGroup();
+        //initialize();
+    }
+
+    public void BattleStart()
     {
         BattleManager.Instance.phaseEvent += RespondPhase;
         BattleManager.Instance.phaseEvent += LoseBlockAtStart;
@@ -73,7 +84,7 @@ public abstract class EnemyBase : Character
     /// <summary>
     /// 展示/刷新意图
     /// </summary>
-    public abstract void ShowIntent();
+    public abstract void ShowIntent(bool showNumber = true);
 
 
     /// <summary>
@@ -85,6 +96,18 @@ public abstract class EnemyBase : Character
     /// 设置逻辑设定当前意图
     /// </summary>
     public abstract void SetCurrentIntent();
+
+    public virtual void OnEnemyDie()
+    {
+
+    }
+
+    public override void Die()
+    {
+        OnEnemyDie();
+        BattleInfo.Instance.enemies.Remove(gameObject);
+        Destroy(gameObject);
+    }
 
 }
 /// <summary>

@@ -11,6 +11,8 @@ public class HandGrid : Singleton<HandGrid>
     private Card focusCard;
     public GameObject Hand;
     public float space;
+    public float space_n;
+    public float space_focus;
     private float leaveCD = 0.1f;
 
     public int Focuses { get => focuses;
@@ -34,7 +36,9 @@ public class HandGrid : Singleton<HandGrid>
     void Start()
     {
         Hand = gameObject;
-        space = 2;
+        //space = 80;
+        //space_n = 450;
+        //space_focus = 40f;
     }
 
 
@@ -69,12 +73,20 @@ public class HandGrid : Singleton<HandGrid>
 
         float Fspace = space;
         List<Card> cards = new List<Card>();
-        cards.AddRange(Hand.GetComponentsInChildren<Card>(true));
-        Vector3 midPos = Hand.transform.position;
 
-        if(cards.Count>5)
+        cards.AddRange(Hand.GetComponentsInChildren<Card>(true));
+        if(focusCard!=null && focuses==1)
         {
-            Fspace =(float) 10 / cards.Count;
+            cards.Remove(focusCard);
+            cards.Insert(focusCard.handIndex, focusCard);
+        }
+        //Vector3 midPos = Hand.transform.position;
+        //Vector3 midPos = Camera.main.ScreenToWorldPoint(Hand.GetComponent<RectTransform>().anchoredPosition);
+        Vector3 midPos = Hand.GetComponent<RectTransform>().anchoredPosition;
+
+        if (cards.Count>5)
+        {
+            Fspace =(float) space_n / cards.Count;
         }
 
         //ÆæÊý
@@ -85,6 +97,8 @@ public class HandGrid : Singleton<HandGrid>
             {
                 cards[i].handIndex = i;
                 int ind = i + 1;
+                //cards[i].targetPosition = (ind - midCount) * (new Vector3(Fspace, 0)) + midPos;
+                //cards[i].targetPosition = Camera.main.ScreenToWorldPoint((ind - midCount) * (new Vector3(Fspace, 0)) + midPos);
                 cards[i].targetPosition = (ind - midCount) * (new Vector3(Fspace, 0)) + midPos;
             }
         }
@@ -98,11 +112,15 @@ public class HandGrid : Singleton<HandGrid>
                 int ind = i + 1;
                 if(i<=midCount)
                 {
-                    cards[i].targetPosition = (ind - midCount) * (new Vector3(Fspace, 0)) + (midPos - new Vector3(Fspace/2, 0));
+                    //cards[i].targetPosition = (ind - midCount) * (new Vector3(Fspace, 0)) + (midPos - new Vector3(Fspace/2, 0));
+                    //cards[i].targetPosition = Camera.main.ScreenToWorldPoint((ind - midCount) * (new Vector3(Fspace, 0)) + (midPos - new Vector3(Fspace / 2, 0)));
+                    cards[i].targetPosition = (ind - midCount) * (new Vector3(Fspace, 0)) + (midPos - new Vector3(Fspace / 2, 0));
                 }
                 else
                 {
-                    cards[i].targetPosition = (i - midCount) * (new Vector3(Fspace, 0)) + (midPos + new Vector3(Fspace/2, 0));
+                    //cards[i].targetPosition = (i - midCount) * (new Vector3(Fspace, 0)) + (midPos + new Vector3(Fspace/2, 0));
+                    //cards[i].targetPosition = Camera.main.ScreenToWorldPoint((i - midCount) * (new Vector3(Fspace, 0)) + (midPos + new Vector3(Fspace / 2, 0)));
+                    cards[i].targetPosition = (i - midCount) * (new Vector3(Fspace, 0)) + (midPos + new Vector3(Fspace / 2, 0));
                 }
             }
 
@@ -136,14 +154,13 @@ public class HandGrid : Singleton<HandGrid>
             
             if (cards[i].handIndex < card.handIndex)
             {
-                
-                cards[i].transform.DOMoveX(ix - 0.8f, 0.2f);
+                //cards[i].transform.DOMoveX(ix - 0.8f, 0.2f);
+                cards[i].GetComponent<RectTransform>().DOAnchorPosX(ix - space_focus, 0.2f);
             }
             else if(cards[i].handIndex > card.handIndex)
             {
-                
-                cards[i].transform.DOMoveX(ix + 0.8f, 0.2f);
-
+                //cards[i].transform.DOMoveX(ix + 0.8f, 0.2f);
+                cards[i].GetComponent<RectTransform>().DOAnchorPosX(ix + space_focus, 0.2f);
             }
             else
             {

@@ -10,11 +10,10 @@ public class Singleton<T> : MonoBehaviour where T:Singleton<T>
 		get { return instance; }
 	}
 
-    
 
-    //以上为单例的属性构造，用于保护单例
+	//以上为单例的属性构造，用于保护单例
 
-    protected virtual void Awake()
+	protected virtual void Awake()
 	{
 		
 		if (instance != null)

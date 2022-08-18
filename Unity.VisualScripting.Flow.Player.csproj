@@ -47,7 +47,7 @@
   <PropertyGroup>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <UnityProjectGenerator>Package</UnityProjectGenerator>
-    <UnityProjectGeneratorVersion>2.0.12</UnityProjectGeneratorVersion>
+    <UnityProjectGeneratorVersion>2.0.16</UnityProjectGeneratorVersion>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2021.1.25f1c1</UnityVersion>
@@ -385,8 +385,8 @@
     <Compile Include="Library\PackageCache\com.unity.visualscripting@1.6.1\Runtime\VisualScripting.Flow\Framework\Math\Generic\GenericModulo.cs" />
     <Compile Include="Library\PackageCache\com.unity.visualscripting@1.6.1\Runtime\VisualScripting.Flow\Dependencies\NCalc\BinaryExpression.cs" />
     <Compile Include="Library\PackageCache\com.unity.visualscripting@1.6.1\Runtime\VisualScripting.Flow\Framework\Codebase\MemberUnit.cs" />
-    <Compile Include="Library\PackageCache\com.unity.visualscripting@1.6.1\Runtime\VisualScripting.Flow\Framework\Events\GlobalEventUnit.cs" />
     <Compile Include="Library\PackageCache\com.unity.visualscripting@1.6.1\Runtime\VisualScripting.Flow\Framework\Events\Editor\OnDrawGizmosSelected.cs" />
+    <Compile Include="Library\PackageCache\com.unity.visualscripting@1.6.1\Runtime\VisualScripting.Flow\Framework\Events\GlobalEventUnit.cs" />
     <Compile Include="Library\PackageCache\com.unity.visualscripting@1.6.1\Runtime\VisualScripting.Flow\Framework\Time\WaitUnit.cs" />
     <Compile Include="Library\PackageCache\com.unity.visualscripting@1.6.1\Runtime\VisualScripting.Flow\Framework\Nulls\NullCheck.cs" />
     <Compile Include="Library\PackageCache\com.unity.visualscripting@1.6.1\Runtime\VisualScripting.Flow\Framework\Events\Input\OnKeyboardInput.cs" />
@@ -1007,13 +1007,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Unity.VisualScripting.Core.csproj">
-      <Project>{4CA3B998-F7FF-03EC-5085-8E18A9725971}</Project>
-      <Name>Unity.VisualScripting.Core</Name>
+    <ProjectReference Include="Unity.VisualScripting.Core.Player.csproj">
+      <Project>{C10D5663-F33B-5DEE-8E6B-355A759373DB}</Project>
+      <Name>Unity.VisualScripting.Core.Player</Name>
     </ProjectReference>
-    <ProjectReference Include="UnityEngine.UI.csproj">
-      <Project>{D241C69A-81FB-9B30-DE7B-B60D6CFF0031}</Project>
-      <Name>UnityEngine.UI</Name>
+    <ProjectReference Include="UnityEngine.UI.Player.csproj">
+      <Project>{2AB06DCC-671D-7A89-4916-2C9617D443E0}</Project>
+      <Name>UnityEngine.UI.Player</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -5,8 +5,14 @@ using UnityEngine;
 /// <summary>
 /// buff机制参考自杀戮尖塔
 /// </summary>
-public abstract class Buff
+public abstract class Buff:IBattleActive
 {
+
+    public static string intro = "Buff";
+
+    public abstract string GetIntro();
+
+
     public enum BuffType
     {
         Fixed, Buff, Debuff
@@ -29,13 +35,19 @@ public abstract class Buff
     public Character owner;
     public BuffType buffType;
     public Sprite buffSprite;
-    
+
     public int num;
 
     //以下属性由BuffSystem实现 
 
     protected bool effective;
     public GameObject Combine_GO;
+
+    public virtual bool Prior()
+    {
+        return false;
+    }
+
 
     public abstract void RemoveBuff();
 
@@ -48,19 +60,19 @@ public abstract class Buff
 
     #region 伤害事件响应
 
-    /// <summary>
-    /// 收到伤害前
-    /// </summary>
+    
     public virtual float AtDamageReceive(DamageInfo info)
     { return info.commonDamage; }    
 
     
 
-    /// <summary>
-    /// 伤害给予前
-    /// </summary>
     public virtual float AtDamageGive(DamageInfo info)
     { return info.commonDamage; }
+
+    public void AfterCardUse(Card card)
+    {
+        
+    }
 
     #endregion
 

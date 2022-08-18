@@ -47,7 +47,7 @@
   <PropertyGroup>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <UnityProjectGenerator>Package</UnityProjectGenerator>
-    <UnityProjectGeneratorVersion>2.0.12</UnityProjectGeneratorVersion>
+    <UnityProjectGeneratorVersion>2.0.16</UnityProjectGeneratorVersion>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2021.1.25f1c1</UnityVersion>
@@ -634,21 +634,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Unity.2D.Common.Runtime.csproj">
-      <Project>{FF18A2B8-C4C1-25A2-BA84-23E871CC04C9}</Project>
-      <Name>Unity.2D.Common.Runtime</Name>
+    <ProjectReference Include="Unity.2D.Common.Runtime.Player.csproj">
+      <Project>{78946E7F-5977-CA39-7345-09282B753FD9}</Project>
+      <Name>Unity.2D.Common.Runtime.Player</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.InternalAPIEngineBridge.001.csproj">
-      <Project>{169C55CF-8329-028B-E61F-BD65AB830C15}</Project>
-      <Name>Unity.InternalAPIEngineBridge.001</Name>
+    <ProjectReference Include="Unity.InternalAPIEngineBridge.001.Player.csproj">
+      <Project>{E77F88AC-ACD2-B473-54D9-823E030EED9B}</Project>
+      <Name>Unity.InternalAPIEngineBridge.001.Player</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.Mathematics.csproj">
-      <Project>{BEEA4176-F520-B6F5-7D78-40129071916A}</Project>
-      <Name>Unity.Mathematics</Name>
+    <ProjectReference Include="Unity.Mathematics.Player.csproj">
+      <Project>{A05DF199-6589-3758-B54F-182246D77170}</Project>
+      <Name>Unity.Mathematics.Player</Name>
     </ProjectReference>
-    <ProjectReference Include="UnityEngine.UI.csproj">
-      <Project>{D241C69A-81FB-9B30-DE7B-B60D6CFF0031}</Project>
-      <Name>UnityEngine.UI</Name>
+    <ProjectReference Include="UnityEngine.UI.Player.csproj">
+      <Project>{2AB06DCC-671D-7A89-4916-2C9617D443E0}</Project>
+      <Name>UnityEngine.UI.Player</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

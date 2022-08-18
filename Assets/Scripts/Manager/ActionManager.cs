@@ -15,7 +15,6 @@ public class ActionManager : Singleton<ActionManager>
         {
             onAction = true;
             RunAction();
-            
         }
     }
 
@@ -50,6 +49,12 @@ public class ActionManager : Singleton<ActionManager>
     {
         actions[0].execute();
         actions.RemoveAt(0);
+    }
+
+    public void ClearActions()
+    {
+        actions.Clear();
+        onAction = false;
     }
 
 }
