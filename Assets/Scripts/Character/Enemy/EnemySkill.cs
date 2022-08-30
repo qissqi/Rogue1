@@ -10,15 +10,18 @@ public class EnemySkill
     public int basicDamage;
     public int times;
     public string info;
+    string anim,skillName;
 
-    public EnemySkill(EnemyBase.enemySkillDele skillD, EnemyIntentType _intentType, EnemyBase sourceEnemy,int _damage=-1,int _times=1)
+    public EnemySkill(EnemyBase.enemySkillDele skillD, EnemyIntentType _intentType, string _skillName, EnemyBase sourceEnemy,string _anim,int _damage=-1,int _times=1)
     {
+        skillName = _skillName;
         SkillDelegate = skillD;
         intentType = _intentType;
         basicDamage = _damage;
         times = _times;
         enemy = sourceEnemy;
         info = "";
+        _anim = anim;
         if(_damage>=0)
         {
             info += _damage;
@@ -74,6 +77,8 @@ public class EnemySkill
 
     public void TakeSkill()
     {
+        if (anim != null)
+            enemy.animator.Play(anim);
         SkillDelegate.Invoke();
     }
 

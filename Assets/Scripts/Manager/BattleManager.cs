@@ -18,33 +18,41 @@ public enum BattlePhase
 //用于控制整场战斗回合的转换、计时与判断，管理牌库
 public class BattleManager : Singleton<BattleManager>
 {
+    public GameObject BuffBlockPre;
     [HideInInspector]public BattlePhase battlePhase;
     public GameObject RewardPanel;
     [HideInInspector]public bool battleStart;
     public event Action<BattlePhase> phaseEvent;
-    [HideInInspector]public GameObject cards_Hand, cards_Deck, cards_Thrown, cards_Destroyed, cards_Pack;
+    public GameObject cards_Hand, cards_Deck, cards_Thrown, cards_Destroyed, cards_Pack;
     public Transform Equipment, Consumables, Relic;
     public Transform CardRewardTr;
     [HideInInspector]public Enemy_OnMap EoM;
+
+    //public event Action InBattleStart, InBattleEnd;
+
     /// <summary>
     /// 启用时初始化
     /// </summary>
     public void Start()
     {
-        cards_Hand = GameObject.FindGameObjectWithTag("Hand");
-        cards_Deck = GameObject.FindGameObjectWithTag("Deck");
-        cards_Deck.SetActive(false);
-        cards_Thrown = GameObject.FindGameObjectWithTag("Thrown");
-        cards_Thrown.SetActive(false);
-        cards_Destroyed = GameObject.FindGameObjectWithTag("Destroyed");
-        cards_Destroyed.SetActive(false);
-        cards_Pack = GameObject.FindGameObjectWithTag("CardPack");
+        //cards_Hand = GameObject.FindGameObjectWithTag("Hand");
+        //cards_Deck = GameObject.FindGameObjectWithTag("Deck");
+        //cards_Deck.SetActive(false);
+        //cards_Thrown = GameObject.FindGameObjectWithTag("Thrown");
+        //cards_Thrown.SetActive(false);
+        //cards_Destroyed = GameObject.FindGameObjectWithTag("Destroyed");
+        //cards_Destroyed.SetActive(false);
+        //cards_Pack = GameObject.FindGameObjectWithTag("CardPack").transform.GetChild(0).GetChild(0).gameObject;
+        //cards_Pack = GameObject.Find("MapUI").transform.GetChild(1).gameObject;
         transform.parent.gameObject.SetActive(false);
     }
 
-    public void BattleStart(Enemy_OnMap enemy_On)
+    /// <summary>
+    /// 获取基本组件信息与生成
+    /// </summary>
+    public void BattleStart(Enemy_OnMap enemy_Map)
     {
-        EoM = enemy_On;
+        EoM = enemy_Map;
         GameManager.Instance.inBattle = true;
         GameManager.Instance.currentscene = GameManager.GameScene.Battle;
         GameManager.Instance.currentCharacter.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
@@ -53,16 +61,31 @@ public class BattleManager : Singleton<BattleManager>
         battleCanvas.GetComponent<Canvas>().worldCamera = Camera.main;
         var PP = battleCanvas.transform.Find("BattleScene/Player");
         var EP = battleCanvas.transform.Find("BattleScene/Enemies");
-        Instantiate(GameManager.Instance.currentCharacter.GetComponent<CharacterControl>().BattlePlayer, PP);
-        foreach (var _e in enemy_On.combineEnemyPre)
+        Instantiate(GameManager.Instance.currentCharacter.BattlePlayer, PP);
+        //foreach (var _e in enemy_Map.combineEnemyPre)
+        //{
+        //    var _E = Instantiate(_e, EP);
+        //    _E.GetComponent<EnemyBase>().BattleStart();
+        //}
+
+        for (int i = 0; i < enemy_Map.combineEnemyPre.Length; i++)
         {
-            var _E = Instantiate(_e, EP);
-            _E.GetComponent<EnemyBase>().BattleStart();
+
+            var e = Instantiate(enemy_Map.combineEnemyPre[i], EP);
+            e.GetComponent<RectTransform>().anchoredPosition = new Vector2(-i * 150, 0);
+            if(i>=2)
+            {
+                e.GetComponent<RectTransform>().anchoredPosition = new Vector2(-(4 - i) * 150, 150);
+            }
+            e.GetComponent<EnemyBase>().BattleStart();
         }
 
         Instance.InitBattle();
     }
 
+    /// <summary>
+    /// 初始化敌人，玩家与卡牌
+    /// </summary>
     public void InitBattle()
     {
         BattleInfo.Instance.player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
@@ -74,9 +97,16 @@ public class BattleManager : Singleton<BattleManager>
 
         CardPackLoad();
         ItemLoad();
+
         BattleUI.Instance.Item_Reset();
-        ActionManager.Instance.ActionAddToBotton(new EndPhase(BattlePhase.BattleStart));
+        ActionManager.Instance.ActionAddToBottom(new EndPhase(BattlePhase.BattleStart));
         battleStart = true;
+        //foreach (var enemy in BattleInfo.Instance.enemies)
+        //{
+        //    enemy.GetComponent<EnemyBase>().BattleStart();
+        //}
+
+        //InBattleStart?.Invoke();
     }
 
 
@@ -94,7 +124,7 @@ public class BattleManager : Singleton<BattleManager>
 
     public void BattleVictory()
     {
-
+        BattleInfo.Instance.player.SaveToInfo();
         battleStart = false;
         DG.Tweening.DOTween.KillAll();
         EoM.BattleEnd(true);
@@ -111,6 +141,7 @@ public class BattleManager : Singleton<BattleManager>
         MapManager.Instance.currentRoom.Mark.transform.Find("Boss").gameObject.SetActive(false);
     }
 
+    #region 背包导入
     public void ItemLoad()
     {
         InventoryManager inv = InventoryManager.Instance;
@@ -120,6 +151,9 @@ public class BattleManager : Singleton<BattleManager>
             item.transform.parent.SetParent(Equipment);
             item.transform.parent.localScale = scale;
             item.Dragable = false;
+            var eq = item as Equipment;
+            BattleInfo.Instance.player.buffs.Add(eq);
+            item.GetComponent<Equipment>().OnBattleLoad();
         }
         foreach (var item in inv.ConsumablesItem)
         {
@@ -127,15 +161,20 @@ public class BattleManager : Singleton<BattleManager>
             item.transform.parent.SetParent(Consumables);
             item.transform.parent.localScale = scale;
             item.Dragable = false;
+            item.GetComponent<ConsumableItem>().OnBattleLoad();
         }
         foreach (var item in inv.InventoryItems)
         {
             if(item.type == Item.ItemType.Relic)
             {
+
                 var scale = item.transform.parent.localScale;
                 item.transform.parent.SetParent(Relic);
                 item.transform.parent.localScale = scale;
                 item.Dragable = false;
+                var rl = item as Relic;
+                BattleInfo.Instance.player.buffs.Add(rl);
+                item.GetComponent<Relic>().OnBattleLoad();
             }
         }
     }
@@ -146,6 +185,7 @@ public class BattleManager : Singleton<BattleManager>
         for (int i = Equipment.childCount; i >0 ; i--)
         {
             var item = Equipment.GetChild(0);
+            item.GetChild(0).GetComponent<Equipment>().OnBattleEnd();
             var scale = item.localScale;
             item.SetParent(inv.EquipmentPanel.transform);
             item.localScale = scale;
@@ -154,6 +194,7 @@ public class BattleManager : Singleton<BattleManager>
         for (int i = Consumables.childCount; i >0; i--)
         {
             var item = Consumables.GetChild(0);
+            item.GetChild(0)?.GetComponent<ConsumableItem>()?.OnBattleEnd();
             var scale = item.localScale;
             item.SetParent(inv.CarryPanel.transform);
             item.localScale = scale;
@@ -161,6 +202,7 @@ public class BattleManager : Singleton<BattleManager>
         for (int i = Relic.childCount; i >0 ; i--)
         {
             var item = Relic.GetChild(0);
+            item.GetChild(0).GetComponent<Relic>().OnBattleEnd();
             var scale = item.localScale;
             item.SetParent(inv.InventoryPanel.transform);
             item.localScale = scale;
@@ -184,6 +226,7 @@ public class BattleManager : Singleton<BattleManager>
         }
     }
 
+    #endregion
 
     /// <param name="EnemyLevel"> 1-普通，2-精英，3-boss </param>
     public void InitRewardCard(int num)
@@ -207,7 +250,7 @@ public class BattleManager : Singleton<BattleManager>
                 break;
         }
 
-        var SO = GameManager.Instance.currentCharacter.GetComponent<CharacterControl>().combineCards;
+        var SO = GameManager.Instance.currentCharacter.combineCards;
         var initCards = new List<GameObject>();
 
         for (int i = 0; i < num; i++)
@@ -221,12 +264,10 @@ public class BattleManager : Singleton<BattleManager>
             else
                 _r = 0;
 
-            Debug.Log("Rare:" + _r);
             var _cards = SO.objects[_r].gameObjects;
 
             int _r2 = UnityEngine.Random.Range(0, _cards.Count);
             var C = _cards[_r2];
-            Debug.Log("Index:" + _r2);
 
             //确保无重复
             if (initCards.Contains(C))
@@ -263,6 +304,7 @@ public class BattleManager : Singleton<BattleManager>
         ActionManager.Instance.ClearActions();
         GameManager.Instance.inBattle = false;
         GameManager.Instance.currentscene = GameManager.GameScene.Map;
+        
         Destroy(BattleInfo.Instance.player.gameObject);
         transform.parent.gameObject.SetActive(false);
         GameManager.Instance.currentCharacter.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
@@ -285,6 +327,9 @@ public class BattleManager : Singleton<BattleManager>
         {
             Destroy(item.gameObject);
         }
+
+        //InBattleEnd?.Invoke();
+        MapManager.Instance.RefreshUI();
     }
 
     #region 回合功能
@@ -315,7 +360,7 @@ public class BattleManager : Singleton<BattleManager>
         //将回合转换添加至ActionManager底
         if(newPhase != BattlePhase.PlayerTurn)
         {
-            ActionManager.Instance.ActionAddToBotton(new EndPhase());
+            ActionManager.Instance.ActionAddToBottom(new EndPhase());
         }
     }
 
@@ -334,7 +379,9 @@ public class BattleManager : Singleton<BattleManager>
     {
         foreach (var _c in cards_Pack.GetComponentsInChildren<Card>(true))
         {
-            Instantiate(_c.gameObject, cards_Deck.transform);
+            var card = Instantiate(_c.gameObject, cards_Deck.transform);
+            card.GetComponent<Card>().inShow = true;
+
         }
         ShuffledCards();
         
@@ -420,6 +467,7 @@ public class BattleManager : Singleton<BattleManager>
             _c.RefreshDescription();
         }
     }
+
 
     /// <summary>
     /// 开发者功能区

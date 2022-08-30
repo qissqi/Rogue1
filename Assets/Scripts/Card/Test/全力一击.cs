@@ -5,14 +5,14 @@ using UnityEngine.EventSystems;
 
 public class 全力一击 : Card
 {
-    int damage;
-    int count;
+    int damage = 12;
+    int count = 2;
 
     public override void CardEffect()
     {
-        ActionManager.Instance.ActionAddToBotton(new MakeDamage(BattleInfo.Instance.ChosenEnemy,
+        ActionManager.Instance.ActionAddToBottom(new MakeDamage(BattleInfo.Instance.ChosenEnemy,
             new DamageInfo(BattleInfo.Instance.player, damage)));
-        ActionManager.Instance.ActionAddToBotton(new AddBuff(
+        ActionManager.Instance.ActionAddToBottom(new AddBuff(
             new 易伤_buff(BattleInfo.Instance.player, count)));
     }
 
@@ -20,8 +20,6 @@ public class 全力一击 : Card
 
     public override void Initialize()
     {
-        damage = 12;
-        count = 2;
         explain = 易伤_buff.intro;
     }
 

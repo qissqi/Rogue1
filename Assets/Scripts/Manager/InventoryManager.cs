@@ -68,10 +68,10 @@ public class InventoryManager : Singleton<InventoryManager>
         _block.GetComponent<Image>().sprite = BasicSprite.sprites[_item.Lv];
 
         InventoryItems.Add(_item);
-        if(_item.type == Item.ItemType.Relic)
-        {
-            GameManager.Instance.currentCharacter.GetComponent<CharacterControl>().ActiveItem.Add(_item);
-        }
+        //if(_item.type == Item.ItemType.Relic)
+        //{
+        //    GameManager.Instance.currentCharacter.ActiveItem.Add(_item);
+        //}
         FreshMaxPage();
     }
 

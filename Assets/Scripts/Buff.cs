@@ -9,6 +9,12 @@ public abstract class Buff:IBattleActive
 {
 
     public static string intro = "Buff";
+    public bool showNum;
+
+    public static Sprite GetBuffSprite(int index)
+    {
+        return BattleUI.Instance.BuffSprites.sprites[index];
+    }
 
     public abstract string GetIntro();
 
@@ -17,18 +23,18 @@ public abstract class Buff:IBattleActive
     {
         Fixed, Buff, Debuff
     }
-    /// <summary>
-    /// 
-    /// </summary>
+
+
     /// <param name="target">buff释放目标</param>
     /// <param name="_increasable">是否可叠加</param>
     /// <param name="_buffType">buff种类</param>
-    public Buff(Character target,bool _increasable,BuffType _buffType,Sprite _buffSprite)
+    public Buff(Character target,bool _increasable,bool _showNum,BuffType _buffType,Sprite _buffSprite)
     {
         owner = target;
         increasable = _increasable;
         buffType = _buffType;
         buffSprite = _buffSprite;
+        showNum = _showNum;
     }
    
     public bool increasable;
@@ -49,14 +55,31 @@ public abstract class Buff:IBattleActive
     }
 
 
-    public abstract void RemoveBuff();
+    public virtual void RemoveBuff()
+    {
+        Object.Destroy(Combine_GO);
+        owner.buffs.Remove(this);
+    }
 
     /// <summary>
     /// Effective可能只会关联一部分功能，大多为回合事件，注意bug
     /// </summary>
     public virtual void Effective() { effective = true; }
 
-    public virtual void Counter(int _num){ num += _num; }
+    public virtual void PhaseCheck(BattlePhase phase) { }
+
+    public virtual void Counter(int _num)
+    {
+        num += _num;
+        if (num <= 0)
+        {
+            RemoveBuff();
+        }
+        else
+        {
+            BuffSystem.RefreshBuffUICounter(this);
+        }
+    }
 
     #region 伤害事件响应
 
@@ -74,7 +97,15 @@ public abstract class Buff:IBattleActive
         
     }
 
+
     #endregion
+    public virtual float OnDefendGiven(float defend, bool caculate = false)
+    {
+        return defend;
+    }
 
-
+    public virtual void OnDie()
+    {
+        
+    }
 }

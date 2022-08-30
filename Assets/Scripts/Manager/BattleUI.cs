@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 /// <summary>
 /// UI变量之后应该在代码中赋值！！！
@@ -18,6 +19,14 @@ public class BattleUI : Singleton<BattleUI>
     public Button item_Left, item_Right;
     public RectTransform relicRect;
     public RectTransform Inventory_Scene;
+    public SpriteList EnemyIntentSprites;
+    public GameObject EffectBox;
+    public GameObject NumberBox;
+    public SpriteList Effects;
+    
+
+    private Stack<GameObject> NumPool = new Stack<GameObject>();
+    private Transform pool;
 
     public void SetInfluencedUI(bool on)
     {
@@ -41,7 +50,7 @@ public class BattleUI : Singleton<BattleUI>
         ///10 巧克力色 #5C3317
         
         int _Cnow = BattleInfo.Instance.player.cost;
-        int _Cmax = BattleInfo.Instance.player.costMax;
+        int _Cmax = BattleInfo.Instance.player.maxCost;
         if(energyWillChange !=0)
         {
 
@@ -67,6 +76,56 @@ public class BattleUI : Singleton<BattleUI>
         }
         Destroy(_g);
     }
+
+    #region 特效
+    public void PlayDefendEffect(Transform _transform)
+    {
+        var ef = Instantiate(EffectBox, transform);
+        ef.GetComponent<Image>().sprite = Effects.sprites[0];
+        ef.transform.position = _transform.position;
+        ef.transform.localScale = new Vector3(1.5f, 1.5f);
+        ef.transform.DOMoveY(_transform.position.y + 5, 0.5f).From().OnComplete(() =>
+        {
+            Destroy(ef);
+        });
+    }
+
+    public void ShowNumber(Transform _targetTransform,int _num,Color _color)
+    {
+        
+        if(pool == null)
+        {
+            pool = new GameObject("damagePool").transform;
+            pool.transform.SetParent(transform);
+        }
+
+        GameObject nb;
+        if(NumPool.Count==0)
+        {
+            nb = Instantiate(NumberBox, _targetTransform);
+        }
+        else
+        {
+            nb = NumPool.Pop();
+            nb.transform.SetParent(_targetTransform);
+        }
+
+        nb.GetComponent<Text>().text = _num.ToString();
+        nb.GetComponent<Text>().color = _color;
+
+        nb.SetActive(true);
+        nb.transform.position = _targetTransform.position + new Vector3(0,1);
+
+        nb.transform.DOMoveY(_targetTransform.position.y + 3, 0.8f).OnComplete(() =>
+        {
+            NumPool.Push(nb);
+            nb.transform.SetParent(pool);
+            nb.SetActive(false);
+        });
+
+    }
+    #endregion
+
 
     #region 光标
     public void SetCursorAttack()

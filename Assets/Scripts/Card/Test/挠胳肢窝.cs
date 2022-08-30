@@ -7,16 +7,16 @@ public class 挠胳肢窝 : Card
 
     public override void CardEffect()
     {
-        ActionManager.Instance.ActionAddToBotton(new AddBuff(
+        ActionManager.Instance.ActionAddToBottom(new AddBuff(
             new Weak_Buff(BattleInfo.Instance.ChosenEnemy, 1)));
-        ActionManager.Instance.ActionAddToBotton(new AddBuff(
+        ActionManager.Instance.ActionAddToBottom(new AddBuff(
             new 易伤_buff(BattleInfo.Instance.ChosenEnemy, 1)));
-        ActionManager.Instance.ActionAddToBotton(new DrawCardAction(2));
+        ActionManager.Instance.ActionAddToBottom(new DrawCardAction(2));
     }
 
     public override void Initialize()
     {
-        explain = Weak_Buff.intro + "\n" + 易伤_buff.intro;
+        explain = Weak_Buff.intro + "\t" + 易伤_buff.intro;
     }
 
     public override void RefreshDescription()

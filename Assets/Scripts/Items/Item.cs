@@ -6,13 +6,15 @@ using UnityEngine.UI;
 
 public abstract class Item : ShowExplain,IDragHandler,IBeginDragHandler,IEndDragHandler,IPointerClickHandler
 {
+    public string itemName;
+    public bool inShow;
     private Vector3 itemScale;
-    public int price = 0;
+    [HideInInspector]public int price = 0;
     public enum ItemType
     {
         Relic,Consumable,Equipment,Other
     }
-    public int OriginSiblingIndex;
+    [HideInInspector]public int OriginSiblingIndex;
     public int lv;
     public int Lv{
         get => lv;
@@ -30,29 +32,63 @@ public abstract class Item : ShowExplain,IDragHandler,IBeginDragHandler,IEndDrag
     }
 
     public ItemType type;
-    public Sprite sprite;
-    public bool useable;
-    public bool active;
+    //public Sprite sprite;
+    [HideInInspector] public bool useable;
+    [HideInInspector] public bool active;
     public bool Dragable = false;
-    public Transform OriginParent;
+    [HideInInspector] public Transform OriginParent;
 
-    public bool inShop;
+    [HideInInspector] public bool useCallback;
     public delegate void Call(Item item);
     public Call ItemRespone;
 
     private void Awake()
     {
         itemScale = transform.localScale;
+        infoSource = GetIntro;
+    }
+
+    private void Start()
+    {
+        transform.parent.GetComponent<Image>().sprite = InventoryManager.Instance.BasicSprite.sprites[lv];
+        ResetInfo();
+    }
+
+    public void ResetInfo()
+    {
+        switch (type)
+        {
+            case ItemType.Relic:
+                explainInfo = "\t遗物：\n获得不同效果";
+                break;
+            case ItemType.Consumable:
+                explainInfo = "\t消耗品：\n放置于消耗品栏以在战斗中使用";
+                break;
+            case ItemType.Equipment:
+                explainInfo = "\t装备：\n放置于装备栏以在战斗中使用";
+                break;
+            case ItemType.Other:
+                break;
+            default:
+                break;
+        }
     }
 
     public virtual void Add()
     {
         InventoryManager.Instance.AddToInventory(this);
+        inShow = false;
         if(type == ItemType.Relic)
         {
             active = true;
         }
     }
+
+    public abstract string GetIntro();
+
+    public virtual void OnBattleLoad() { }
+
+    public virtual void OnBattleEnd() { }
 
     public virtual void MoveTo(Transform parent)
     {
@@ -208,10 +244,13 @@ public abstract class Item : ShowExplain,IDragHandler,IBeginDragHandler,IEndDrag
 
     }
 
-    public void OnPointerClick(PointerEventData eventData)
+    public virtual void OnPointerClick(PointerEventData eventData)
     {
-        if (!inShop || eventData.pointerId != -1)
+        if (inShow)
             return;
-        ItemRespone(this);
+        if (useCallback && eventData.button == PointerEventData.InputButton.Left)
+        {
+            ItemRespone(this);
+        }
     }
 }

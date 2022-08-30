@@ -12,7 +12,12 @@ public interface IBattleActive
     /// <summary> …À∫¶∏¯”Ë«∞ </summary>
     public float AtDamageGive(DamageInfo info);
 
+    public float OnDefendGiven(float defend,bool caculate = false);
+
     public void AfterCardUse(Card card);
+
+    public abstract void OnDie();
+
 
 
 }

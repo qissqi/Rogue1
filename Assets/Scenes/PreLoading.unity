@@ -236,6 +236,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27cd8e7a2886dab46990fac48fdb1875, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HasSave: 0
+  saveData: {fileID: 11400000, guid: aeafdc6d05c4fb54db2067947e9f4387, type: 2}
   GO: {fileID: 0}
   test: {fileID: 0}
 --- !u!114 &1723845958
@@ -250,12 +252,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a35ee340556a7343b5fade75d5365c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ExplainBoxPre: {fileID: 840653113810443381, guid: 04b30380e1d4acd48963669605b1ffa1, type: 3}
+  ExplainBoxPre: {fileID: 840653113810443381, guid: ead071fef70d29141925e961a7ccd503, type: 3}
+  saveData: {fileID: 0}
+  currentscene: 0
+  allRelics: {fileID: 11400000, guid: 27e5e43853648e84fa12ba13bcf868d4, type: 2}
+  allEquipment: {fileID: 11400000, guid: 5092a22e1ca13384fb1148899b9d7ac3, type: 2}
+  allConsumables: {fileID: 11400000, guid: 15881fb727bd4d440b091fef77b51317, type: 2}
+  firstShop: 0
   inBattle: 0
+  CharacterPrefab: {fileID: 8865592761914457616, guid: f045ec45b5415264890bc03ac2068375, type: 3}
   currentCharacter: {fileID: 0}
-  testGOL: {fileID: 0}
-  testGO: {fileID: 0}
   EoM: {fileID: 0}
+  debug: 0
+  testGOL: {fileID: 11400000, guid: aeafdc6d05c4fb54db2067947e9f4387, type: 2}
+  testGO: {fileID: 6447925259727410950, guid: 47ce8e42b935ec44993fc08b06ea97ea, type: 3}
 --- !u!4 &1723845959
 Transform:
   m_ObjectHideFlags: 0

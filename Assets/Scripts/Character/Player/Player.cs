@@ -8,8 +8,9 @@ using UnityEngine;
 /// </summary>
 public class Player : Character
 {
+
     [Header("Player")]
-    public int costMax;
+    public int maxCost;
     public int cost;
     public int drawCardNum;
 
@@ -17,13 +18,14 @@ public class Player : Character
     {
         BattleManager.Instance.phaseEvent += PlayerTurnStart;
         BattleManager.Instance.phaseEvent += LoseBlockAtStart;
+        LoadFromSave();
     }
 
 
     //回合开始自然消盾
     public override void LoseBlockAtStart(BattlePhase phase)
     {
-        if (phase == BattlePhase.PlayerStart)
+        if (phase == BattlePhase.PlayerTurn)
         {
             blocks = 0;
         }
@@ -31,13 +33,26 @@ public class Player : Character
 
     public void PlayerTurnStart(BattlePhase phase)
     {
-        Debug.Log("PlayerTurnCheck");
         if (phase ==(BattlePhase.PlayerTurn))
         {
             BattleManager.Instance.DrawCard(drawCardNum);
         }
-        cost = costMax;
+        cost = maxCost;
         BattleUI.Instance.RefreshEnergy();
+    }
+
+    public void LoadFromSave()
+    {
+        maxHP = GameManager.Instance.playerInfo.maxHP;
+        HP = GameManager.Instance.playerInfo.HP;
+        maxCost = GameManager.Instance.playerInfo.maxCost;
+    }
+
+    public void SaveToInfo()
+    {
+        GameManager.Instance.playerInfo.maxHP = maxHP;
+        GameManager.Instance.playerInfo.HP = HP;
+        Debug.Log(JsonUtility.ToJson(GameManager.Instance.playerInfo));
     }
 
     public override void Die()
@@ -52,4 +67,6 @@ public class Player : Character
         BattleManager.Instance.transform.parent.gameObject.SetActive(false);
         BattleManager.Instance.battleStart = false;
     }
+
+    
 }

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: B_Test
   m_EditorClassIdentifier: 
   gameObjects:
-  - {fileID: 818872905842789123, guid: 6a0c880de0683244bbff3514b349787d, type: 3}
+  - {fileID: 818872905842789123, guid: 413f2609709a4694d83d0dc79efc2c53, type: 3}

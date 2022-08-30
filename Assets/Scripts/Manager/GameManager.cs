@@ -14,47 +14,128 @@ public class GameManager : Singleton<GameManager>
         public PlayerInfo()
         {
             Init_SO(GameManager.Instance.allRelics, GameManager.Instance.allEquipment);
+            loaded = false;
         }
 
         private bool loaded = false;
-        public int MaxHP;
-        public int HP;
+        public int maxHP;
+        private int hp;
+        public int HP 
+        {
+            set { hp = value > maxHP ? maxHP : value; }
+            get => hp;
+        }
         public int Golds;
-
-        public void SetProperty(int maxHP,int hp,int startGolds)
+        public int maxCost;
+        public void SetProperty(int _maxHP,int _hp,int startGolds,int _maxCost)
         {
             if(!loaded)
             {
                 loaded = true;
-                MaxHP = maxHP;
-                HP = hp;
+                maxHP = _maxHP;
+                HP = _hp;
                 Golds = startGolds;
+                maxCost = _maxCost;
             }
+            Debug.Log(JsonUtility.ToJson(GameManager.Instance.playerInfo, true));
         }
 
-        //public SO_SO SO_Relics = null;
-        //public SO_SO SO_Equipment = null;
-        public List<List<GameObject>> Relics = new List<List<GameObject>>();
-        public List<List<GameObject>> Equipment = new List<List<GameObject>>();
+        public List<List<GameObject>> Relics_Left = new List<List<GameObject>>();
+        public List<List<GameObject>> Equipment_Left = new List<List<GameObject>>();
+        public List<GameObject> Relics_Get = new List<GameObject>();
+        public List<GameObject> Equipment_Get = new List<GameObject>();
 
         public void Init_SO(SO_SO relics, SO_SO equipment)
         {
 
             if (relics.objects.Count > 0)
             {
-                Relics.Add(new List<GameObject>());
-                Relics.Add(new List<GameObject>());
-                Relics[0].AddRange(relics.objects[0].gameObjects);
-                Relics[1].AddRange(relics.objects[1].gameObjects);
+                Relics_Left.Add(new List<GameObject>());
+                Relics_Left.Add(new List<GameObject>());
+                Relics_Left[0].AddRange(relics.objects[0].gameObjects);
+                Relics_Left[1].AddRange(relics.objects[1].gameObjects);
             }
             if (equipment.objects.Count > 0)
             {
-                Equipment.Add(new List<GameObject>());
-                Equipment.Add(new List<GameObject>());
-                Equipment[0].AddRange(equipment.objects[0].gameObjects);
-                Equipment[1].AddRange(equipment.objects[1].gameObjects);
+                Equipment_Left.Add(new List<GameObject>());
+                Equipment_Left.Add(new List<GameObject>());
+                Equipment_Left[0].AddRange(equipment.objects[0].gameObjects);
+                Equipment_Left[1].AddRange(equipment.objects[1].gameObjects);
             }
         }
+
+        public GameObject GetItem(Item.ItemType type,int a1,int a2)
+        {
+            GameObject item = null;
+            switch (type)
+            {
+                case Item.ItemType.Relic:
+                    item = Relics_Left[a1][a2];
+                    Relics_Left[a1].RemoveAt(a2);
+                    Relics_Get.Add(item);
+                    break;
+
+                case Item.ItemType.Equipment:
+                    item = Equipment_Left[a1][a2];
+                    Equipment_Left[a1].RemoveAt(a2);
+                    Equipment_Get.Add(item);
+                    break;
+
+                default:
+                    break;
+            }
+            return item;
+        }
+
+        public void NewGetItem(Item item)
+        {
+            switch (item.type)
+            {
+                case Item.ItemType.Relic:
+                    foreach (var item1 in Relics_Left)
+                    {
+                        foreach (var item2 in item1)
+                        {
+                            if(item2.GetComponent<Item>().itemName == item.itemName)
+                            {
+                                item1.Remove(item2);
+                                Relics_Get.Add(item2);
+                                break;
+                            }
+                        }
+                    }
+                    break;
+
+                case Item.ItemType.Equipment:
+                    foreach (var item1 in Equipment_Left)
+                    {
+                        foreach (var item2 in item1)
+                        {
+                            if (item2.GetComponent<Item>().itemName == item.itemName)
+                            {
+                                item1.Remove(item2);
+                                Equipment_Get.Add(item2);
+                                break;
+                            }
+                        }
+                    }
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+        public void ClearAll()
+        {
+            loaded = false;
+            Relics_Left.Clear();
+            Relics_Get.Clear();
+            Equipment_Left.Clear();
+            Equipment_Left.Clear();
+
+        }
+
     }
     public PlayerInfo playerInfo;
     public enum GameScene
@@ -65,10 +146,7 @@ public class GameManager : Singleton<GameManager>
     [Header("Prefabs")]
     public GameObject ExplainBoxPre;
     private GameObject explainBox;
-    //public GameObject battleCanvasPre;
-    //public GameObject CardPackPre;
-    //public GameObject battleCanvas;
-    //public Item TestItem;
+    public SaveData saveData;
 
     [Header("Info")]
     public GameScene currentscene;
@@ -78,14 +156,18 @@ public class GameManager : Singleton<GameManager>
     public SO_SO allEquipment;
     public GO_List allConsumables;
 
+    [Header("OtherInfo")]
+    public bool firstShop = false;
+
     [Header("Debug")]
     public bool inBattle;
     public GameObject CharacterPrefab;
-    public GameObject currentCharacter;
+    public CharacterControl currentCharacter;
     public Enemy_OnMap EoM;
+
     [Header("Test")]
     public bool debug;
-    public GO_List testGOL;
+    public SaveData testGOL;
     public GameObject testGO;
 
     protected override void Awake()
@@ -102,6 +184,28 @@ public class GameManager : Singleton<GameManager>
         DontDestroyOnLoad(gameObject);
         SceneManager.LoadScene(1);
     }
+
+    /// <summary>
+    /// 仅在新游戏时
+    /// </summary>
+    public void dataClear()
+    {
+        saveData.Relics_Get.Clear();
+        saveData.Equipments_Get.Clear();
+        saveData.ItemInfo.Clear();
+        saveData.playerInfo = null;
+
+        saveData.Relics_Left.Clear();
+        saveData.Relics_Left = new List<List<GameObject>>(2);
+        saveData.Relics_Left[0].AddRange(allRelics.objects[0].gameObjects);
+        saveData.Relics_Left[1].AddRange(allRelics.objects[1].gameObjects);
+        
+        saveData.Equipments_Left.Clear();
+        saveData.Equipments_Left = new List<List<GameObject>>(2);
+        saveData.Equipments_Left[0].AddRange(allEquipment.objects[0].gameObjects);
+        saveData.Equipments_Left[1].AddRange(allEquipment.objects[1].gameObjects);
+    }
+
 
     void Update()
     {
@@ -123,7 +227,7 @@ public class GameManager : Singleton<GameManager>
         }
         explainBox = Instantiate(ExplainBoxPre,transform__);
         explainBox.GetComponent<ExplainBox>().SetPos();
-        explainBox.GetComponentInChildren<Text>().text = info;
+        explainBox.GetComponent<ExplainBox>().SetInfo(info);
     }
 
     public void CloseExplainBox()
@@ -139,6 +243,14 @@ public class GameManager : Singleton<GameManager>
         {
             Debug.Log(Input.mousePosition);
             Debug.Log(Camera.main.pixelWidth + "," + Camera.main.pixelHeight);
+        }
+        if (Input.GetKeyDown(KeyCode.K)&& inBattle)
+        {
+            ActionManager.Instance.ActionEnd();
+        }
+        if(Input.GetKeyDown(KeyCode.O))
+        {
+            Instantiate(testGO).GetComponent<Item>().Add();
         }
     }
 

@@ -9,45 +9,63 @@ public class CharacterControl : MonoBehaviour
 {
     public int MaxHP;
     public int StartGold;
+    public int maxCost;
 
     /// <summary>
     /// 角色所有可用的牌库
     /// </summary>
     public SO_SO combineCards;
+    //初始携带
+    public GO_List basicCards;
 
-    /// <summary> 遗物与已装备的装备 </summary>
-    public List<Item> ActiveItem = new List<Item>();
+    ///// <summary> 遗物与已装备的装备 </summary>
+    //public List<Item> ActiveItem = new List<Item>();
     public GameObject BattlePlayer;
     public GameObject Attention;
     
+    [Header("Control")]
     public float speed;
     private Rigidbody2D rb;
+    private Animator animator;
+    private float V_x, V_y;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
-    private void Start()
+    public void SetStart()
     {
-        GameManager.Instance.playerInfo.SetProperty(MaxHP, MaxHP, StartGold);
+        GameManager.Instance.playerInfo.SetProperty(MaxHP, MaxHP, StartGold,maxCost);
     }
 
     private void Update()
     {
+        V_x = Input.GetAxisRaw("Horizontal");
+        V_y = Input.GetAxisRaw("Vertical");
         if (GameManager.Instance.currentscene == GameManager.GameScene.Map)
         {
+            animator.SetFloat("speed", Mathf.Abs(V_x) + Mathf.Abs(V_y));
             Camera.main.transform.position = transform.position + new Vector3(0, 0, -10);
+            if(V_x>0)
+            {
+                transform.localScale = new Vector3(1, 1, 1);
+            }
+            else if(V_x<0)
+            {
+                transform.localScale = new Vector3(-1, 1, 1);
+            }
         }
     }
 
     private void FixedUpdate()
     {
-        if(!GameManager.Instance.inBattle&& GameManager.Instance.currentscene == GameManager.GameScene.Map)
+        if (!GameManager.Instance.inBattle && GameManager.Instance.currentscene == GameManager.GameScene.Map)
         {
             Move();
         }
-        else
+        else if (rb.bodyType != RigidbodyType2D.Static)
         {
             rb.velocity = Vector2.zero;
         }
@@ -55,10 +73,7 @@ public class CharacterControl : MonoBehaviour
 
     private void Move()
     {
-        float Ix = Input.GetAxisRaw("Horizontal");
-        float Iy = Input.GetAxisRaw("Vertical");
-
-        rb.velocity = new Vector2(Ix*speed, Iy*speed);
+        rb.velocity = new Vector2(V_x*speed, V_y*speed);
 
     }
 

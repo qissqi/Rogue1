@@ -9,19 +9,25 @@ using DG.Tweening;
 public abstract class Character : MonoBehaviour, IPointerClickHandler,IPointerEnterHandler,IPointerExitHandler
 {
     [Header("Character-手动赋值")]
+    public Animator animator;
     public Slider bloodBar;
     public Text hpText, blockText;
     public GameObject selectBox;
     public GameObject GOname;
-    public int HPmax;
+    public int maxHP;
     public Action<DamageInfo> AfterAttacked;
     public GameObject BuffArea;
     [Header("Debug")]
-    public int HP;
+    public int hp;
+    public int HP
+    {
+        set { hp = value > maxHP ? maxHP : value; }
+        get => hp;
+    }
     public int blocks;
-    public float attackInfluence = 1;
-    public float defenceInfluence = 1;
-    public int power=0, defence=0;
+    //public float attackInfluence = 1;
+    //public float defenceInfluence = 1;
+    //public int power=0, defence=0;
 
     public bool CanChoose;
 
@@ -31,12 +37,47 @@ public abstract class Character : MonoBehaviour, IPointerClickHandler,IPointerEn
     {
         //进行一个懒的偷
         FreshAllUI();
-        if(HP<=0)
-        {
-            HP = 0;
-            Die();
-        }
 
+    }
+    public Buff FindBuff(Buff _buff)
+    {
+        foreach (var _b in buffs)
+        {
+            if (_b.GetType() == _buff.GetType())
+            {
+                return (Buff)_b;
+            }
+        }
+        return null;
+    }
+
+    public Buff FindBuff(string buff_fullName)
+    {
+        foreach (var _b in buffs)
+        {
+            if (_b.GetType().ToString() == buff_fullName)
+            {
+                return (Buff)_b;
+            }
+        }
+        return null;
+    }
+    public Buff FindBuff<T>() where T:Buff
+    {
+        foreach (var _b in buffs)
+        {
+            if (_b is T)
+            {
+                return (Buff)_b;
+            }
+        }
+        return null;
+    }
+
+    public void ActionEnd()
+    {
+        ActionManager.Instance.ActionEnd();
+        
     }
 
     public abstract void LoseBlockAtStart(BattlePhase phase);
@@ -58,9 +99,14 @@ public abstract class Character : MonoBehaviour, IPointerClickHandler,IPointerEn
 
     public virtual void ReceiveDamage(DamageInfo info)
     {
+        
         //buff响应，收到伤害前
         info.commonDamage = Mathf.FloorToInt(AtDamageReceive(info));
+        if (info.commonDamage < 0)
+            info.commonDamage = 0;
 
+        BattleUI.Instance.ShowNumber(transform, info.commonDamage, Color.red);
+        animator.Play("Hurt");
         //盾大于伤害，只打盾
         if (blocks >= info.commonDamage)
         {
@@ -78,9 +124,8 @@ public abstract class Character : MonoBehaviour, IPointerClickHandler,IPointerEn
         {
             LoseHP(info.commonDamage);
         }
-        //buff响应，收到伤害后
 
-        transform.DOPunchPosition(transform.position, 0.3f,1);
+        //transform.DOPunchPosition(transform.position, 0.3f,1);
     }
 
     public void HitBlock(int defend)
@@ -91,6 +136,30 @@ public abstract class Character : MonoBehaviour, IPointerClickHandler,IPointerEn
     public void LoseHP(int hurtHP)
     {
         HP -= hurtHP;
+        if(hp<=0)
+        {
+            OnDie();
+        }
+    }
+
+    public virtual void OnDie()
+    {
+        for (int i=0;i<buffs.Count;i++)
+        {
+            if(hp<=0)
+            {
+                buffs[i].OnDie();
+            }
+            else
+            {
+                break;
+            }
+        }
+
+        if(hp<=0)
+        { 
+            Die();
+        }
     }
 
     #endregion
@@ -105,8 +174,8 @@ public abstract class Character : MonoBehaviour, IPointerClickHandler,IPointerEn
 
     public void FreshHP()
     {
-        hpText.text = HP + "/" + HPmax;
-        bloodBar.value =(float) HP / HPmax;
+        hpText.text = HP + "/" + maxHP;
+        bloodBar.value =(float) HP / maxHP;
     }
 
     public void FreshBlock()
@@ -126,6 +195,7 @@ public abstract class Character : MonoBehaviour, IPointerClickHandler,IPointerEn
 
     public abstract void Die();
 
+    
 
     #region 光标事件
     public void OnPointerClick(PointerEventData eventData)

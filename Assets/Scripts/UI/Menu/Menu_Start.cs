@@ -60,6 +60,7 @@ public class Menu_Start : MonoBehaviour
         _Continue.gameObject.SetActive(false);
         //选角面板初始化
         SelectPanel.GetComponent<Image>().DOColor(new Color(1, 1,1, 0), 1f).From();
+        SelectPanel.transform.GetChild(1).GetComponent<Image>().enabled = false;
         title.transform.DOMoveY(titleY+10, 0.5f);
         //按钮组件更新
         GO_text.GetComponent<Text>().text = "选择角色";

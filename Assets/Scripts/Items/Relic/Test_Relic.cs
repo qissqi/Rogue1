@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Test_Relic : Item
 {
+    public override string GetIntro()
+    {
+        return explainInfo;
+    }
+
     private void Start()
     {
         Lv = Random.Range(1, 6);

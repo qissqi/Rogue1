@@ -31,7 +31,7 @@ public class Enemy_OnMap : MonoBehaviour//,IPointerEnterHandler,IPointerExitHand
     {
         if(other.CompareTag("Player_Map"))
         {
-            MapManager.Instance.currentPlayerControl.SetAttention(true);
+            GameManager.Instance.currentCharacter.SetAttention(true);
             attention = true;
         }
     }
@@ -40,7 +40,7 @@ public class Enemy_OnMap : MonoBehaviour//,IPointerEnterHandler,IPointerExitHand
     {
         if(other.CompareTag("Player_Map"))
         {
-            MapManager.Instance.currentPlayerControl.SetAttention(false);
+            GameManager.Instance.currentCharacter.SetAttention(false);
             attention = false;
         }
     }

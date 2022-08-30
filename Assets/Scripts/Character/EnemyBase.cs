@@ -8,9 +8,7 @@ using System;
 public abstract class EnemyBase : Character
 {
     [Header("EnemyBase")]
-    public int ATK;
 
-    public SpriteList IntentList;
     public Image IntentImage;
     public Text IntentText;
 
@@ -21,8 +19,9 @@ public abstract class EnemyBase : Character
     public GameObject GO_;
     public void Awake()
     {
-        selectBox = GetComponentsInChildren<Image>(true)[1].gameObject;
+        //selectBox = GetComponentsInChildren<Image>(true)[1].gameObject;
         GO_ = gameObject;
+        hp = maxHP;
     }
 
     /// <summary>
@@ -47,7 +46,7 @@ public abstract class EnemyBase : Character
     //回合开始自然消盾
     public override void LoseBlockAtStart(BattlePhase phase)
     {
-        if(phase == BattlePhase.EnemyStart)
+        if(phase == BattlePhase.EnemyTurn)
         {
             blocks = 0;
         }
@@ -66,25 +65,107 @@ public abstract class EnemyBase : Character
         //玩家回合开始,设置并显示新意图
         else if(phase== (BattlePhase.PlayerStart))
         {
-            SetCurrentIntent();
+            SetCurrentSkill();
             ShowIntent();
         }
     }
 
     /// <summary>
-    /// 敌人初始化，名字，攻击力，HP
+    /// 敌人初始化
     /// </summary>
     public abstract void initialize();
 
     /// <summary>
     /// 敌人回合的行动
     /// </summary>
-    public abstract void TakeAction();
+    public virtual void TakeAction()
+    {
+        curSkill.TakeSkill();
+    }
+
+    public virtual void SetCurrentSkill(EnemySkill skill)
+    {
+        curSkill = skill;
+    }
 
     /// <summary>
     /// 展示/刷新意图
     /// </summary>
-    public abstract void ShowIntent(bool showNumber = true);
+    public virtual void ShowIntent(bool showNumber = true)
+    {
+        if (curSkill == null)
+            return;
+        IntentText.text = "";
+        UnityEngine.UI.Image image = IntentImage;
+        SpriteList _sp = BattleUI.Instance.EnemyIntentSprites;
+        bool isAttack = false;
+        switch (curSkill.intentType)
+        {
+            case EnemyIntentType.Unknown:
+                IntentImage.sprite = _sp.sprites[15];
+                break;
+
+            case EnemyIntentType.Attack:
+                IntentImage.sprite = _sp.sprites[0];isAttack = true;
+                break;
+            case EnemyIntentType.AttackBuff:
+                IntentImage.sprite = _sp.sprites[1];isAttack = true;break;
+            case EnemyIntentType.AttackDebuff:
+                IntentImage.sprite = _sp.sprites[2];isAttack = true;break;
+            case EnemyIntentType.AttackDefend:
+                IntentImage.sprite = _sp.sprites[2];isAttack = true;break;
+
+            case EnemyIntentType.Defend:
+                IntentImage.sprite = _sp.sprites[7];
+                break;
+
+            case EnemyIntentType.Buff:
+                IntentImage.sprite = _sp.sprites[4];
+                break;
+
+            case EnemyIntentType.Debuff:
+                IntentImage.sprite = _sp.sprites[5];
+                break;
+
+            case EnemyIntentType.Curse:
+                IntentImage.sprite = _sp.sprites[6];
+                break;
+
+            case EnemyIntentType.DefendBuff:
+                IntentImage.sprite = _sp.sprites[8];
+                break;
+
+            case EnemyIntentType.Magic:
+                IntentImage.sprite = _sp.sprites[10];
+                break;
+
+            case EnemyIntentType.Sleep:
+                IntentImage.sprite = _sp.sprites[12];
+                break;
+
+            case EnemyIntentType.Stun:
+                IntentImage.sprite = _sp.sprites[14];
+                break;
+
+
+            default:
+                IntentImage.sprite = _sp.sprites[15];
+                break;
+        }
+
+        if(isAttack)
+        {
+            var _d = BattleInfo.Instance.CaculateEnemyDamage(curSkill.basicDamage, this);
+            IntentText.text = _d.ToString();
+            if (curSkill.times > 1)
+            {
+                IntentText.text += "x" + curSkill.times;
+            }
+        }
+
+        image.SetNativeSize();
+    }
+
 
 
     /// <summary>
@@ -93,20 +174,25 @@ public abstract class EnemyBase : Character
     public abstract void SetSkillGroup();
 
     /// <summary>
-    /// 设置逻辑设定当前意图
+    /// 设置逻辑设定当前技能意图
     /// </summary>
-    public abstract void SetCurrentIntent();
-
-    public virtual void OnEnemyDie()
-    {
-
-    }
+    public abstract void SetCurrentSkill();
 
     public override void Die()
     {
-        OnEnemyDie();
+        BattleManager.Instance.phaseEvent -= RespondPhase;
+        BattleManager.Instance.phaseEvent -= LoseBlockAtStart;
         BattleInfo.Instance.enemies.Remove(gameObject);
-        Destroy(gameObject);
+        for (int i = buffs.Count-1; i >=0; i--)
+        {
+            if(buffs[i] is Buff)
+            {
+                var b = buffs[i] as Buff;
+                b.RemoveBuff();
+            }
+        }
+        buffs.Clear();
+        DestroyImmediate(gameObject);
     }
 
 }
@@ -115,5 +201,5 @@ public abstract class EnemyBase : Character
 /// </summary>
 public enum EnemyIntentType
 {
-    Unknown,Attack,Defend,Buff,Debuff,Curse
+    Unknown,Attack,Defend,Buff,Debuff,Curse,AttackBuff,AttackDebuff,AttackDefend,DefendBuff,Sleep,Stun,Magic
 }

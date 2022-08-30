@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: BuffImage
   m_EditorClassIdentifier: 
   sprites:
+  - {fileID: 21300000, guid: 1edc29cc1c8c4924cb21151bbc0977b1, type: 3}
   - {fileID: 21300000, guid: d6600eb0aec07b4478c43970046feeee, type: 3}
   - {fileID: 21300000, guid: d2f96c0be59ddf9498d61d90286188dc, type: 3}

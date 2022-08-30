@@ -1,0 +1,780 @@
+fileFormatVersion: 2
+guid: 488a69ce461a2c74bbbf3ca76c21b30d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5735982264737724262
+    second: sactx-2048x2048-DXT5-PublicSkills-050d91c6_2
+  - first:
+      213: 6360342713458332206
+    second: sactx-2048x2048-DXT5-PublicSkills-050d91c6_1
+  - first:
+      213: 5353606216738912726
+    second: sactx-2048x2048-DXT5-PublicSkills-050d91c6_3
+  - first:
+      213: 6759027783580200468
+    second: sactx-2048x2048-DXT5-PublicSkills-050d91c6_2
+  - first:
+      213: -7570875606304577836
+    second: sactx-2048x2048-DXT5-PublicSkills-050d91c6_5
+  - first:
+      213: -1689680596542942138
+    second: sactx-2048x2048-DXT5-PublicSkills-050d91c6_6
+  - first:
+      213: 8242604837754085972
+    second: sactx-2048x2048-DXT5-PublicSkills-050d91c6_7
+  - first:
+      213: 4320229909054999442
+    second: sactx-2048x2048-DXT5-PublicSkills-050d91c6_8
+  - first:
+      213: -8874386554973911772
+    second: sactx-2048x2048-DXT5-PublicSkills-050d91c6_9
+  - first:
+      213: -1557257107086949680
+    second: sactx-2048x2048-DXT5-PublicSkills-050d91c6_10
+  - first:
+      213: 7883976755272409362
+    second: sactx-2048x2048-DXT5-PublicSkills-050d91c6_11
+  - first:
+      213: -1517713749672795039
+    second: sactx-2048x2048-DXT5-PublicSkills-050d91c6_12
+  - first:
+      213: -1392401300925976230
+    second: sactx-2048x2048-DXT5-PublicSkills-050d91c6_13
+  - first:
+      213: -2960376201222811906
+    second: sactx-2048x2048-DXT5-PublicSkills-050d91c6_14
+  - first:
+      213: 5617945465270675482
+    second: sactx-2048x2048-DXT5-PublicSkills-050d91c6_15
+  - first:
+      213: -38062957451088285
+    second: sactx-2048x2048-DXT5-PublicSkills-050d91c6_16
+  - first:
+      213: -5655711519690765356
+    second: sactx-2048x2048-DXT5-PublicSkills-050d91c6_17
+  - first:
+      213: 1122625202370083103
+    second: sactx-2048x2048-DXT5-PublicSkills-050d91c6_18
+  - first:
+      213: -4186155325903669943
+    second: sactx-2048x2048-DXT5-PublicSkills-050d91c6_19
+  - first:
+      213: 6317086023817057003
+    second: sactx-2048x2048-DXT5-PublicSkills-050d91c6_20
+  - first:
+      213: -5504923279154724923
+    second: sactx-2048x2048-DXT5-PublicSkills-050d91c6_21
+  - first:
+      213: 3429356832045752526
+    second: sactx-2048x2048-DXT5-PublicSkills-050d91c6_22
+  - first:
+      213: 6533212494129342899
+    second: sactx-2048x2048-DXT5-PublicSkills-050d91c6_23
+  - first:
+      213: 3125669840046899557
+    second: sactx-2048x2048-DXT5-PublicSkills-050d91c6_24
+  - first:
+      213: 8630256259534563109
+    second: sactx-2048x2048-DXT5-PublicSkills-050d91c6_25
+  - first:
+      213: 4644941594048722785
+    second: sactx-2048x2048-DXT5-PublicSkills-050d91c6_26
+  - first:
+      213: -8571740792466285186
+    second: sactx-2048x2048-DXT5-PublicSkills-050d91c6_27
+  - first:
+      213: 7366030057809216782
+    second: sactx-2048x2048-DXT5-PublicSkills-050d91c6_28
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: sactx-2048x2048-DXT5-PublicSkills-050d91c6_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1418
+        width: 442
+        height: 284
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 667f1afaa7d4a9f40800000000000000
+      internalID: 5735982264737724262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-DXT5-PublicSkills-050d91c6_1
+      rect:
+        serializedVersion: 2
+        x: 442
+        y: 1702
+        width: 444
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e229d65dff9744850800000000000000
+      internalID: 6360342713458332206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-DXT5-PublicSkills-050d91c6_3
+      rect:
+        serializedVersion: 2
+        x: 1330
+        y: 1702
+        width: 451
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d9bb005d74db4a40800000000000000
+      internalID: 5353606216738912726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-DXT5-PublicSkills-050d91c6_2
+      rect:
+        serializedVersion: 2
+        x: 886
+        y: 1702
+        width: 444
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41e2b4355f3eccd50800000000000000
+      internalID: 6759027783580200468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-DXT5-PublicSkills-050d91c6_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1702
+        width: 442
+        height: 291
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d6ab8f8fb8dee690800000000000000
+      internalID: -7570875606304577836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-DXT5-PublicSkills-050d91c6_6
+      rect:
+        serializedVersion: 2
+        x: 442
+        y: 1418
+        width: 444
+        height: 284
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6441033237c0d88e0800000000000000
+      internalID: -1689680596542942138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-DXT5-PublicSkills-050d91c6_7
+      rect:
+        serializedVersion: 2
+        x: 886
+        y: 1418
+        width: 444
+        height: 284
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 452af32cd6d936270800000000000000
+      internalID: 8242604837754085972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-DXT5-PublicSkills-050d91c6_8
+      rect:
+        serializedVersion: 2
+        x: 1330
+        y: 1418
+        width: 451
+        height: 284
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29bcd35763a84fb30800000000000000
+      internalID: 4320229909054999442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-DXT5-PublicSkills-050d91c6_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1134
+        width: 442
+        height: 284
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 425074f5278d7d480800000000000000
+      internalID: -8874386554973911772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-DXT5-PublicSkills-050d91c6_10
+      rect:
+        serializedVersion: 2
+        x: 442
+        y: 1134
+        width: 444
+        height: 284
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d2412c69e2836ae0800000000000000
+      internalID: -1557257107086949680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-DXT5-PublicSkills-050d91c6_11
+      rect:
+        serializedVersion: 2
+        x: 886
+        y: 1134
+        width: 444
+        height: 284
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 211e27b7613896d60800000000000000
+      internalID: 7883976755272409362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-DXT5-PublicSkills-050d91c6_12
+      rect:
+        serializedVersion: 2
+        x: 1330
+        y: 1134
+        width: 451
+        height: 284
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 164e608c26fffeae0800000000000000
+      internalID: -1517713749672795039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-DXT5-PublicSkills-050d91c6_13
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 850
+        width: 442
+        height: 284
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a51f381e4623dace0800000000000000
+      internalID: -1392401300925976230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-DXT5-PublicSkills-050d91c6_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 566
+        width: 442
+        height: 284
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efe089c9781aae6d0800000000000000
+      internalID: -2960376201222811906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-DXT5-PublicSkills-050d91c6_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 282
+        width: 442
+        height: 284
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a18a9f0b2a3f6fd40800000000000000
+      internalID: 5617945465270675482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-DXT5-PublicSkills-050d91c6_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 442
+        height: 282
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36ee60e11f5c87ff0800000000000000
+      internalID: -38062957451088285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-DXT5-PublicSkills-050d91c6_17
+      rect:
+        serializedVersion: 2
+        x: 442
+        y: 850
+        width: 444
+        height: 284
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4db4fbc8650e281b0800000000000000
+      internalID: -5655711519690765356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-DXT5-PublicSkills-050d91c6_18
+      rect:
+        serializedVersion: 2
+        x: 442
+        y: 566
+        width: 444
+        height: 284
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f197b237cad549f00800000000000000
+      internalID: 1122625202370083103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-DXT5-PublicSkills-050d91c6_19
+      rect:
+        serializedVersion: 2
+        x: 442
+        y: 282
+        width: 444
+        height: 284
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 945f6e809e9c7e5c0800000000000000
+      internalID: -4186155325903669943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-DXT5-PublicSkills-050d91c6_20
+      rect:
+        serializedVersion: 2
+        x: 442
+        y: 0
+        width: 444
+        height: 282
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be25331f44ccaa750800000000000000
+      internalID: 6317086023817057003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-DXT5-PublicSkills-050d91c6_21
+      rect:
+        serializedVersion: 2
+        x: 886
+        y: 850
+        width: 444
+        height: 284
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cf3436a1759a93b0800000000000000
+      internalID: -5504923279154724923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-DXT5-PublicSkills-050d91c6_22
+      rect:
+        serializedVersion: 2
+        x: 886
+        y: 566
+        width: 444
+        height: 284
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec065268ed5879f20800000000000000
+      internalID: 3429356832045752526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-DXT5-PublicSkills-050d91c6_23
+      rect:
+        serializedVersion: 2
+        x: 886
+        y: 282
+        width: 444
+        height: 284
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b929b22622aaaa50800000000000000
+      internalID: 6533212494129342899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-DXT5-PublicSkills-050d91c6_24
+      rect:
+        serializedVersion: 2
+        x: 886
+        y: 0
+        width: 444
+        height: 282
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 561c525b82c906b20800000000000000
+      internalID: 3125669840046899557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-DXT5-PublicSkills-050d91c6_25
+      rect:
+        serializedVersion: 2
+        x: 1330
+        y: 850
+        width: 451
+        height: 284
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 527262ec754d4c770800000000000000
+      internalID: 8630256259534563109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-DXT5-PublicSkills-050d91c6_26
+      rect:
+        serializedVersion: 2
+        x: 1330
+        y: 566
+        width: 451
+        height: 284
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 167f5b315c5267040800000000000000
+      internalID: 4644941594048722785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-DXT5-PublicSkills-050d91c6_27
+      rect:
+        serializedVersion: 2
+        x: 1330
+        y: 282
+        width: 451
+        height: 284
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7d525e0a2f0b0980800000000000000
+      internalID: -8571740792466285186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sactx-2048x2048-DXT5-PublicSkills-050d91c6_28
+      rect:
+        serializedVersion: 2
+        x: 1330
+        y: 0
+        width: 451
+        height: 282
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0581988f45693660800000000000000
+      internalID: 7366030057809216782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

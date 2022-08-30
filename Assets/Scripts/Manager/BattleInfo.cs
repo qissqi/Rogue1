@@ -49,7 +49,7 @@ public class BattleInfo : Singleton<BattleInfo>
             return damage;
 
         Character target = aim;
-        DamageInfo info = new DamageInfo(player, damage);
+        DamageInfo info = new DamageInfo(player, damage,DamageType.Null);
         foreach (var _b in player.buffs)
         {
             info.commonDamage = Mathf.FloorToInt(_b.AtDamageGive(info));
@@ -61,13 +61,15 @@ public class BattleInfo : Singleton<BattleInfo>
                 info.commonDamage = Mathf.FloorToInt(_b.AtDamageReceive(info));
             }
         }
+        if (info.commonDamage < 0)
+            info.commonDamage = 0;
 
         return info.commonDamage;
     }
 
     public int CaculateEnemyDamage(int damage, EnemyBase source)
     {
-        DamageInfo info = new DamageInfo(source, damage);
+        DamageInfo info = new DamageInfo(source, damage,DamageType.Null);
 
         foreach (var _b in source.buffs)
         {
@@ -78,11 +80,28 @@ public class BattleInfo : Singleton<BattleInfo>
         {
             info.commonDamage = Mathf.FloorToInt(_b.AtDamageReceive(info));
         }
-
+        if (info.commonDamage < 0)
+            info.commonDamage = 0;
         return info.commonDamage;
     }
 
+    public int CaculateDefendValue(float defend , Character source)
+    {
+        if (!BattleManager.Instance.battleStart)
+            return (int)defend;
+        float val = defend;
+
+        foreach (var buff in source.buffs)
+        {
+            val = buff.OnDefendGiven(val,true);
+        }
+        if (val < 0)
+            val = 0;
+        return (int)val;
+    }
+
     #endregion
+
 
 
 

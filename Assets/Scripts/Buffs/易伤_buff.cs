@@ -5,9 +5,9 @@ using UnityEngine;
 public class 易伤_buff : Buff
 {
     bool justApplied;
-    public static new string intro = "易伤：受到伤害增加50%";
+    public static new string intro = "易伤：\n受到伤害增加50%";
     public 易伤_buff(Character target,int counts,bool jp=false)
-        :base(target,true,BuffType.Debuff,BattleUI.Instance.BuffSprites.sprites[1])
+        :base(target,true,true,BuffType.Debuff,BattleUI.Instance.BuffSprites.sprites[2])
     {
         num = counts;
         justApplied = jp;

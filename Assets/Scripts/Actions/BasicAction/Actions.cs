@@ -47,19 +47,21 @@ public class MakeDamage : Actions
 {
     Character target;
     DamageInfo info;
+    string anim;
     //int finnalDamage;
 
-    public MakeDamage(Character _target,DamageInfo _info)
+    public MakeDamage(Character _target,DamageInfo _info,string _anim = null)
     {
         target = _target;
-        //buffÏìÓ¦£¬ÉËº¦¸øÓèÇ°
         _info.commonDamage = Mathf.FloorToInt(AtDamageGive(_info));
         info = _info;
+        anim = _anim;
     }
     
     public float AtDamageGive(DamageInfo info)
     {
-        //float _damage = info.commonDamage;
+        if (info.source == null)
+            return info.commonDamage;
         if(info.source.buffs.Count>0)
         {
             foreach (var _b in info.source.buffs)
@@ -73,12 +75,67 @@ public class MakeDamage : Actions
     public override void execute()
     {
         target.ReceiveDamage(info);
-        info.source.transform.DOPunchPosition(-info.source.transform.position, 0.5f, 1).OnComplete(EndCall);
+        if(anim!=null)
+        {
+            info.source.animator.Play(anim,0,0f);
+        }
+        else
+        {
+            ActionManager.Instance.DelayActionEnd(0.7f);
+        }
+        
     }
 }
+
+public class AttackAllEnemies : Actions
+{
+    DamageInfo info;
+    string anim;
+
+    public AttackAllEnemies(DamageInfo _info,string _anim = null)
+    {
+        info = _info;
+        anim = _anim;
+    }
+
+    public float AtDamageGive()
+    {
+        if (info.source == null)
+            return info.commonDamage;
+        if (info.source.buffs.Count > 0)
+        {
+            foreach (var _b in info.source.buffs)
+            {
+                info.commonDamage = (int)_b.AtDamageGive(info);
+            }
+        }
+        return info.commonDamage;
+    }
+
+    public override void execute()
+    {
+        AtDamageGive();
+
+        foreach (var enemy in BattleInfo.Instance.enemies)
+        {
+            enemy.GetComponent<Character>().ReceiveDamage(info);
+        }
+
+        if (anim != null)
+        {
+            info.source.animator.Play(anim,0,0f);
+        }
+        else
+        {
+            ActionManager.Instance.DelayActionEnd(0.7f);
+        }
+    }
+}
+
+
 public enum DamageType
 {
-    Normal,Thorn,LoseHP
+    Null,Normal,Thorn,LoseHP
 }
 public class DamageInfo
 {
@@ -99,13 +156,48 @@ public class DamageInfo
 public class MakeDefend : Actions
 {
     private int def;
-    private Character target;
-    public MakeDefend(Character _target,int num) { def = num;target = _target; }
+    private Character target,source;
+    private string anim;
+    bool beInfluenced;
+    public MakeDefend(Character _source,Character _target,int num,bool _beInfluenced,string _anim = null)
+    {
+        def = num;
+        target = _target;
+        source = _source;
+        anim = _anim;
+        beInfluenced = _beInfluenced;
+    }
+
+    public int OnDefendGiven(int _def)
+    {
+        float val = _def;
+        foreach (var _buff in target.buffs)
+        {
+            val = _buff.OnDefendGiven(val);
+        }
+        return (int)val;
+    }
 
     public override void execute()
     {
-        target.blocks += def;
-        EndCall();
+        BattleUI.Instance.PlayDefendEffect(target.transform);
+        if(beInfluenced)
+        {
+            target.blocks += OnDefendGiven(def);
+        }
+        else
+        {
+            target.blocks += def;
+        }
+
+        if(anim!=null)
+        {
+            source.animator.Play(anim,0,0f);
+        }
+        else
+        {
+            ActionManager.Instance.DelayActionEnd(0.5f);
+        }
     }
 
 

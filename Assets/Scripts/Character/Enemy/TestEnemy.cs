@@ -15,50 +15,6 @@ public class TestEnemy : EnemyBase
         
     }
 
-    public override void ShowIntent(bool showNumber = true)
-    {
-        //SetSkillGroup();
-        IntentText.text = "";
-        UnityEngine.UI.Image image = IntentImage;
-        SpriteList _sp = IntentList;
-        switch (curSkill.intentType)
-        {
-            case EnemyIntentType.Unknown:
-                image.sprite = _sp.sprites[15];
-                break;
-
-            case EnemyIntentType.Attack:
-                image.sprite = _sp.sprites[0];
-                var _d = BattleInfo.Instance.CaculateEnemyDamage(curSkill.basicDamage,this);
-                IntentText.text = _d.ToString();
-                if (curSkill.times > 1)
-                {
-                    IntentText.text += "x" + curSkill.times;
-                }
-                break;
-
-            case EnemyIntentType.Defend:
-                image.sprite = _sp.sprites[7];
-                break;
-
-            case EnemyIntentType.Buff:
-                image.sprite = _sp.sprites[4];
-                break;
-
-            case EnemyIntentType.Debuff:
-                image.sprite = _sp.sprites[5];
-                break;
-
-            case EnemyIntentType.Curse:
-                image.sprite = _sp.sprites[6];
-                break;
-
-            default:
-                image.sprite = _sp.sprites[15];
-                break;
-        }
-        image.SetNativeSize();
-    }
 
     public override void TakeAction()
     {
@@ -70,15 +26,15 @@ public class TestEnemy : EnemyBase
         //SK1[1] = new EnemySkill(Skill3, EnemyIntentType.Attack, this, 4, 2);
         //SK2[0] = new EnemySkill(Skill2, EnemyIntentType.Defend, this);
 
-        SK1.Add(new EnemySkill(Skill1, EnemyIntentType.Attack, this, 10));
-        SK1.Add(new EnemySkill(Skill3, EnemyIntentType.Attack, this, 4, 2));
-        SK2.Add(new EnemySkill(Skill2, EnemyIntentType.Defend, this));
+        SK1.Add(new EnemySkill(Skill1, EnemyIntentType.Attack, "",this,null, 10));
+        SK1.Add(new EnemySkill(Skill3, EnemyIntentType.Attack, "",this,null, 4, 2));
+        SK2.Add(new EnemySkill(Skill2, EnemyIntentType.Defend, "",this,null));
     }
 
-    public override void SetCurrentIntent()
+    public override void SetCurrentSkill()
     {
         //SetSkillGroup();
-        if(HP<=HPmax/2&&!useDef)
+        if(HP<=maxHP/2&&!useDef)
         {
             curSkill = SK2[0];
             useDef = true;
@@ -92,22 +48,24 @@ public class TestEnemy : EnemyBase
     #region ¼¼ÄÜÇø
     public void Skill1()
     {
+        animator.Play("Attack1");
         Actions s = new MakeDamage(BattleInfo.Instance.player,
-            new DamageInfo(this, ATK + 5));
-        ActionManager.Instance.ActionAddToBotton(s);
+            new DamageInfo(this, 5 + 5));
+        ActionManager.Instance.ActionAddToBottom(s);
     }
 
     public void Skill2()
     {
-        ActionManager.Instance.ActionAddToBotton(new MakeDefend(this, 10));
+        ActionManager.Instance.ActionAddToBottom(new MakeDefend(this,this, 10,true));
     }
 
     public void Skill3()
     {
-        ActionManager.Instance.ActionAddToBotton(new MakeDamage(BattleInfo.Instance.player,
-            new DamageInfo(this, ATK - 1)));
-        ActionManager.Instance.ActionAddToBotton(new MakeDamage(BattleInfo.Instance.player,
-            new DamageInfo(this, ATK - 1)));
+        animator.Play("Attack1");
+        ActionManager.Instance.ActionAddToBottom(new MakeDamage(BattleInfo.Instance.player,
+            new DamageInfo(this, 5 - 1)));
+        ActionManager.Instance.ActionAddToBottom(new MakeDamage(BattleInfo.Instance.player,
+            new DamageInfo(this, 5 - 1)));
     }
 
     #endregion

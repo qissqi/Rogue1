@@ -5,10 +5,10 @@ using UnityEngine;
 public class Weak_Buff : Buff
 {
     public bool justApplied;
-    public new static string intro = "虚弱：造成的伤害减少25%";
+    public new static string intro = "虚弱：\n造成的伤害减少25%";
 
     public Weak_Buff(Character target, int count, bool jp=false)
-        :base(target,true,BuffType.Debuff,BattleUI.Instance.BuffSprites.sprites[0])
+        :base(target,true,true,BuffType.Debuff,BattleUI.Instance.BuffSprites.sprites[1])
     {
         num = count;
         justApplied = jp;
@@ -24,6 +24,7 @@ public class Weak_Buff : Buff
     {
         return info.commonDamage * 0.75f;
     }
+
     public void Counter(BattlePhase phase)
     {
         if (phase == BattlePhase.EnemyEnd)
@@ -42,10 +43,8 @@ public class Weak_Buff : Buff
     public override void Counter(int _num)
     {
         num += _num;
-        Debug.Log("Buff Left:\n" + num);
         if(num<=0)
         {
-            Debug.Log("Remove Buff");
             RemoveBuff();
         }
         BuffSystem.RefreshBuffUICounter(this);

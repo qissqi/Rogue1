@@ -24,7 +24,7 @@ public class ActionManager : Singleton<ActionManager>
         actions.Insert(0, action);
     }
 
-    public void ActionAddToBotton(Actions action)
+    public void ActionAddToBottom(Actions action)
     {
         actions.Insert(actions.Count, action);
         //actions.Insert(actions.Count, ActionEnd);
@@ -47,8 +47,9 @@ public class ActionManager : Singleton<ActionManager>
 
     public void RunAction()
     {
-        actions[0].execute();
+        Actions act = actions[0];
         actions.RemoveAt(0);
+        act.execute();
     }
 
     public void ClearActions()

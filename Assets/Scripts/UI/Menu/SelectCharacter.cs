@@ -13,13 +13,15 @@ public class SelectCharacter : MonoBehaviour
     public Menu_Start start;
     public bool Unlocked;
     public Button button;
-    public TMP_Text TMP;
+    private TMP_Text TMP;
+    private Image image;
     [TextArea]
     public string intro;
 
     private void Awake()
     {
         TMP = transform.parent.GetChild(0).GetComponent<TMP_Text>();
+        image = transform.parent.GetChild(1).GetComponent<Image>();
         button = GetComponent<Button>();
         if(!Unlocked)
         {
@@ -41,8 +43,9 @@ public class SelectCharacter : MonoBehaviour
     public void Click()
     {
         start.CanStart();
-        GameManager.Instance.currentCharacter = character;
-        transform.parent.GetComponent<Image>().sprite = sprite;
+        GameManager.Instance.CharacterPrefab = character;
+        image.sprite = sprite;
+        image.enabled = true;
         TMP.text = intro;
     }
 

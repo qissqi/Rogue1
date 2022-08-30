@@ -13,11 +13,13 @@ public class Defend : Card
 
     public override void CardEffect()
     {
-        ActionManager.Instance.ActionAddToBotton(new MakeDefend(BattleInfo.Instance.player, Defendval));
+        ActionManager.Instance.ActionAddToBottom(new MakeDefend(BattleInfo.Instance.player, BattleInfo.Instance.player, Defendval,true,"Skill1"));
     }
 
     public override void RefreshDescription()
     {
-        
+        int d = BattleInfo.Instance.CaculateDefendValue(Defendval, BattleInfo.Instance.player);
+        text_description.text =
+            "获得" + d + "点格挡";
     }
 }

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b987424093a30ba4dae85f27937aed88, type: 3}
+  m_Name: saveData
+  m_EditorClassIdentifier: 
+  Relics_Get:
+  - {fileID: 0}
+  Equipments_Get: []
+  ItemInfo:
+  - "{\n    \"explainInfo\": \"\u5F53\u624B\u4E2D\u6CA1\u6709\u724C\u65F6\uFF0C\u62BD\u4E00\u5F20\u724C\",\n   
+    \"price\": 150,\n    \"OriginSiblingIndex\": 0,\n    \"lv\": 3,\n    \"type\":
+    0,\n    \"sprite\": {\n        \"instanceID\": 23798\n    },\n    \"useable\":
+    false,\n    \"active\": false,\n    \"Dragable\": false,\n    \"OriginParent\":
+    {\n        \"instanceID\": 0\n    },\n    \"inShop\": true\n}"
+  playerInfo: 

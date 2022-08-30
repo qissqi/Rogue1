@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using DG.Tweening;
+using TMPro;
 
 public abstract class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
@@ -13,6 +14,7 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterH
     [HideInInspector]public bool takeUp = false;
     [HideInInspector]public int handIndex;
     [HideInInspector]public string explain;
+    [HideInInspector] public bool isTemp;
     public delegate void Call(Card card);
     public Call CardRespone;
 
@@ -44,7 +46,7 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterH
     public int price = 0;
     public bool inReward = false;
     public bool inSelect = false;
-    public bool inShop = false;
+    public bool inShow = false;
     #endregion
 
     [Header("卡牌特性")]
@@ -56,14 +58,14 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterH
     #region 卡面信息
     [Header("卡面")]
     [HideInInspector]public Text text_cardName;
-    [HideInInspector]public Text text_description;
+    [HideInInspector]public TMP_Text text_description;
     [HideInInspector]public Text text_cost;
 
 
 
     public string cardName;
-    [TextArea]
-    public string description;
+    //[TextArea]
+    //public string description;
     [Range(0, 10)]
     public int cost;
 
@@ -75,9 +77,9 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterH
     {
         oriScaleValue = transform.localScale;
         endSclaeValue = transform.localScale * 1.2f;
-        button_Get = transform.Find("Get").GetComponent<Button>();
+        //button_Get = transform.Find("Get").GetComponent<Button>();
         text_cardName = transform.Find("Name").GetComponent<Text>();
-        text_description = transform.Find("Description").GetComponent<Text>();
+        text_description = transform.Find("Description").GetComponent<TMP_Text>();
         text_cost = transform.Find("Cost").GetComponent<Text>();
         //rect = GetComponent<RectTransform>();
         CardFaceFix();
@@ -92,7 +94,7 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterH
     public void CardFaceFix()
     {
         text_cardName.text = cardName;
-        text_description.text = description;
+        RefreshDescription();
         text_cost.text = cost.ToString();
 
         Transform _typeG = transform.Find("Type");
@@ -105,11 +107,19 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterH
     /// </summary>
     public abstract void Initialize();
 
-
-
-
-    public void UseCard()
+    public virtual void UseCard()
     {
+        if(!CheckUse())
+        {
+            if(isTemp)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                Drop();
+            }
+        }
         CardEffect();
         Drop();
         if (destroyAfterUse)
@@ -127,13 +137,25 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterH
         BattleManager.Instance.AllCardRefresh();
         HandGrid.Instance.SetCardposition();
         HandGrid.Instance.AllCardMove();
+        GameManager.Instance.CloseExplainBox();
+
+        AfterCardUse();
     }
 
-    public void AfterCardUse()
+    public virtual bool CheckUse()
+    {
+        return true;
+    }
+
+    public virtual void AfterCardUse()
     {
         foreach (var item in BattleInfo.Instance.player.buffs)
         {
             item.AfterCardUse(this);
+        }
+        if(type == CardType.Power || isTemp)
+        {
+            Destroy(gameObject);
         }
     }
 
@@ -149,40 +171,47 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterH
         gameObject.GetComponent<RectTransform>().anchorMax = new Vector2(0.5f, 0.5f);
         transform.localScale = new Vector3(1.5f, 1.5f);
         inReward = false;
+        inSelect = false;
+        inShow = true;
+        GameManager.Instance.CloseExplainBox();
     }
 
     public void CardThrow()
     {
         UnFocus();
         gameObject.transform.SetParent(BattleManager.Instance.cards_Thrown.transform, false);
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
         transform.position = BattleManager.Instance.cards_Thrown.transform.position;
         BattleManager.Instance.phaseEvent -= phaseFunc;
+        inShow = true;
     }
 
     public void CardDestroy()
     {
         UnFocus();
         gameObject.transform.SetParent(BattleManager.Instance.cards_Destroyed.transform, false);
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
         transform.position = BattleManager.Instance.cards_Destroyed.transform.position;
         BattleManager.Instance.phaseEvent -= phaseFunc;
+        inShow = true;
     }
 
     public void Back2Deck()
     {
         UnFocus();
         gameObject.transform.SetParent(BattleManager.Instance.cards_Deck.transform, false);
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
         transform.position = BattleManager.Instance.cards_Deck.transform.position;
         BattleManager.Instance.phaseEvent -= phaseFunc;
+        inShow = true;
     }
 
     public void DrawCard()
     {
         //UnFocus();
         gameObject.transform.SetParent(BattleManager.Instance.cards_Hand.transform, false);
-        gameObject.SetActive(true);
+        //gameObject.SetActive(true);
+        inShow = false;
         HandGrid.Instance.SetCardposition();
         RefreshDescription();
         HandGrid.Instance.AllCardMove();
@@ -228,7 +257,7 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterH
 
     #region 点击事件
 
-    public void Choose()
+    public virtual void Choose()
     {
 
         //传递信息
@@ -295,6 +324,10 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterH
             StartCoroutine(BattleUI.Instance.StartFloatingTips("能量不足"));
             Drop();
         }
+        else if(!CheckUse())
+        {
+            Drop();
+        }
 
     }
 
@@ -335,12 +368,11 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterH
         }
         if(inSelect)
         {
-
+            CardRespone(this);
             return;
         }
-        if(inShop)
+        if(inShow)
         {
-            CardRespone(this);
             return;
         }
 
@@ -402,7 +434,7 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterH
     }
     public void OnPointerExit(PointerEventData eventData)
     {
-        if(!inReward&&!inSelect&&!inShop)
+        if(!inReward&&!inSelect&&!inShow)
             UnFocus();
 
         if(hasExplain)
@@ -413,7 +445,7 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterH
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if(!inReward&&!inSelect&&!inShop)
+        if(!inReward&&!inSelect&&!inShow)
             Focus();
 
         if(hasExplain)

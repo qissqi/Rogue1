@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be11cd6b010046b49877fe9020314056, type: 3}
+  m_Name: Magician_Cards
+  m_EditorClassIdentifier: 
+  objects:
+  - {fileID: 11400000, guid: 71bca67bca0cfc14ea98a12fd3e875db, type: 2}
+  - {fileID: 11400000, guid: 4f8aa793b2e46224a9e6596efe994d5b, type: 2}
+  - {fileID: 11400000, guid: bbf28b00c3d979840bd2bbc6d2a9d07e, type: 2}

@@ -8,9 +8,9 @@ public class Card_Angry : Card
 
     public override void CardEffect()
     {
-        ActionManager.Instance.ActionAddToBotton(new MakeDamage(BattleInfo.Instance.ChosenEnemy,
+        ActionManager.Instance.ActionAddToBottom(new MakeDamage(BattleInfo.Instance.ChosenEnemy,
             new DamageInfo(BattleInfo.Instance.player, 12)));
-        ActionManager.Instance.ActionAddToBotton(new AddBuff(
+        ActionManager.Instance.ActionAddToBottom(new AddBuff(
             new Weak_Buff(BattleInfo.Instance.player, count)));
     }
 

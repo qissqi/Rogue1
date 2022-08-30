@@ -6,10 +6,8 @@ using UnityEngine.UI;
 public class EndButton : MonoBehaviour
 {
     Button button;
-    bool canUse;
     private void Awake()
     {
-        canUse = false;
         button = GetComponent<Button>();
     }
 
@@ -30,7 +28,7 @@ public class EndButton : MonoBehaviour
 
     public void ButtonDown()
     {
-        ActionManager.Instance.ActionAddToBotton(new EndPhase());
+        ActionManager.Instance.ActionAddToBottom(new EndPhase());
         BattleInfo.Instance.ChosenCard = null;
         button.interactable = false;
     }
