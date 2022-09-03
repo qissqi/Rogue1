@@ -7,7 +7,7 @@ public class Buff_基础法阵 : Buff
     public static new string intro =
         "基础法阵：\n护佑在本回合结束时不会减少";
 
-    public Buff_基础法阵(Character _target,int _num) : base(_target, true,false, BuffType.Buff, BattleUI.Instance.BuffSprites.sprites[0])
+    public Buff_基础法阵(Character _target,int _num) : base(_target, true,false, BuffType.Buff, GetBuffSprite("基础法阵"))
     {
         num = _num;
     }

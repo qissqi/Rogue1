@@ -8,7 +8,7 @@ public class Buff_护佑 : Buff
     public static new string intro =
         "护佑：\n回合结束时，将护佑层数的一半转为等量的格挡。";
 
-    public Buff_护佑(Character _target,int _num):base(_target,true,true,BuffType.Buff, BattleUI.Instance.BuffSprites.sprites[0])
+    public Buff_护佑(Character _target,int _num):base(_target,true,true,BuffType.Buff,GetBuffSprite("护佑"))
     {
         num = _num;
     }

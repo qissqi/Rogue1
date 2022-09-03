@@ -30,6 +30,7 @@ public abstract class Character : MonoBehaviour, IPointerClickHandler,IPointerEn
     //public int power=0, defence=0;
 
     public bool CanChoose;
+    public bool dead;
 
     public List<IBattleActive> buffs = new List<IBattleActive>();
 
@@ -105,8 +106,9 @@ public abstract class Character : MonoBehaviour, IPointerClickHandler,IPointerEn
         if (info.commonDamage < 0)
             info.commonDamage = 0;
 
-        BattleUI.Instance.ShowNumber(transform, info.commonDamage, Color.red);
+        BattleUI.Instance.ShowHit(transform, info.commonDamage.ToString(), Color.red);
         animator.Play("Hurt");
+        SoundManager.Instance.PlaySE("Hit");
         //盾大于伤害，只打盾
         if (blocks >= info.commonDamage)
         {
@@ -125,7 +127,7 @@ public abstract class Character : MonoBehaviour, IPointerClickHandler,IPointerEn
             LoseHP(info.commonDamage);
         }
 
-        //transform.DOPunchPosition(transform.position, 0.3f,1);
+        
     }
 
     public void HitBlock(int defend)
@@ -176,18 +178,22 @@ public abstract class Character : MonoBehaviour, IPointerClickHandler,IPointerEn
     {
         hpText.text = HP + "/" + maxHP;
         bloodBar.value =(float) HP / maxHP;
+        if (dead)
+            hpText.text = "已阵亡";
     }
 
     public void FreshBlock()
     {
         blockText.text = blocks.ToString();
+        if (dead)
+            return;
         if(blocks<=0)
         {
             blockText.transform.parent.gameObject.SetActive(false);
         }
         else
         {
-            blockText.transform.parent.gameObject.SetActive(true);
+            blockText.transform.parent?.gameObject.SetActive(true);
         }
     }
 
@@ -203,7 +209,7 @@ public abstract class Character : MonoBehaviour, IPointerClickHandler,IPointerEn
         if(CanChoose && eventData.pointerId == -1)
         {
             BattleInfo.Instance.ChosenEnemy = this;
-            BattleInfo.Instance.ChosenCard.UseCard();
+            BattleInfo.Instance.ChosenCard.UseCardFromHand();
         }
         selectBox.SetActive(false);
         BattleInfo.Instance.aim = null;
@@ -212,6 +218,8 @@ public abstract class Character : MonoBehaviour, IPointerClickHandler,IPointerEn
 
     void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
     {
+        if (dead)
+            return;
         GOname.SetActive(true);
         if(CanChoose)
         {
@@ -227,6 +235,8 @@ public abstract class Character : MonoBehaviour, IPointerClickHandler,IPointerEn
 
     void IPointerExitHandler.OnPointerExit(PointerEventData eventData)
     {
+        if (dead)
+            return;
         GOname.SetActive(false);
         selectBox.SetActive(false);
         //更新描述

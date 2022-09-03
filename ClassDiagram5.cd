@@ -1,0 +1,718 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Card" Collapsed="true">
+    <Position X="13.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IKGNEEBIIzgQwQAAMwAwAACCEAgxAIRAAAANDQEAAGQ=</HashCode>
+      <FileName>Assets\Library\Card.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Slime" Collapsed="true">
+    <Position X="15.25" Y="21.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAEAACAgAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Assets\Library\Enemies\F1\Slime\Slime.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enemy_骷髅护卫" Collapsed="true">
+    <Position X="17.5" Y="21.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABgAAAQAAgAAAAACAEAACAgAAAAAAAAAAAAEAAIAAA=</HashCode>
+      <FileName>Assets\Library\Enemies\F1\骷髅护卫\Enemy_骷髅护卫.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Action_CommonUsed" Collapsed="true">
+    <Position X="7.25" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAIAAEAAAAAAAAAAAAAQAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Actions\BasicAction\Action_CommonUsed.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Actions" Collapsed="true">
+    <Position X="9.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAACAAAAEAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Actions\BasicAction\Actions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EndPhase" Collapsed="true">
+    <Position X="11.75" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAEAAACAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Actions\BasicAction\Actions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MakeDamage" Collapsed="true">
+    <Position X="14" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAIAAEAAAAAAAAAAAAQQAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Actions\BasicAction\Actions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AttackAllEnemies" Collapsed="true">
+    <Position X="16.25" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAEAAAAAAAAAAAAQQAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Actions\BasicAction\Actions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DamageInfo" Collapsed="true">
+    <Position X="37" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgACAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Actions\BasicAction\Actions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MakeDefend" Collapsed="true">
+    <Position X="18.5" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAAIAIAAEgAAAAIAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Actions\BasicAction\Actions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AddBuff" Collapsed="true">
+    <Position X="0.5" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAIAAAAEAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Actions\BasicAction\AddBuff.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CopyCard" Collapsed="true">
+    <Position X="2.75" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>Assets\Scripts\Actions\BasicAction\CopyCard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DrawCardAction" Collapsed="true">
+    <Position X="5" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAACAAAAAAAAAAAAAEAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Actions\BasicAction\DrawCardAction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HealAction" Collapsed="true">
+    <Position X="9.5" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAIAAEAAAAAAAAgAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Actions\BasicAction\HealAction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Buff" Collapsed="true">
+    <Position X="10.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIARCAAAAAAhAAAQAAgBAAAAYwQAAgAIABIAABAAAE=</HashCode>
+      <FileName>Assets\Scripts\Buff.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Buff_Chain" Collapsed="true">
+    <Position X="9.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAZAAAAAAAAAAAAAAgAAAEAQQAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Buffs\Buff_Chain.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Buff_力量" Collapsed="true">
+    <Position X="12" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAABAAAAAAAAAAAAQAAAAgAAAAAAABAAAA=</HashCode>
+      <FileName>Assets\Scripts\Buffs\Buff_力量.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Buff_敏捷" Collapsed="true">
+    <Position X="14.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAAAAAAAAAAAYAAAAgAAAAAAABAAAA=</HashCode>
+      <FileName>Assets\Scripts\Buffs\Buff_敏捷.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Buff_护佑" Collapsed="true">
+    <Position X="16.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAQAAAAgAAAAAQQAAAAAAAAAAABQAAA=</HashCode>
+      <FileName>Assets\Scripts\Buffs\Magician\Buff_护佑.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Buff_基础法阵" Collapsed="true">
+    <Position X="18.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAABQAAA=</HashCode>
+      <FileName>Assets\Scripts\Buffs\Magician\Buff_基础法阵.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Buff_净化之炎" Collapsed="true">
+    <Position X="21" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Assets\Scripts\Buffs\Magician\Buff_净化之炎.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Buff_灼烧" Collapsed="true">
+    <Position X="0.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAQAAAAgAAAAAQQAAAAAAAAAAABQAAA=</HashCode>
+      <FileName>Assets\Scripts\Buffs\Magician\Buff_灼烧.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Weak_Buff" Collapsed="true">
+    <Position X="3" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAABAAAAAAgAAAAAQQACAAAAAAAAABAAAA=</HashCode>
+      <FileName>Assets\Scripts\Buffs\Weak_Buff.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Buff_不死造物" Collapsed="true">
+    <Position X="5.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAQBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>Assets\Scripts\Buffs\骷髅\Buff_不死造物.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="易伤_buff" Collapsed="true">
+    <Position X="7.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEQAAAAAAAAAAAAAAgAAAAAQQACAAAAABAAABAAAA=</HashCode>
+      <FileName>Assets\Scripts\Buffs\易伤_buff.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Card_法阵制作" Collapsed="true">
+    <Position X="10" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAgQAAEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Card\Magician\Card_法阵制作.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Card_火花箭" Collapsed="true">
+    <Position X="14.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAgQAAEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Card\Magician\Card_火花箭.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Card_魔力冲击" Collapsed="true">
+    <Position X="16.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEgQAAEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Card\Magician\Card_魔力冲击.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Card_强焰" Collapsed="true">
+    <Position X="19" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgQAAEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Card\Magician\Card_强焰.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Card_日炎" Collapsed="true">
+    <Position X="21.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAgQAAEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Card\Magician\Card_日炎.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Card_星落" Collapsed="true">
+    <Position X="23.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgQAAEAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Card\Magician\Card_星落.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Card_月之咒语" Collapsed="true">
+    <Position X="25.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgQAAEAAAAAAAAAgAAAAAAAAAAAAABAA=</HashCode>
+      <FileName>Assets\Scripts\Card\Magician\Card_月之咒语.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Attack" Collapsed="true">
+    <Position X="1" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAhQAAEAAAAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Card\Test\Attack.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Card_Angry" Collapsed="true">
+    <Position X="3.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgQAAFAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Card\Test\Card_Angry.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Defend" Collapsed="true">
+    <Position X="5.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgQAAEAAAIAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Card\Test\Defend.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="挠胳肢窝" Collapsed="true">
+    <Position X="7.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgQAAEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Card\Test\挠胳肢窝.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="全力一击" Collapsed="true">
+    <Position X="12.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgQAAFAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Card\Test\全力一击.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CardInfo" Collapsed="true">
+    <Position X="33.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\CardInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Character" Collapsed="true">
+    <Position X="16.25" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAYBCQAQAgpAAJAgAAAgAQgEQDAgIBAAAADAFAAABAA=</HashCode>
+      <FileName>Assets\Scripts\Character\Character.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="EnemySkill" Collapsed="true">
+    <Position X="33.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAEAAAAEAAAgAAIAAAUQAAAQAAAAI=</HashCode>
+      <FileName>Assets\Scripts\Character\Enemy\EnemySkill.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnemySkillGroup" Collapsed="true">
+    <Position X="35.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAQAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Character\Enemy\EnemySkillGroup.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TestEnemy" Collapsed="true">
+    <Position X="19.75" Y="21.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAACAAAAAAAAAAEAACAgQAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Character\Enemy\TestEnemy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnemyBase" Collapsed="true">
+    <Position X="17.5" Y="20" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAECAAAAAgQAEAAWAgQEAAAAAAAAAAAAACEEA=</HashCode>
+      <FileName>Assets\Scripts\Character\EnemyBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Player" Collapsed="true">
+    <Position X="13" Y="20" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAQAAACAAAAAgAAAgAAAAQAAQAAAAAIAAQAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Character\Player\Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameEvent" Collapsed="true">
+    <Position X="28.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AARAAAKAAAAAgkAAAAAAAADBSEAAAABAAAAAAAAIAAA=</HashCode>
+      <FileName>Assets\Scripts\GameEvents\GameEvent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShopEvent" Collapsed="true">
+    <Position X="31.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAUAAQiGMAAAggAAAAIgAgMBAsAEAAAAAAACBwAIACE=</HashCode>
+      <FileName>Assets\Scripts\GameEvents\ShopEvent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GO_List" Collapsed="true">
+    <Position X="30" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\GO_List.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConsumableItem" Collapsed="true">
+    <Position X="5" Y="15.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAAAAAAAAEAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Items\ConsumableItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Consumable_护盾电池" Collapsed="true">
+    <Position X="2.75" Y="16.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAQAAAAAAAAAAAAAAAAAAAAAAAgAgAAIAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Items\Consumabsle\Consumable_护盾电池.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Consumable_简易炸弹" Collapsed="true">
+    <Position X="5" Y="16.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAQAAAAAAAAAAAAAAAAAAAAAAAgAgAAIAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Items\Consumabsle\Consumable_简易炸弹.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Consumable_治疗药水" Collapsed="true">
+    <Position X="7.25" Y="16.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAQAAAAAAAAAAAAAAAAAAAAAAAgAgAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Items\Consumabsle\Consumable_治疗药水.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Equipment_破碎之镜" Collapsed="true">
+    <Position X="9.5" Y="18.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAQAAAAAAAAAAAAAAAAAAAAAgEAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Items\Equipment\Equipment_破碎之镜.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Equipment" Collapsed="true">
+    <Position X="9.5" Y="16.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAABAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Items\Equipment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Item" Collapsed="true">
+    <Position X="8.25" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AiMBQAAABiAAAAAAAABAEAAABAALCCAAQISAJQAAQkE=</HashCode>
+      <FileName>Assets\Scripts\Items\Item.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Relic_不休陀螺" Collapsed="true">
+    <Position X="11.75" Y="16.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAgAAAAAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Items\Relic\Relic_不休陀螺.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Relic_迷你剪刀" Collapsed="true">
+    <Position X="14" Y="16.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAARAAAAAAAAAQAAAAAAAAAAQgAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Items\Relic\Relic_迷你剪刀.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Relic_迫击炮" Collapsed="true">
+    <Position X="16.25" Y="16.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAARAAAAAAAAAAAAAAAAAAAAAgAAAAAAIAAAAAAgAA=</HashCode>
+      <FileName>Assets\Scripts\Items\Relic\Relic_迫击炮.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Test_Relic" Collapsed="true">
+    <Position X="0.5" Y="15.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Items\Relic\Test_Relic.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Relic" Collapsed="true">
+    <Position X="12.75" Y="15.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgIAACAAAAAABAAAAAAAAAAAAIgCAAgAAIBIAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Items\Relic.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ActionManager" Collapsed="true">
+    <Position X="16.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAACAIAAAAECCAAAAhAABAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Assets\Scripts\Manager\ActionManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BattleInfo" Collapsed="true">
+    <Position X="21.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAABAAJBAAAAAAAAAAAAAAAAAAABAAAAAAEAgIA=</HashCode>
+      <FileName>Assets\Scripts\Manager\BattleInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BattleManager" Collapsed="true">
+    <Position X="25.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>MAQAEAAAAGiAQSAEQQIIAEQAFAJQIIAgAAQAkAAQGAA=</HashCode>
+      <FileName>Assets\Scripts\Manager\BattleManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BattleMouseEvent" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="30" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAgAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Manager\BattleMouseEvent.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="BattleUI" Collapsed="true">
+    <Position X="1" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AECAAGAIpAAIAAAAAAQIAAJAESAAABAABAqAgIAyABA=</HashCode>
+      <FileName>Assets\Scripts\Manager\BattleUI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BuffSystem" Collapsed="true">
+    <Position X="31.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABBAAAAAAAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Manager\BuffSystem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DialogueManager" Collapsed="true">
+    <Position X="5.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACCCAEAEUAACAAAA4AAAAwACIARAAACIAAA=</HashCode>
+      <FileName>Assets\Scripts\Manager\DialogueManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameManager" Collapsed="true">
+    <Position X="7.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAwAAAgAACAAAAAAABDAAQAIBYAAEBAAIAGAAEEACFA=</HashCode>
+      <FileName>Assets\Scripts\Manager\GameManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InventoryManager" Collapsed="true">
+    <Position X="12.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQABFAAACAAAAAAEAAAQACEZAAAgQAYAEAhgAAACAA=</HashCode>
+      <FileName>Assets\Scripts\Manager\InventoryManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MapManager" Collapsed="true">
+    <Position X="14.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAABQCAAAACAAAAAIAAAAIEQgAAAAAAAEAIEEAA=</HashCode>
+      <FileName>Assets\Scripts\Manager\MapManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SaveManager" Collapsed="true">
+    <Position X="19" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAABAABAAAAAAEAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Manager\SaveManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Singleton&lt;T&gt;" Collapsed="true">
+    <Position X="13.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Manager\Singleton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SoundManager" Collapsed="true">
+    <Position X="23.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CgQAAAAAACIAYAAIAAEAAABCgABAAAAAAAAAAAEAAQA=</HashCode>
+      <FileName>Assets\Scripts\Manager\SoundManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CharacterControl" Collapsed="true">
+    <Position X="35.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAUACAAAAoAAAACEAAkAEAAAQAAAAQASAAIAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Map\CharacterControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enemy_OnMap" Collapsed="true">
+    <Position X="31.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAQCAAAAAAAAAAAAAAAABAEAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>Assets\Scripts\Map\Enemy_OnMap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MapBuilder" Collapsed="true">
+    <Position X="3.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAQUBABABAAAAMADAAAAAAQCACECAAABCAAEAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Map\MapBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Room" Collapsed="true">
+    <Position X="31.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAACAAAEACAAEIAAQAAAAIEgQAAAAAACAAAAcCgI=</HashCode>
+      <FileName>Assets\Scripts\Map\Room.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Action_AnimController" Collapsed="true">
+    <Position X="28.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\other\Action_AnimController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Developer" Collapsed="true">
+    <Position X="28.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAIAAAAAAAACEA=</HashCode>
+      <FileName>Assets\Scripts\other\Developer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ExplainBox" Collapsed="true">
+    <Position X="37" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIQAAAAAAAAAAAAAAAAAAAABAAAABAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\other\ExplainBox.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MyTool" Collapsed="true">
+    <Position X="28.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\other\MyTool.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RenderController" Collapsed="true">
+    <Position X="30" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AASAAAAAACAAAAAAAAAAAAAAAAAAAAABAAAAggAAAAA=</HashCode>
+      <FileName>Assets\Scripts\other\RenderController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShowExplain" Collapsed="true">
+    <Position X="8.25" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAIAAABQAAAAA=</HashCode>
+      <FileName>Assets\Scripts\other\ShowExplain.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TempEffect" Collapsed="true">
+    <Position X="37" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\other\TempEffect.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SaveData" Collapsed="true">
+    <Position X="33.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAACAAAAAAIAAAAAAABAAAAAAAEAAgAA=</HashCode>
+      <FileName>Assets\Scripts\SaveData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SO_SO" Collapsed="true">
+    <Position X="33.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\SO_SO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpriteList" Collapsed="true">
+    <Position X="35.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>Assets\Scripts\SpriteList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EndButton" Collapsed="true">
+    <Position X="30" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAABAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAACEA=</HashCode>
+      <FileName>Assets\Scripts\UI\BattleScene\EndButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HandGrid" Collapsed="true">
+    <Position X="10" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAEARAACAkSBAABAAAAAQAABAAQCAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\UI\BattleScene\HandGrid.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Menu_Continue" Collapsed="true">
+    <Position X="31.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\UI\Menu\Menu_Continue.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Menu_Exit" Collapsed="true">
+    <Position X="33.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AUAAAABAACAAAAAgBAAAAAAgAAAAAAAAIAAAAACAEEA=</HashCode>
+      <FileName>Assets\Scripts\UI\Menu\Menu_Exit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Menu_Setting" Collapsed="true">
+    <Position X="35.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAgCAAAAAgBAAAABAgAAAAAAAAAAAAACCAEkA=</HashCode>
+      <FileName>Assets\Scripts\UI\Menu\Menu_Setting.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Menu_Start" Collapsed="true">
+    <Position X="37" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAQgABAQCAiAAAgAAAAABAgAAAAAAQAAAAAASAAEkA=</HashCode>
+      <FileName>Assets\Scripts\UI\Menu\Menu_Start.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SelectCharacter" Collapsed="true">
+    <Position X="37" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAABAACAAAAAgAABAAgAAEBAAAAAAAAAAAABACkA=</HashCode>
+      <FileName>Assets\Scripts\UI\Menu\SelectCharacter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SetNumber" Collapsed="true">
+    <Position X="28.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\UI\Menu\SetNumber.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SettingMenu" Collapsed="true">
+    <Position X="30" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAgAAAAAgAAAAAAEAAAAAEAwAAAACABAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\UI\Menu\SettingMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ScrollBox" Collapsed="true">
+    <Position X="35.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AASAAIAAAgAAAAQAAAAAAAACAAAAAQAAAAAgAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\UI\ScrollBox.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="IBattleActive" Collapsed="true">
+    <Position X="28.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAABAAAAAAAAAAAAIgAAAgAAABAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\IBattleActive.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="IShowExplain" Collapsed="true">
+    <Position X="30" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\other\IShowExplain.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="DamageType" Collapsed="true">
+    <Position X="30" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAEAAAIAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Actions\BasicAction\Actions.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="EnemyIntentType" Collapsed="true">
+    <Position X="31.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAEAAAAQAAgAAAAAAAEAACAICCAAgABAAAAAAAQBA=</HashCode>
+      <FileName>Assets\Scripts\Character\EnemyBase.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="BattlePhase" Collapsed="true">
+    <Position X="28.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAgAAAAAAIAAAAAAEAAAAAAAAABAACAAAAgAAA=</HashCode>
+      <FileName>Assets\Scripts\Manager\BattleManager.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Microsoft YaHei UI" Size="9" />
+</ClassDiagram>

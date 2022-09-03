@@ -22,6 +22,10 @@ public class 易伤_buff : Buff
 
     public override float AtDamageReceive(DamageInfo info)
     {
+        if(info.source == null || info.damageType!=DamageType.Normal)
+        {
+            return info.commonDamage;
+        }
         return info.commonDamage * 1.5f;
     }
 

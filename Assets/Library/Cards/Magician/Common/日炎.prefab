@@ -17,6 +17,7 @@ MonoBehaviour:
   takeUp: 0
   handIndex: 0
   explain: 
+  isTemp: 0
   hasExplain: 1
   type: 1
   target: 5
@@ -55,6 +56,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 224049134290101384, guid: f63759a038bbb164eab724a3ae2bdb80, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224049134290101384, guid: f63759a038bbb164eab724a3ae2bdb80, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1057601932463365447, guid: 13bf93f7f91389948a1bc7564297df56, type: 3}
+    - target: {fileID: 224049134290101384, guid: f63759a038bbb164eab724a3ae2bdb80, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224049134290101384, guid: f63759a038bbb164eab724a3ae2bdb80, type: 3}
+      propertyPath: m_Color.b
+      value: 0.9622642
+      objectReference: {fileID: 0}
+    - target: {fileID: 224049134290101384, guid: f63759a038bbb164eab724a3ae2bdb80, type: 3}
+      propertyPath: m_Color.g
+      value: 0.9622642
+      objectReference: {fileID: 0}
+    - target: {fileID: 224049134290101384, guid: f63759a038bbb164eab724a3ae2bdb80, type: 3}
+      propertyPath: m_Color.r
+      value: 0.9622642
+      objectReference: {fileID: 0}
     - target: {fileID: 224049134290101429, guid: f63759a038bbb164eab724a3ae2bdb80, type: 3}
       propertyPath: m_Name
       value: "\u65E5\u708E"

@@ -17,6 +17,7 @@ MonoBehaviour:
   takeUp: 0
   handIndex: 0
   explain: 
+  isTemp: 0
   hasExplain: 0
   type: 0
   target: 1
@@ -127,6 +128,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 224049134290101430, guid: f63759a038bbb164eab724a3ae2bdb80, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5105673979365364013, guid: f63759a038bbb164eab724a3ae2bdb80, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 1687d58a65b4c3d4fabf8958c63e6461, type: 3}
+    - target: {fileID: 5105673979365364013, guid: f63759a038bbb164eab724a3ae2bdb80, type: 3}
+      propertyPath: m_PreserveAspect
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

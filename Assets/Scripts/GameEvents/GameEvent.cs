@@ -25,12 +25,12 @@ public class GameEvent : MonoBehaviour
     public virtual void OpenEvent()
     {
         CombineUI.SetActive(true);
-        GameManager.Instance.currentscene = GameManager.GameScene.Event;
+        GameManager.Instance.ChangeScene(GameManager.GameScene.Event);
     }
 
     public void EventOver()
     {
-        GameManager.Instance.currentscene = GameManager.GameScene.Map;
+        GameManager.Instance.ChangeScene(GameManager.GameScene.Map);
         transform.parent.GetComponent<Room>().SetMark(4, false);
         MapManager.Instance.RefreshUI();
         Destroy(gameObject);

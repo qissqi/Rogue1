@@ -57,7 +57,7 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterH
     [HideInInspector] public Button button_Get;
     #region 卡面信息
     [Header("卡面")]
-    [HideInInspector]public Text text_cardName;
+    [HideInInspector]public TMP_Text text_cardName;
     [HideInInspector]public TMP_Text text_description;
     [HideInInspector]public Text text_cost;
 
@@ -78,7 +78,7 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterH
         oriScaleValue = transform.localScale;
         endSclaeValue = transform.localScale * 1.2f;
         //button_Get = transform.Find("Get").GetComponent<Button>();
-        text_cardName = transform.Find("Name").GetComponent<Text>();
+        text_cardName = transform.Find("Name").GetComponent<TMP_Text>();
         text_description = transform.Find("Description").GetComponent<TMP_Text>();
         text_cost = transform.Find("Cost").GetComponent<Text>();
         //rect = GetComponent<RectTransform>();
@@ -107,7 +107,7 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterH
     /// </summary>
     public abstract void Initialize();
 
-    public virtual void UseCard()
+    public virtual void UseCardFromHand()
     {
         if(!CheckUse())
         {
@@ -119,8 +119,11 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterH
             {
                 Drop();
             }
+            return;
         }
-        CardEffect();
+
+        UsingCard();
+
         Drop();
         if (destroyAfterUse)
         {
@@ -138,8 +141,16 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterH
         HandGrid.Instance.SetCardposition();
         HandGrid.Instance.AllCardMove();
         GameManager.Instance.CloseExplainBox();
+    }
 
+    public void UsingCard()
+    {
+        CardEffect();
         AfterCardUse();
+        if(isTemp)
+        {
+            Destroy(gameObject);
+        }
     }
 
     public virtual bool CheckUse()
@@ -269,10 +280,6 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterH
         var p = transform.position;
         transform.position = p + new Vector3(0, 1, -1);
 
-        //脱离牌区优先渲染，记住序号
-        //handIndex = transform.GetSiblingIndex();
-        //transform.SetParent(transform.parent.parent);
-
         switch (target)
         {
             case Target.None:
@@ -321,7 +328,7 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterH
         //费用不足放下
         if (BattleInfo.Instance.player.cost < cost)
         {
-            StartCoroutine(BattleUI.Instance.StartFloatingTips("能量不足"));
+            BattleUI.Instance.ShowTipInfo("能量不足");
             Drop();
         }
         else if(!CheckUse())
@@ -383,6 +390,7 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterH
             //单击抬起
             if (infoSys.ChosenCard != this)
             {
+                SoundManager.Instance.PlaySE("CardPick");
                 //放下其他卡
                 if(infoSys.ChosenCard!=null)
                 {
@@ -398,7 +406,7 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterH
                 GetComponent<RectTransform>().anchoredPosition.y>150)
             {
                 takeUp = false;
-                UseCard();
+                UseCardFromHand();
             }
             //非技能卡复选放下
             else
@@ -450,7 +458,7 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterH
 
         if(hasExplain)
         {
-            GameManager.Instance.OpenExplainBox(explain, eventData,transform.parent);
+            GameManager.Instance.OpenExplainBox(explain, eventData,transform.parent, gameObject);
         }
     }
 

@@ -8,7 +8,7 @@ public class Buff_力量 : Buff
         "力量：\n攻击造成的伤害增加对应层数的值。";
 
     public Buff_力量(Character _target,int _amount) : base(_target,true,true,_amount>0?BuffType.Buff:BuffType.Debuff,
-        BattleUI.Instance.BuffSprites.sprites[0])
+        GetBuffSprite("力量"))
     {
         num = _amount;
 
@@ -22,6 +22,10 @@ public class Buff_力量 : Buff
 
     public override float AtDamageGive(DamageInfo info)
     {
+        if(info.source==null || info.damageType!=DamageType.Normal)
+        {
+            return info.commonDamage;
+        }    
         var d = info.commonDamage + num;
         return d > 0 ? d : 0;
     }
@@ -50,7 +54,8 @@ public class Buff_力量 : Buff
     public override string GetIntro()
     {
         var a = num > 0 ? "增加" : "减少";
-        var s = "力量：\n攻击造成的伤害" + a + Mathf.Abs(num) + "点。";
+        //var s = "力量：\n攻击造成的伤害" + a + Mathf.Abs(num) + "点。";
+        var s = ($"力量：\n攻击造成的伤害{(num > 0 ? "增加" : "减少")}{Mathf.Abs(num)}点。");
         return s;
     }
 }

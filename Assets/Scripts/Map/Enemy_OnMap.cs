@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using DG.Tweening;
 
 public class Enemy_OnMap : MonoBehaviour//,IPointerEnterHandler,IPointerExitHandler,IPointerClickHandler
 {
@@ -13,7 +14,7 @@ public class Enemy_OnMap : MonoBehaviour//,IPointerEnterHandler,IPointerExitHand
     {
         if(attention&&(Input.GetKeyDown(KeyCode.E)||Input.GetMouseButtonDown(1))&&!GameManager.Instance.inBattle)
         {
-            BattleManager.Instance.BattleStart(this);
+            BattleManager.Instance.ReadyStart(this);
         }
     }
 
@@ -21,9 +22,17 @@ public class Enemy_OnMap : MonoBehaviour//,IPointerEnterHandler,IPointerExitHand
     {
         if(win)
         {
-            MapManager.Instance.currentRoom.SetDoor(true);
-            MapManager.Instance.currentRoom.EnterLock = false;
+            if(EnemyLevel == 3)
+            {
+                MapManager.Instance.SetPortal(GameManager.Instance.level++);
+            }
+            else
+            {
+                MapManager.Instance.currentRoom.SetDoor(true);
+                MapManager.Instance.currentRoom.EnterLock = false;
+            }
             Destroy(gameObject);
+            
         }
     }
 

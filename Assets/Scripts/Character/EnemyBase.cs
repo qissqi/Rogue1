@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System;
+using DG.Tweening;
 
 public abstract class EnemyBase : Character
 {
@@ -27,13 +28,6 @@ public abstract class EnemyBase : Character
     /// <summary>
     /// 战斗开始：订阅响应，设置技能组，初始化
     /// </summary>
-    public void Start()
-    {
-        //BattleManager.Instance.phaseEvent += RespondPhase;
-        //BattleManager.Instance.phaseEvent += LoseBlockAtStart;
-        //SetSkillGroup();
-        //initialize();
-    }
 
     public void BattleStart()
     {
@@ -113,7 +107,7 @@ public abstract class EnemyBase : Character
             case EnemyIntentType.AttackDebuff:
                 IntentImage.sprite = _sp.sprites[2];isAttack = true;break;
             case EnemyIntentType.AttackDefend:
-                IntentImage.sprite = _sp.sprites[2];isAttack = true;break;
+                IntentImage.sprite = _sp.sprites[3];isAttack = true;break;
 
             case EnemyIntentType.Defend:
                 IntentImage.sprite = _sp.sprites[7];
@@ -192,7 +186,18 @@ public abstract class EnemyBase : Character
             }
         }
         buffs.Clear();
-        DestroyImmediate(gameObject);
+        dead = true;
+
+        Destroy(IntentImage.gameObject);
+        Destroy(blockText.transform.parent.gameObject);
+        Destroy(selectBox);
+
+        GetComponentInChildren<Image>().DOColor(new Color(0, 0, 0, 0), 1f);
+        transform.DOShakePosition(1, transform.right).OnComplete(()=>
+        {
+            BattleInfo.Instance.enemyNum--;
+            DestroyImmediate(gameObject);
+        });
     }
 
 }

@@ -10,12 +10,14 @@ public class Action_CommonUsed : Actions
     System.Action Act;
     Character target;
     string anim;
+    float time;
 
-    public Action_CommonUsed(System.Action act, Character _target = null, string _anim = null)
+    public Action_CommonUsed(System.Action act, float _time, Character _target = null, string _anim = null)
     {
         Act = act;
         target = _target;
         anim = _anim;
+        time = _time;
     }
 
     public override void execute()
@@ -24,6 +26,10 @@ public class Action_CommonUsed : Actions
         if(target!=null && anim!=null)
         {
             target.animator.Play(anim);
+        }
+        else
+        {
+            ActionManager.Instance.DelayActionEnd(time);
         }
     }
 }

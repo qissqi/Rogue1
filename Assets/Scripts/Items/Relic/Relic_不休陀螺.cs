@@ -6,7 +6,7 @@ public class Relic_不休陀螺 : Relic
 {
     public override void AfterCardUse(Card card)
     {
-            ActionManager.Instance.ActionAddToBottom(new Action_CommonUsed(Draw));
+            ActionManager.Instance.ActionAddToBottom(new Action_CommonUsed(Draw,0));
     }
 
     public void Draw()
@@ -15,7 +15,6 @@ public class Relic_不休陀螺 : Relic
         {
             ActionManager.Instance.ActionAddToHead(new DrawCardAction(1));
         }
-        ActionManager.Instance.ActionEnd();
     }
 
     public override string GetIntro()

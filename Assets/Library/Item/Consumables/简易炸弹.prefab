@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explainInfo: "\u7B80\u6613\u70B8\u5F39\uFF1A\n\u5BF9\u6240\u6709\u654C\u4EBA\u9020\u621010\u70B9\u4F24\u5BB3\u3002\n\u4F3C\u4E4E\u5728\u6218\u6597\u5916\u4E5F\u53EF\u4EE5\u4F7F\u7528\uFF1F\t\u53F3\u952E\u4F7F\u7528\n\u5728\u6218\u6597\u5916\u4F7F\u7528\u6709\u5176\u4ED6\u4F5C\u7528\uFF1F"
   itemName: "\u7B80\u6613\u70B8\u5F39"
+  inShow: 0
   price: 0
   OriginSiblingIndex: 0
   lv: 3
@@ -121,7 +122,7 @@ PrefabInstance:
     - target: {fileID: 8412089835365187835, guid: dee3bd859bc7431438728d2044a3c5b0, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 9ce8e14808f2aad43a487cd57583e94b, type: 3}
+      objectReference: {fileID: 21300000, guid: ce66580331e2ea542b93fdc9c87c61ac, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dee3bd859bc7431438728d2044a3c5b0, type: 3}
 --- !u!1 &7209857299174246351 stripped

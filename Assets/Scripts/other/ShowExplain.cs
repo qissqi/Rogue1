@@ -12,10 +12,10 @@ public class ShowExplain : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public virtual void OnPointerEnter(PointerEventData eventData)
     {
         if(infoSource!=null)
-            GameManager.Instance.OpenExplainBox(infoSource(),eventData,transform.parent);
+            GameManager.Instance.OpenExplainBox(infoSource(),eventData,transform.parent,gameObject);
         else
         {
-            GameManager.Instance.OpenExplainBox(explainInfo,eventData,transform.parent);
+            GameManager.Instance.OpenExplainBox(explainInfo,eventData,transform.parent,gameObject);
         }
     }
 

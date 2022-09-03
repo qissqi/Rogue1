@@ -20,7 +20,6 @@ public class DialogueManager : Singleton<DialogueManager>
 
     private void Start()
     {
-        DontDestroyOnLoad(gameObject);
         gameObject.SetActive(false);
     }
 
@@ -141,6 +140,10 @@ public class DialogueManager : Singleton<DialogueManager>
     }
     public void ShowDialogue(string _name,string _text)
     {
+        if(_name=="P")
+        {
+            _name = GameManager.Instance.currentCharacter.characterName;
+        }
         name_Text.text = _name;
         if(canContinue)
         {

@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using DG.Tweening;
+
 
 /// <summary>
 /// 2-玩家回合中，5-敌人回合中
@@ -27,6 +29,10 @@ public class BattleManager : Singleton<BattleManager>
     public Transform Equipment, Consumables, Relic;
     public Transform CardRewardTr;
     [HideInInspector]public Enemy_OnMap EoM;
+    public Text GoldsRewardText;
+    public GameObject FailPanel;
+    public GameObject TutorialPanel;
+    private int goldsReward;
 
     //public event Action InBattleStart, InBattleEnd;
 
@@ -50,11 +56,25 @@ public class BattleManager : Singleton<BattleManager>
     /// <summary>
     /// 获取基本组件信息与生成
     /// </summary>
-    public void BattleStart(Enemy_OnMap enemy_Map)
+    /// 
+
+    public void ReadyStart(Enemy_OnMap _eom)
     {
-        EoM = enemy_Map;
+        EoM = _eom;
+        SoundManager.Instance.PlaySE("BattleStart");
+        SoundManager.Instance.PlayBGM("Anxiety_Front");
         GameManager.Instance.inBattle = true;
-        GameManager.Instance.currentscene = GameManager.GameScene.Battle;
+        GameManager.Instance.ChangeScene(GameManager.GameScene.Battle);
+
+        Camera.main.DOOrthoSize(2.5f, 1).SetDelay(0.3f).OnComplete(() =>
+        {
+            Camera.main.orthographicSize = 5;
+            BattleStart();
+        });
+    }
+
+    public void BattleStart()
+    {
         GameManager.Instance.currentCharacter.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
         var battleCanvas = Instance.transform.parent.gameObject;
         battleCanvas.SetActive(true);
@@ -62,16 +82,12 @@ public class BattleManager : Singleton<BattleManager>
         var PP = battleCanvas.transform.Find("BattleScene/Player");
         var EP = battleCanvas.transform.Find("BattleScene/Enemies");
         Instantiate(GameManager.Instance.currentCharacter.BattlePlayer, PP);
-        //foreach (var _e in enemy_Map.combineEnemyPre)
-        //{
-        //    var _E = Instantiate(_e, EP);
-        //    _E.GetComponent<EnemyBase>().BattleStart();
-        //}
 
-        for (int i = 0; i < enemy_Map.combineEnemyPre.Length; i++)
+        BattleInfo.Instance.enemyNum = EoM.combineEnemyPre.Length;
+        for (int i = 0; i < EoM.combineEnemyPre.Length; i++)
         {
 
-            var e = Instantiate(enemy_Map.combineEnemyPre[i], EP);
+            var e = Instantiate(EoM.combineEnemyPre[i], EP);
             e.GetComponent<RectTransform>().anchoredPosition = new Vector2(-i * 150, 0);
             if(i>=2)
             {
@@ -101,12 +117,13 @@ public class BattleManager : Singleton<BattleManager>
         BattleUI.Instance.Item_Reset();
         ActionManager.Instance.ActionAddToBottom(new EndPhase(BattlePhase.BattleStart));
         battleStart = true;
-        //foreach (var enemy in BattleInfo.Instance.enemies)
-        //{
-        //    enemy.GetComponent<EnemyBase>().BattleStart();
-        //}
 
-        //InBattleStart?.Invoke();
+        if(!GameManager.Instance.tutorial)
+        {
+            GameManager.Instance.tutorial = true;
+            TutorialPanel.SetActive(true);
+        }
+
     }
 
 
@@ -115,7 +132,7 @@ public class BattleManager : Singleton<BattleManager>
         if (!battleStart)
             return;
         DeveloperMode();
-        if(BattleInfo.Instance.enemies.Count == 0)
+        if(BattleInfo.Instance.enemyNum == 0)
         {
             BattleVictory();
         }
@@ -131,6 +148,7 @@ public class BattleManager : Singleton<BattleManager>
 
         //生成奖励
         InitRewardCard(3);
+        InitGolds();
 
         CardRewardTr.gameObject.SetActive(true);
         RewardPanel.SetActive(true);
@@ -138,7 +156,11 @@ public class BattleManager : Singleton<BattleManager>
         //关闭标记
         MapManager.Instance.currentRoom.Mark.transform.Find("Enemy").gameObject.SetActive(false);
         MapManager.Instance.currentRoom.Mark.transform.Find("Elite").gameObject.SetActive(false);
-        MapManager.Instance.currentRoom.Mark.transform.Find("Boss").gameObject.SetActive(false);
+        //MapManager.Instance.currentRoom.Mark.transform.Find("Boss").gameObject.SetActive(false);
+
+        //音效
+        SoundManager.Instance.PlaySE("Clear");
+        SoundManager.Instance.StopBGM();
     }
 
     #region 背包导入
@@ -198,6 +220,7 @@ public class BattleManager : Singleton<BattleManager>
             var scale = item.localScale;
             item.SetParent(inv.CarryPanel.transform);
             item.localScale = scale;
+            item.GetComponent<Item>().OriginParentReset();
         }
         for (int i = Relic.childCount; i >0 ; i--)
         {
@@ -232,7 +255,8 @@ public class BattleManager : Singleton<BattleManager>
     public void InitRewardCard(int num)
     {
         int LA, LB;
-        switch (EoM.EnemyLevel)
+        int _t = 1;
+        switch (/*EoM.EnemyLevel*/_t)
         {
             case 1:
                 LA = 3;
@@ -296,6 +320,18 @@ public class BattleManager : Singleton<BattleManager>
         CardRewardTr.gameObject.SetActive(false);
     }
 
+    public void InitGolds()
+    {
+        goldsReward = EoM.EnemyLevel * 25 + UnityEngine.Random.Range(0, 40);
+        GoldsRewardText.text = goldsReward.ToString();
+        GoldsRewardText.transform.parent.gameObject.SetActive(true);
+    }
+    public void GetGolds()
+    {
+        GameManager.Instance.playerInfo.Golds += goldsReward;
+        GoldsRewardText.transform.parent.gameObject.SetActive(false);
+    }
+
 
     //由奖励界面关闭按钮调用
     public void BattleEnd()
@@ -303,7 +339,7 @@ public class BattleManager : Singleton<BattleManager>
         phaseEvent = (battlePhase)=> { };
         ActionManager.Instance.ClearActions();
         GameManager.Instance.inBattle = false;
-        GameManager.Instance.currentscene = GameManager.GameScene.Map;
+        GameManager.Instance.ChangeScene(GameManager.GameScene.Map);
         
         Destroy(BattleInfo.Instance.player.gameObject);
         transform.parent.gameObject.SetActive(false);
@@ -328,8 +364,9 @@ public class BattleManager : Singleton<BattleManager>
             Destroy(item.gameObject);
         }
 
-        //InBattleEnd?.Invoke();
         MapManager.Instance.RefreshUI();
+        SaveManager.Instance.SaveBasic();
+        SoundManager.Instance.PlayBGM("F1_Loop");
     }
 
     #region 回合功能
@@ -466,6 +503,18 @@ public class BattleManager : Singleton<BattleManager>
         {
             _c.RefreshDescription();
         }
+    }
+
+    public void BackToTitle()
+    {
+        GameManager.Instance.ChangeScene(GameManager.GameScene.Menu);
+        GameManager.AsyncLoadScene(1);
+    }
+
+    public void OpenFailPanel()
+    {
+        FailPanel.SetActive(true);
+        FailPanel.transform.GetChild(0).DOScale(0, 0.25f).From();
     }
 
 

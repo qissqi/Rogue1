@@ -303,11 +303,12 @@ MonoBehaviour:
   MaxHP: 60
   StartGold: 300
   maxCost: 3
+  characterName: "\u9B54\u6CD5\u5E08"
   combineCards: {fileID: 11400000, guid: 0a06b25f388dd9b4497bef59b64539fe, type: 2}
   basicCards: {fileID: 11400000, guid: 7a5de8eacae9ec046b0867429c966ef9, type: 2}
   BattlePlayer: {fileID: 9221344005143906160, guid: 4a78073d2def42843b8f872e5170c71e, type: 3}
   Attention: {fileID: 8865592762163653908}
-  speed: 5
+  speed: 8
 --- !u!1 &8865592762163653908
 GameObject:
   m_ObjectHideFlags: 0

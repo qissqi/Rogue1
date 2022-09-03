@@ -42,7 +42,7 @@ public class Equipment_破碎之镜 : Equipment
     {
         var c = card.GetComponent<Card>();
         c.isTemp = true;
-        c.UseCard();
+        c.UsingCard();
 
     }
 

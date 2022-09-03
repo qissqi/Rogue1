@@ -33,6 +33,8 @@ public class BattleInfo : Singleton<BattleInfo>
         }
     }
 
+    public int enemyNum;
+
     public void ClearInfo()
     {
         player = null;

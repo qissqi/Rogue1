@@ -59,13 +59,13 @@ public abstract class Item : ShowExplain,IDragHandler,IBeginDragHandler,IEndDrag
         switch (type)
         {
             case ItemType.Relic:
-                explainInfo = "\t遗物：\n获得不同效果";
+                explainInfo = "\t遗物：在背包中即生效\n获得不同效果";
                 break;
             case ItemType.Consumable:
-                explainInfo = "\t消耗品：\n放置于消耗品栏以在战斗中使用";
+                explainInfo = "\t消耗品：右键使用（如果可用）\n放置于消耗品栏以在战斗中使用";
                 break;
             case ItemType.Equipment:
-                explainInfo = "\t装备：\n放置于装备栏以在战斗中使用";
+                explainInfo = "\t装备：右键使用（如果可用）\n放置于装备栏以在战斗中使用";
                 break;
             case ItemType.Other:
                 break;

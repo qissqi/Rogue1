@@ -7,7 +7,7 @@ public class Buff_灼烧 : Buff
 {
     public static new string intro = "灼烧：\n在回合开始时，受到灼烧层数一半的伤害，灼烧层数减少一半。";
 
-    public Buff_灼烧(Character _target,int _num):base(_target,true,true,BuffType.Debuff, BattleUI.Instance.BuffSprites.sprites[0])
+    public Buff_灼烧(Character _target,int _num):base(_target,true,true,BuffType.Debuff,GetBuffSprite("灼烧"))
     {
         num = _num;   
     }
@@ -16,6 +16,7 @@ public class Buff_灼烧 : Buff
     {
         base.Effective();
         BattleManager.Instance.phaseEvent += CheckTurn;
+        SoundManager.Instance.PlaySE("Fire");
     }
 
     public void CheckTurn(BattlePhase phase)
@@ -48,6 +49,7 @@ public class Buff_灼烧 : Buff
     public override void Counter(int _num)
     {
         num += _num;
+        SoundManager.Instance.PlaySE("Fire");
         if (num <= 0)
         {
             RemoveBuff();

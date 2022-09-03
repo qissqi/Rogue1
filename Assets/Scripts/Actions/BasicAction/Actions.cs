@@ -81,7 +81,7 @@ public class MakeDamage : Actions
         }
         else
         {
-            ActionManager.Instance.DelayActionEnd(0.7f);
+            ActionManager.Instance.DelayActionEnd(0.5f);
         }
         
     }

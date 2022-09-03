@@ -540,9 +540,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1360085824162140418}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.179, y: -0.153, z: 0}
-  m_LocalScale: {x: 0.10192682, y: 0.10192682, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.119333334, y: -0.069096774, z: 0}
+  m_LocalScale: {x: 0.06795122, y: 0.04603147, z: 0}
   m_Children: []
   m_Father: {fileID: 416810303538082683}
   m_RootOrder: 4
@@ -623,9 +623,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1458414950739182355}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.17, y: 0.184, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.113333344, y: 0.08309678, z: 0}
+  m_LocalScale: {x: 0.13333334, y: 0.09032258, z: 0}
   m_Children: []
   m_Father: {fileID: 416810303538082683}
   m_RootOrder: 0
@@ -994,6 +994,7 @@ MonoBehaviour:
   spr: {fileID: 0}
   offset: -5
   up: 1
+  revers: 0
 --- !u!1 &2191376093386078129
 GameObject:
   m_ObjectHideFlags: 0
@@ -1213,9 +1214,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2718417565829822621}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.011, y: -0.009, z: 0}
-  m_LocalScale: {x: 0.13873833, y: 0.13873833, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.0073333336, y: -0.0040645157, z: 0}
+  m_LocalScale: {x: 0.09249223, y: 0.06265602, z: 0}
   m_Children: []
   m_Father: {fileID: 416810303538082683}
   m_RootOrder: 5
@@ -4507,9 +4508,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2892722620026303393}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.16, y: -0.155, z: 0}
-  m_LocalScale: {x: 0.10192682, y: 0.10192682, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.10666667, y: -0.07000001, z: 0}
+  m_LocalScale: {x: 0.06795122, y: 0.04603147, z: 0}
   m_Children: []
   m_Father: {fileID: 416810303538082683}
   m_RootOrder: 3
@@ -4592,7 +4593,7 @@ Transform:
   m_GameObject: {fileID: 3416313415819460173}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 14, y: 14, z: 0}
+  m_LocalScale: {x: 21, y: 31, z: 0}
   m_Children:
   - {fileID: 4667234267023955798}
   - {fileID: 5496793478119735086}
@@ -4644,7 +4645,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3249fcb2f5245034b943800d37c3487c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5088,6 +5089,7 @@ MonoBehaviour:
   spr: {fileID: 0}
   offset: -5
   up: 1
+  revers: 0
 --- !u!1 &4818095234653732602
 GameObject:
   m_ObjectHideFlags: 0
@@ -5512,9 +5514,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5575073071546998853}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.166, y: 0.186, z: 0}
-  m_LocalScale: {x: 0.10192682, y: 0.10192682, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.11066666, y: 0.08400001, z: 0}
+  m_LocalScale: {x: 0.06795122, y: 0.04603147, z: 0}
   m_Children: []
   m_Father: {fileID: 416810303538082683}
   m_RootOrder: 1
@@ -6073,7 +6075,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1410701253
   m_SortingLayer: 2
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -6444,6 +6446,7 @@ MonoBehaviour:
   spr: {fileID: 0}
   offset: -7
   up: 0
+  revers: 0
 --- !u!1 &8802947770242076499
 GameObject:
   m_ObjectHideFlags: 0
@@ -6624,7 +6627,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1410701253
   m_SortingLayer: 2
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -6657,9 +6660,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9047862623814056511}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.179, y: 0.183, z: 0}
-  m_LocalScale: {x: 0.02684465, y: 0.02684465, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.119333334, y: 0.08264517, z: 0}
+  m_LocalScale: {x: 0.017896434, y: 0.01212339, z: 0}
   m_Children: []
   m_Father: {fileID: 416810303538082683}
   m_RootOrder: 2

@@ -11,11 +11,13 @@ public class Menu_Setting : MonoBehaviour
     public GameObject SelectPanel;
     public GameObject SettingPanel;
     private Vector3 Oposition;
+    private RectTransform RT;
 
     private void Awake()
     {
         Oposition = transform.position;
         GO_text = transform.GetChild(0).gameObject;
+        RT = GetComponent<RectTransform>();
     }
 
     private void Start()
@@ -31,17 +33,15 @@ public class Menu_Setting : MonoBehaviour
 
     public void SettingSideway()
     {
-        transform.DOMove(new Vector3(-7.2f, 4.57f), 0.5f);
-        transform.DOScaleX(0.75f, 0.5f);
-        GO_text.transform.DOScaleX(1.3f, 0.5f);
+        RT.DOAnchorPos(new Vector2(-325, 400), 0.5f);
+        RT.DOSizeDelta(new Vector2(150, 40), 0.5f);
 
     }
 
     public void UIBack()
     {
-        transform.DOMove(Oposition, 0.5f);
-        transform.DOScaleX(1, 0.5f);
-        GO_text.transform.DOScaleX(1, 0.5f);
+        RT.DOAnchorPos(new Vector2(0, 80), 0.5f);
+        RT.DOSizeDelta(new Vector2(200, 40), 0.5f);
     }
 
 }

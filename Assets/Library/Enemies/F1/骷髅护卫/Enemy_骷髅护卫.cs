@@ -58,22 +58,21 @@ public class Enemy_骷髅护卫 : EnemyBase
             animator.Play("Idle");
             reburnState = false;
             ActionManager.Instance.ActionAddToBottom(new HealAction(this, this, 30));
-            ActionManager.Instance.ActionAddToBottom(new AddBuff(new Buff_力量(this, 2)));
+            ActionManager.Instance.ActionAddToBottom(new AddBuff(new Buff_力量(this, 1)));
         }, EnemyIntentType.Buff, "复活", this, null);
 
         afterBurn = new EnemySkill(() =>
         {
-            animator.Play("Attack1");
             ActionManager.Instance.ActionAddToBottom(new AddBuff(new Buff_力量(BattleInfo.Instance.player, -1)));
-            ActionManager.Instance.ActionAddToBottom(new AddBuff(new Weak_Buff(BattleInfo.Instance.player, 2, true)));
-        }, EnemyIntentType.Curse, "不死族之咒", this, null);
+            ActionManager.Instance.ActionAddToBottom(new AddBuff(new Weak_Buff(BattleInfo.Instance.player, 1, true)));
+        }, EnemyIntentType.Curse, "不死族之咒", this, "Attack1");
 
         atk1 = new EnemySkill(() =>
         {
             ActionManager.Instance.ActionAddToBottom(new MakeDamage(BattleInfo.Instance.player,
-                new DamageInfo(this, 12)));
+                new DamageInfo(this, 10)));
             ActionManager.Instance.ActionAddToBottom(new AddBuff(new 易伤_buff(BattleInfo.Instance.player, 1, true)));
-        }, EnemyIntentType.AttackDebuff, "重击", this, null, 12);
+        }, EnemyIntentType.AttackDebuff, "重击", this, "Attack1", 10);
 
         atk2 = new EnemySkill(() =>
         {
@@ -81,20 +80,20 @@ public class Enemy_骷髅护卫 : EnemyBase
                 new DamageInfo(this, 4)));
             ActionManager.Instance.ActionAddToBottom(new MakeDamage(BattleInfo.Instance.player,
                 new DamageInfo(this, 4)));
-        }, EnemyIntentType.Attack, "双刀", this, null, 4, 2);
+        }, EnemyIntentType.Attack, "双刀", this, "Attack1", 4, 2);
 
         var n1 = new EnemySkill(() =>
         {
             ActionManager.Instance.ActionAddToBottom(new MakeDamage(BattleInfo.Instance.player,
                 new DamageInfo(this, 5)));
             ActionManager.Instance.ActionAddToBottom(new MakeDefend(this, this, 10, true));
-        }, EnemyIntentType.AttackDefend, null, this, null, 5);
+        }, EnemyIntentType.AttackDefend, null, this, "Attack1", 5);
 
         var n2 = new EnemySkill(() =>
         {
             ActionManager.Instance.ActionAddToBottom(new MakeDamage(BattleInfo.Instance.player,
                 new DamageInfo(this, 15)));
-        }, EnemyIntentType.Attack, null, this, null, 15);
+        }, EnemyIntentType.Attack, null, this, "Attack1", 15);
 
 
         normalSkills.Add(n1);

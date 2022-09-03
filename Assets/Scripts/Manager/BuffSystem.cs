@@ -8,7 +8,7 @@ public static class BuffSystem
     public static void AddBuff(Buff _buff)
     {
         Character _target = _buff.owner;
-        if (_target == null)
+        if (_target == null || _target.dead)
             return;
         //buff可叠加
         if(_buff.increasable)
@@ -27,28 +27,6 @@ public static class BuffSystem
 
         //buff不可叠加或buff不存在，直接增添
         AddBuffAsNew(_buff, _target);
-
-        ///
-        ///var n = new GameObject(_buff.ToString());
-        ///var _g = GameObject.Instantiate(n, _target.BuffArea.transform);
-        ///Object.Destroy(n);
-        ///_g.AddComponent<Image>().sprite = _buff.buffSprite;
-        ///_g.AddComponent<ShowExplain>().explainInfo = _buff.GetIntro();
-        ///_buff.Combine_GO = _g;
-        ///if(_buff.showNum)
-        ///{
-        ///    var m = new GameObject("Counter");
-        ///    var _t = GameObject.Instantiate(m, _g.transform);
-        ///    Object.Destroy(m);
-        ///    _t.transform.localScale = new Vector3(0.2f, 0.2f);
-        ///    var text = _t.AddComponent<Text>();
-        ///    text.alignment = TextAnchor.LowerRight;
-        ///    text.font = BattleUI.Instance.Font;
-        ///    text.color = Color.black;
-        ///    text.fontSize = 55;
-        ///    text.text = _buff.num.ToString(); 
-        ///}
-        ///
 
         
     }
@@ -93,7 +71,8 @@ public static class BuffSystem
 
         //动画
         _target.transform.DOShakePosition(0.6f);
-        _g.transform.DOScale(2f, 0.7f).From();
+        _g.transform.localScale = new Vector3(2, 2);
+        _g.transform.DOScale(1, 0.7f);
 
 
         //刷新所有敌人显示

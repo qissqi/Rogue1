@@ -15,20 +15,21 @@ public class Menu_Start : MonoBehaviour
     public GameObject AttentionPanel;
     public GameObject SelectPanel;
     public Sprite panel;
+    private RectTransform RT;
 
     private float titleY;
-    private Vector3 Oposition;
 
     private void Awake()
     {
+        RT = GetComponent<RectTransform>();
         titleY = title.transform.position.y;
-        Oposition = transform.position;
         button = GetComponent<Button>();
         GO_text = transform.GetChild(0).gameObject;
     }
 
     private void Start()
     {
+        SoundManager.Instance.PlayBGM("Title");
         button.onClick.AddListener(Click);
         transform.DOMoveY(-12, 0.5f).From();
     }
@@ -47,13 +48,6 @@ public class Menu_Start : MonoBehaviour
         }
     }
 
-    public void SetSideWay()
-    {
-        transform.DOMove(new Vector3(3.9f, 4.57f), 0.5f);
-        transform.DOScaleX(0.75f, 0.5f);
-        GO_text.transform.DOScaleX(1.3f, 0.5f);
-    }
-
     public void GotoSelect()
     {
         //继续按钮不再启用
@@ -64,10 +58,12 @@ public class Menu_Start : MonoBehaviour
         title.transform.DOMoveY(titleY+10, 0.5f);
         //按钮组件更新
         GO_text.GetComponent<Text>().text = "选择角色";
-        GO_text.transform.DOScaleX(0.4f, 0.5f);
+        //GO_text.transform.DOScaleX(0.4f, 0.5f);
         button.interactable = false;
-        transform.DOMove(new Vector3(0, 4.57f), 0.5f);
-        transform.DOScaleX(2.5f, 0.5f);
+
+        RT.DOAnchorPosY(400, 0.5f);
+        RT.DOSizeDelta(new Vector2(500, 40), 0.5f);
+        //transform.DOScaleX(2.5f, 0.5f);
 
         setting.SettingSideway();
         exit.SettingSideway();
@@ -90,19 +86,23 @@ public class Menu_Start : MonoBehaviour
     public void GameStart()
     {
         Debug.Log("GameStart");
+        GameManager.Instance.level = 1;
+        GameManager.Instance.PlayerinfoClear();
+        GameManager.Instance.ChangeScene(GameManager.GameScene.Map);
         GameManager.Instance.LoadNewMap();
     }
 
     public void UIBack()
     {
-        transform.DOMove(Oposition, 0.5f);
-        transform.DOScaleX(1, 0.5f);
-        GO_text.transform.DOScaleX(1, 0.5f);
+        GetComponent<RectTransform>().DOAnchorPosY(140, 0.5f);
+        RT.DOAnchorPosY(140, 0.5f);
+        RT.DOSizeDelta(new Vector2(200, 40), 0.5f);
 
         SelectPanel.GetComponent<Image>().sprite = panel;
         SelectPanel.GetComponent<Image>().color = new Color(1, 1, 1, 1);
         SelectPanel.SetActive(false);
-        title.transform.DOMoveY(titleY, 0.5f);
+        //title.transform.DOMoveY(titleY, 0.5f);
+        title.GetComponent<RectTransform>().DOAnchorPosY(-100, 0.5f);
         SelectPanel.transform.GetChild(0).GetComponent<TMPro.TMP_Text>().text = "";
 
         GO_text.GetComponent<Text>().text = "开始";

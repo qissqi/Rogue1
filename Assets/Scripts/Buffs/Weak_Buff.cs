@@ -22,6 +22,10 @@ public class Weak_Buff : Buff
 
     public override float AtDamageGive(DamageInfo info)
     {
+        if(info.source==null||info.damageType!=DamageType.Normal)
+        {
+            return info.commonDamage;
+        }
         return info.commonDamage * 0.75f;
     }
 

@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explainInfo: "\u8FEB\u51FB\u70AE\uFF1A\n\u5728\u4F60\u7684\u56DE\u5408\u4E2D\uFF0C\u6BCF\u6B21\u4EA4\u66FF\u6253\u51FA\u653B\u51FB\u5361\u548C\u6280\u80FD\u5361\uFF0C\u83B7\u5F97\u4E00\u70B9\u4E34\u65F6\u529B\u91CF\n\u201C\u8FD9\u4E5F\u4E0D\u50CF\u8FEB\u51FB\u70AE\u554A\uFF1F\u201D"
   itemName: "\u8FEB\u51FB\u70AE"
+  inShow: 0
   price: 0
   OriginSiblingIndex: 0
   lv: 3
@@ -123,7 +124,7 @@ PrefabInstance:
     - target: {fileID: 8412089835365187835, guid: dee3bd859bc7431438728d2044a3c5b0, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 9ce8e14808f2aad43a487cd57583e94b, type: 3}
+      objectReference: {fileID: 21300000, guid: 25ebc3e6dc5ce3e42a68b5e236329b21, type: 3}
     - target: {fileID: 8412089835365187835, guid: dee3bd859bc7431438728d2044a3c5b0, type: 3}
       propertyPath: m_PreserveAspect
       value: 1

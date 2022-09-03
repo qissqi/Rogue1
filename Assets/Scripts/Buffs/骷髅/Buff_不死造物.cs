@@ -6,7 +6,7 @@ public class Buff_不死造物 : Buff
 {
     EnemySkill skill;
     EnemyBase enemy;
-    public Buff_不死造物(Character _target,EnemySkill _skill) : base(_target,false,true,BuffType.Buff,GetBuffSprite(0))
+    public Buff_不死造物(Character _target,EnemySkill _skill) : base(_target,false,true,BuffType.Buff,GetBuffSprite("不死造物"))
     {
         num = 30;
         enemy = _target as EnemyBase;

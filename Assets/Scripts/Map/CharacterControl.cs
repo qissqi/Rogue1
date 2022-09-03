@@ -11,6 +11,8 @@ public class CharacterControl : MonoBehaviour
     public int StartGold;
     public int maxCost;
 
+    public string characterName;
+
     /// <summary>
     /// 角色所有可用的牌库
     /// </summary>
@@ -42,10 +44,17 @@ public class CharacterControl : MonoBehaviour
 
     private void Update()
     {
-        V_x = Input.GetAxisRaw("Horizontal");
-        V_y = Input.GetAxisRaw("Vertical");
         if (GameManager.Instance.currentscene == GameManager.GameScene.Map)
         {
+            V_x = Input.GetAxisRaw("Horizontal");
+            V_y = Input.GetAxisRaw("Vertical");
+
+            if(Input.GetMouseButton(0) && Input.mousePosition.y<Camera.main.pixelHeight*5/6)
+            {
+                V_x = Input.mousePosition.x - Camera.main.pixelWidth / 2;
+                V_y = Input.mousePosition.y - Camera.main.pixelHeight / 2;
+            }
+
             animator.SetFloat("speed", Mathf.Abs(V_x) + Mathf.Abs(V_y));
             Camera.main.transform.position = transform.position + new Vector3(0, 0, -10);
             if(V_x>0)
@@ -73,7 +82,11 @@ public class CharacterControl : MonoBehaviour
 
     private void Move()
     {
-        rb.velocity = new Vector2(V_x*speed, V_y*speed);
+        var ve = new Vector2(V_x, V_y);
+        ve.Normalize();
+        //if (V_x == 0 && V_y == 0)
+        //    ve = new Vector2(0, 0);
+        rb.velocity = ve*speed;
 
     }
 

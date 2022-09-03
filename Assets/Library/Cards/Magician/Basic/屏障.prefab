@@ -17,6 +17,7 @@ MonoBehaviour:
   takeUp: 0
   handIndex: 0
   explain: 
+  isTemp: 0
   hasExplain: 0
   type: 1
   target: 4
@@ -133,6 +134,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 2536103247557804355, guid: 13bf93f7f91389948a1bc7564297df56, type: 3}
+    - target: {fileID: 5105673979365364013, guid: f63759a038bbb164eab724a3ae2bdb80, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f63759a038bbb164eab724a3ae2bdb80, type: 3}
 --- !u!1 &5446905707130607322 stripped

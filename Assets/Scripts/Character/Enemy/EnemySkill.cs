@@ -21,7 +21,7 @@ public class EnemySkill
         times = _times;
         enemy = sourceEnemy;
         info = "";
-        _anim = anim;
+        anim = _anim;
         if(_damage>=0)
         {
             info += _damage;
@@ -31,55 +31,24 @@ public class EnemySkill
             }
         }
     }
-    //public void ShowIntent(bool showNumber=true)
-    //{
-    //    enemy.IntentText.text = "";
-    //    UnityEngine.UI.Image image = enemy.IntentImage;
-    //    SpriteList _sp = enemy.IntentList;
-    //    switch (intentType)
-    //    {
-    //        case EnemyIntentType.Unknown:
-    //            image.sprite = _sp.sprites[15];
-    //            break;
-
-    //        case EnemyIntentType.Attack:
-    //            image.sprite = _sp.sprites[0];
-    //            var _d = BattleInfo.Instance.CaculateEnemyDamage(basicDamage, enemy);
-    //            enemy.IntentText.text = _d.ToString();
-    //            if(times>1)
-    //            {
-    //                enemy.IntentText.text += "x" + times;
-    //            }
-    //            break;
-
-    //        case EnemyIntentType.Defend:
-    //            image.sprite = _sp.sprites[7];
-    //            break;
-
-    //        case EnemyIntentType.Buff:
-    //            image.sprite = _sp.sprites[4];
-    //            break;
-
-    //        case EnemyIntentType.Debuff:
-    //            image.sprite = _sp.sprites[5];
-    //            break;
-
-    //        case EnemyIntentType.Curse:
-    //            image.sprite = _sp.sprites[6];
-    //            break;
-
-    //        default:
-    //            image.sprite = _sp.sprites[15];
-    //            break;
-    //    }
-    //    image.SetNativeSize();
-    //}
 
     public void TakeSkill()
     {
         if (anim != null)
-            enemy.animator.Play(anim);
+            ActionManager.Instance.ActionAddToBottom(new Action_CommonUsed(() =>
+            {
+                enemy.animator.Play(anim);
+                if(skillName !=null)
+                {
+                    BattleUI.Instance.ShowHit(enemy.transform,skillName,UnityEngine.Color.white,0.5f);
+                }
+            },0.5f));
         SkillDelegate.Invoke();
+    }
+
+    public void PlayAnim()
+    {
+
     }
 
 }

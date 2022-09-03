@@ -6,10 +6,12 @@ using UnityEngine.UI;
 public class ExplainBox : MonoBehaviour
 {
     public GameObject son;
+    public GameObject sourceGO;
 
-    public void SetInfo(string info)
+    public void SetInfo(string info,GameObject _sourceGO)
     {
         var str = info.Split('\t');
+        sourceGO = _sourceGO;
         son.transform.GetChild(0).GetComponent<TMPro.TMP_Text>().text = str[0];
         for (int i = 1; i < str.Length; i++)
         {
@@ -21,6 +23,10 @@ public class ExplainBox : MonoBehaviour
     void Update()
     {
         SetPos();
+        if(!sourceGO ||!sourceGO.activeSelf )
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnDisable()

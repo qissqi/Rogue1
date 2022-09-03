@@ -39,7 +39,7 @@ public class ShopEvent : MonoBehaviour
     {
         CombineUI.SetActive(true);
         goldsText.text = GameManager.Instance.playerInfo.Golds.ToString();
-        GameManager.Instance.currentscene = GameManager.GameScene.Event;
+        GameManager.Instance.ChangeScene(GameManager.GameScene.Event);
         failNum = 0;
         if(!GameManager.Instance.firstShop)
         {
@@ -263,7 +263,7 @@ public class ShopEvent : MonoBehaviour
         StopAllCoroutines();
         say.SetActive(false);
         eee.SetActive(false);
-        GameManager.Instance.currentscene = GameManager.GameScene.Map;
+        GameManager.Instance.ChangeScene(GameManager.GameScene.Map);
     }
 
 

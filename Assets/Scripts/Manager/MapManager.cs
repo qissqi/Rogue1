@@ -10,24 +10,22 @@ public class MapManager : Singleton<MapManager>
     public Room currentRoom;
     public GameObject MapCamera;
     public GameObject MiniMap;
-    //public CharacterControl currentPlayerControl;
-    //public PlayerInfo currentPlayerInfo;
+
     public List<Room> allRooms = new List<Room>();
     public Slider bloodBar;
     public TMP_Text bloodBarText;
     public TMP_Text GoldsText;
+    public GameObject PortalPre;
 
-    public int level=1;
 
     private void Start()
     {
-        StartSet(1);
-
+        StartSet(GameManager.Instance.level);
     }
 
-    public void StartSet(int _level)
+    public void StartSet(int level)
     {
-        level = _level;
+        
         GameManager.Instance.currentscene = GameManager.GameScene.Map;
         MapBuilder.Instance.BuildMap(level);
         //currentPlayerControl = GameObject.FindGameObjectWithTag("Player_Map").GetComponent<CharacterControl>();
@@ -60,7 +58,7 @@ public class MapManager : Singleton<MapManager>
             && GameManager.Instance.currentscene != GameManager.GameScene.Inventory)
             return;
 
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Tab)&&GameManager.Instance.currentscene == GameManager.GameScene.Map)
         {
             InventoryManager.Instance.gameObject.SetActive(!InventoryManager.Instance.gameObject.activeSelf);
         }
@@ -80,6 +78,13 @@ public class MapManager : Singleton<MapManager>
                 mmap.anchoredPosition = new Vector2(-mmap.sizeDelta.x / 2, -mmap.sizeDelta.y / 2);
             }
         }
+    }
+
+    public void SetPortal(int level)
+    {
+        var p = Instantiate(PortalPre, currentRoom.transform);
+        p.transform.localPosition = new Vector3(0, 0);
+        p.GetComponent<Portal>().nextLevel = level;
     }
 
     public void Developer()

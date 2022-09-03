@@ -8,7 +8,7 @@ public class Buff_敏捷 : Buff
     public static new string intro =
         "敏捷：\n获得的格挡增加对应层数的值。";
     public Buff_敏捷(Character _target,int amount):base(_target,true,true,amount>0?BuffType.Buff:BuffType.Debuff,
-        BattleUI.Instance.BuffSprites.sprites[0])
+        GetBuffSprite("敏捷"))
     {
         num = amount;
     }

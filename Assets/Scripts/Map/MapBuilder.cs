@@ -42,6 +42,7 @@ public class MapBuilder : Singleton<MapBuilder>
         var player = Instantiate(GameManager.Instance.CharacterPrefab).GetComponent<CharacterControl>();
         GameManager.Instance.currentCharacter = player;
         player.GetComponent<CharacterControl>().SetStart();
+        SoundManager.Instance.PlayBGM("F1_Front");
         if(_level ==1)
         {
             foreach (var card in player.basicCards.gameObjects)
@@ -59,7 +60,8 @@ public class MapBuilder : Singleton<MapBuilder>
         int event_c =int.Parse(cells[3]);
 
         //生成总地图
-        for (int i = 0; i < all_c+2; i++)
+        count = all_c + 2;
+        for (int i = 0; i < count; i++)
         {
             //指定方式生成随机房间
             ////Debug.Log(InitPos);
@@ -102,26 +104,6 @@ public class MapBuilder : Singleton<MapBuilder>
 
         BuildEnemies(enemy_c, tmpRooms);
 
-        //int enemyMin = tmpRooms.Count / 2;
-        //int enemyMax = tmpRooms.Count * 2 / 3;
-        //int Enum = Random.Range(enemyMin, enemyMax);
-
-        //int _En = 0;
-        //while (_En<=Enum)
-        //{
-        //    int ri = Random.Range(0, tmpRooms.Count);
-        //    var _room = tmpRooms[ri];
-
-        //    var randE = Random.Range(0, EnemiesByLevel.objects[MapManager.Instance.level - 1].gameObjects.Count);
-        //    var _e = Instantiate(EnemiesByLevel.objects[MapManager.Instance.level - 1].gameObjects[randE],_room.transform);
-        //    _e.transform.localPosition = new Vector3(0, 0);
-        //    _room.EnterLock = true;
-        //    _room.hasEvent = true;
-        //    _room.SetMark(1, true);
-
-        //    tmpRooms.Remove(_room);
-        //    _En++;
-        //}
 
         //精英怪
         BuildElites(elite_c, tmpRooms);
@@ -141,20 +123,12 @@ public class MapBuilder : Singleton<MapBuilder>
 
         //事件
 
-        //foreach (var _room in tmpRooms)
-        //{
-        //    int ri = Random.Range(0, GameEvents.gameObjects.Count);
-        //    var _e = Instantiate(GameEvents.gameObjects[ri], _room.transform);
-        //    _e.transform.localPosition = new Vector3(0, 0);
-        //    _room.hasEvent = true;
-        //    _room.SetMark(4, true);
-        //}
         BuildEvents(event_c, tmpRooms);
 
         //Boss  就是最后一个生成的房间
         var _bossRoom = MapManager.Instance.allRooms[MapManager.Instance.allRooms.Count - 1];
         _bossRoom.SetMark(3, true);
-        var allBoss = BossByLevel.objects[MapManager.Instance.level - 1];
+        var allBoss = BossByLevel.objects[GameManager.Instance.level - 1];
         int _randboss = Random.Range(0, allBoss.gameObjects.Count);
         var boss = Instantiate(allBoss.gameObjects[_randboss], _bossRoom.transform);
         boss.transform.localPosition = new Vector3(0, 0);
@@ -169,8 +143,8 @@ public class MapBuilder : Singleton<MapBuilder>
             int ri = Random.Range(0, tmpRooms.Count);
             var _room = tmpRooms[ri];
 
-            var randE = Random.Range(0, EnemiesByLevel.objects[MapManager.Instance.level - 1].gameObjects.Count);
-            var _e = Instantiate(EnemiesByLevel.objects[MapManager.Instance.level - 1].gameObjects[randE], _room.transform);
+            var randE = Random.Range(0, EnemiesByLevel.objects[GameManager.Instance.level - 1].gameObjects.Count);
+            var _e = Instantiate(EnemiesByLevel.objects[GameManager.Instance.level - 1].gameObjects[randE], _room.transform);
             _e.transform.localPosition = new Vector3(0, 0);
             _room.EnterLock = true;
             _room.hasEvent = true;
@@ -187,8 +161,8 @@ public class MapBuilder : Singleton<MapBuilder>
             int ri = Random.Range(0, tmpRooms.Count);
             var _room = tmpRooms[ri];
 
-            var randE = Random.Range(0, EliteByLevel.objects[MapManager.Instance.level - 1].gameObjects.Count);
-            var _e = Instantiate(EliteByLevel.objects[MapManager.Instance.level - 1].gameObjects[randE], _room.transform);
+            var randE = Random.Range(0, EliteByLevel.objects[GameManager.Instance.level - 1].gameObjects.Count);
+            var _e = Instantiate(EliteByLevel.objects[GameManager.Instance.level - 1].gameObjects[randE], _room.transform);
             _e.transform.localPosition = new Vector3(0, 0);
             _room.EnterLock = true;
             _room.hasEvent = true;

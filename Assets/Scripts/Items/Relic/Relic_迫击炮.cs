@@ -37,7 +37,7 @@ public class Relic_迫击炮 : Relic
             if(mark!=_m)
             {
                 ActionManager.Instance.ActionAddToBottom(new AddBuff(new Buff_力量(BattleInfo.Instance.player, 1)));
-                ActionManager.Instance.ActionAddToBottom(new AddBuff(new Buff_Chain(BattleInfo.Instance.player, "Buff_力量", -1,false)));
+                ActionManager.Instance.ActionAddToBottom(new AddBuff(new Buff_Chain_力量(BattleInfo.Instance.player,-1,false)));
             }
         }
         mark = _m;

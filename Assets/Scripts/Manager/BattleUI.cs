@@ -25,7 +25,7 @@ public class BattleUI : Singleton<BattleUI>
     public SpriteList Effects;
     
 
-    private Stack<GameObject> NumPool = new Stack<GameObject>();
+    private Queue<GameObject> NumPool = new Queue<GameObject>();
     private Transform pool;
 
     public void SetInfluencedUI(bool on)
@@ -90,40 +90,67 @@ public class BattleUI : Singleton<BattleUI>
         });
     }
 
-    public void ShowNumber(Transform _targetTransform,int _num,Color _color)
+    public void ShowHit(Transform _targetTransform,string _info,Color _color,float _scale = 1)
     {
-        
-        if(pool == null)
-        {
-            pool = new GameObject("damagePool").transform;
-            pool.transform.SetParent(transform);
-        }
 
-        GameObject nb;
-        if(NumPool.Count==0)
-        {
-            nb = Instantiate(NumberBox, _targetTransform);
-        }
-        else
-        {
-            nb = NumPool.Pop();
-            nb.transform.SetParent(_targetTransform);
-        }
+        var ib = GetInfoPool(_targetTransform);
 
-        nb.GetComponent<Text>().text = _num.ToString();
-        nb.GetComponent<Text>().color = _color;
+        ib.GetComponent<Text>().text = _info;
+        ib.GetComponent<Text>().color = _color;
 
-        nb.SetActive(true);
-        nb.transform.position = _targetTransform.position + new Vector3(0,1);
+        ib.SetActive(true);
+        ib.transform.position = _targetTransform.position + new Vector3(0,1);
+        ib.transform.localScale = new Vector3(_scale, _scale);
 
-        nb.transform.DOMoveY(_targetTransform.position.y + 3, 0.8f).OnComplete(() =>
+        ib.transform.DOMoveY(_targetTransform.position.y + 3, 0.8f).OnComplete(() =>
         {
-            NumPool.Push(nb);
-            nb.transform.SetParent(pool);
-            nb.SetActive(false);
+            NumPool.Enqueue(ib);
+            ib.transform.SetParent(pool);
+            ib.SetActive(false);
         });
 
     }
+
+    public void ShowTipInfo(string info,float _scale = 1)
+    {
+        var ib = GetInfoPool(transform);
+        ib.GetComponent<Text>().text = info;
+        ib.GetComponent<Text>().color = Color.white;
+        ib.SetActive(true);
+        ib.transform.position =transform.position- new Vector3(0, 1);
+        ib.transform.localScale = new Vector3(_scale, _scale);
+
+        ib.transform.DOMoveY(ib.transform.position.y + 3, 0.8f).OnComplete(() =>
+        {
+            NumPool.Enqueue(ib);
+            ib.transform.SetParent(pool);
+            ib.SetActive(false);
+        });
+
+    }
+
+    public GameObject GetInfoPool(Transform _targetTransform)
+    {
+        if (pool == null)
+        {
+            pool = new GameObject("TipPool").transform;
+            pool.transform.SetParent(transform);
+        }
+
+        GameObject ib;
+        if (NumPool.Count == 0)
+        {
+            ib = Instantiate(NumberBox, _targetTransform);
+        }
+        else
+        {
+            ib = NumPool.Dequeue();
+            ib.transform.SetParent(_targetTransform);
+        }
+        return ib;
+    }
+
+
     #endregion
 
 

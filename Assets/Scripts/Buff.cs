@@ -16,6 +16,26 @@ public abstract class Buff:IBattleActive
         return BattleUI.Instance.BuffSprites.sprites[index];
     }
 
+    public static Sprite GetBuffSprite(string name)
+    {
+        Sprite sp;
+        var bs = BattleUI.Instance.BuffSprites;
+        if(!bs.Fresh)
+        {
+            bs.Fresh = true;
+            bs.FreshDic();
+        }
+        if(bs.Sprite_Dic.ContainsKey(name))
+        {
+            sp = bs.Sprite_Dic[name];
+        }
+        else
+        {
+            sp = bs.sprites[0];
+        }
+        return sp;
+    }
+
     public abstract string GetIntro();
 
 

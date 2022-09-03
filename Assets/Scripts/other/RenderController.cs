@@ -8,6 +8,7 @@ public class RenderController : MonoBehaviour
     [SerializeField]private Renderer spr;
     public float offset;
     [SerializeField]bool up = true;
+    public bool revers;
     private void Start()
     {
         player = GameManager.Instance.currentCharacter;
@@ -19,12 +20,18 @@ public class RenderController : MonoBehaviour
         if(player.transform.position.y+offset>transform.position.y && !up)
         {
             up = true;
-            spr.sortingOrder += 2;
+            if(!revers)
+                spr.sortingOrder += 2;
+            else
+                spr.sortingOrder -= 2;
         }
         else if(player.transform.position.y+offset<transform.position.y && up)
         {
             up = false;
-            spr.sortingOrder -= 2;
+            if(!revers)
+                spr.sortingOrder -= 2;
+            else
+                spr.sortingOrder += 2;
 
         }
     }

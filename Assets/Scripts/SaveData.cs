@@ -5,11 +5,11 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "myItem/saveData",fileName ="saveData")]
 public class SaveData : ScriptableObject
 {
-    public List<GameObject> Relics_Get;
-    public List<List<GameObject>> Relics_Left;
+    #region Basic
+    public float BGMvolume, SEvolume;
+    public bool firstShop, Tutorial;
 
-    public List<GameObject> Equipments_Get;
-    public List<List<GameObject>> Equipments_Left;
+    #endregion
 
     [TextArea]
     public List<string> ItemInfo;

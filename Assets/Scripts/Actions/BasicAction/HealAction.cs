@@ -17,7 +17,7 @@ public class HealAction : Actions
     public override void execute()
     {
         target.HP += amount;
-        BattleUI.Instance.ShowNumber(target.transform, amount, Color.green);
+        BattleUI.Instance.ShowHit(target.transform, amount.ToString(), Color.green);
         if(anim!=null)
         {
             source.animator.Play(anim);

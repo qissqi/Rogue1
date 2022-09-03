@@ -36,30 +36,26 @@ public class Slime : EnemyBase
         string atk_anim = "Attack1";
         EnemySkill atk1 = new EnemySkill(() =>
         {
-            animator.Play(atk_anim);
             ActionManager.Instance.ActionAddToBottom(new MakeDamage(BattleInfo.Instance.player,
-                                                new DamageInfo(this, 10)));
-        }, EnemyIntentType.Attack, null,this, null,10);
+                                                new DamageInfo(this, 8)));
+        }, EnemyIntentType.Attack, null,this, atk_anim,8);
 
         EnemySkill atk2 = new EnemySkill(() =>
         {
-            animator.Play(atk_anim);
             ActionManager.Instance.ActionAddToBottom(new MakeDamage(BattleInfo.Instance.player,
-                new DamageInfo(this, 5)));
+                new DamageInfo(this, 4)));
             ActionManager.Instance.ActionAddToBottom(new AddBuff(new Weak_Buff(BattleInfo.Instance.player, 1, true)));
-        }, EnemyIntentType.AttackDebuff, "粘液喷吐",this, null,5);
+        }, EnemyIntentType.AttackDebuff, "粘液喷吐",this, atk_anim, 4);
 
         EnemySkill buff1 = new EnemySkill(() =>
         {
-            animator.Play(atk_anim);
             ActionManager.Instance.ActionAddToBottom(new AddBuff(new Buff_力量(this, 1)));
-        }, EnemyIntentType.Buff, "强化", this, null);
+        }, EnemyIntentType.Buff, "强化", this, atk_anim);
 
         EnemySkill defend1 = new EnemySkill(() =>
         {
-            animator.Play(atk_anim);
-            ActionManager.Instance.ActionAddToBottom(new MakeDefend(this, this, 10, true));
-        }, EnemyIntentType.Defend, null,this, null);
+            ActionManager.Instance.ActionAddToBottom(new MakeDefend(this, this, 8, true));
+        }, EnemyIntentType.Defend, null,this, atk_anim);
 
         Skills.Add(atk1);
         Skills.Add(atk2);

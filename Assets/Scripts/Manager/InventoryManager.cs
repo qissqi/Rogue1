@@ -29,14 +29,16 @@ public class InventoryManager : Singleton<InventoryManager>
     private void OnEnable()
     {
         FreshMaxPage();
-        GameManager.Instance.currentscene = GameManager.GameScene.Inventory;
+        GameManager.Instance.ChangeScene(GameManager.GameScene.Inventory);
+        Time.timeScale = 0;
     }
 
     private void OnDisable()
     {
-        GameManager.Instance.currentscene = GameManager.GameScene.Map;
         InventoryPanel.GetComponent<GridLayoutGroup>().padding.top = 6;
         page = 1;
+        GameManager.Instance.ChangeScene(GameManager.GameScene.Map);
+        Time.timeScale = 1;
     }
 
     private void Start()
