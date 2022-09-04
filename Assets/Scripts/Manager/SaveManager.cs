@@ -12,9 +12,9 @@ public class SaveManager : Singleton<SaveManager>
     public GO_List GO;
     public GameObject test;
 
-    protected override void Awake()
+
+    private void Start()
     {
-        base.Awake();
         LoadSave();
     }
 
@@ -39,6 +39,11 @@ public class SaveManager : Singleton<SaveManager>
             return;
         var json = File.ReadAllText(path);
         saveData = JsonUtility.FromJson<SaveData2>(json);
+        GameManager.Instance.firstShop = saveData.firstShop;
+        GameManager.Instance.tutorial = saveData.Tutorial;
+
+        SoundManager.Instance.SetBGMVolume(saveData.BGMvolume);
+        SoundManager.Instance.SetSEVolume(saveData.SEvolume);
     }
 
 }

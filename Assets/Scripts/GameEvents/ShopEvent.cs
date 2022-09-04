@@ -186,11 +186,11 @@ public class ShopEvent : MonoBehaviour
     public void CreateCards()
     {
         var cards = GameManager.Instance.currentCharacter.combineCards.objects;
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i < 5; i++)
         {
             var _c = Instantiate(cards[i/2].gameObjects[Random.Range(0, cards[i/2].gameObjects.Count)], CardPanel).GetComponent<Card>();
             _c.inSelect = true;
-            _c.price = 200 + (i / 2) * 100;
+            _c.price = 100 + (i / 2) * 100;
             _c.CardRespone = BuyCard;
             Instantiate(PriceIcon, _c.transform).GetComponent<Text>().text=_c.price.ToString();
 

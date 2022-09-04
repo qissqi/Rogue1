@@ -51,7 +51,7 @@ public class BattleInfo : Singleton<BattleInfo>
             return damage;
 
         Character target = aim;
-        DamageInfo info = new DamageInfo(player, damage,DamageType.Null);
+        DamageInfo info = new DamageInfo(player, damage,DamageType.Caculate);
         foreach (var _b in player.buffs)
         {
             info.commonDamage = Mathf.FloorToInt(_b.AtDamageGive(info));
@@ -71,7 +71,7 @@ public class BattleInfo : Singleton<BattleInfo>
 
     public int CaculateEnemyDamage(int damage, EnemyBase source)
     {
-        DamageInfo info = new DamageInfo(source, damage,DamageType.Null);
+        DamageInfo info = new DamageInfo(source, damage,DamageType.Caculate);
 
         foreach (var _b in source.buffs)
         {

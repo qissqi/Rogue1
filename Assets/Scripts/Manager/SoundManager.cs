@@ -23,17 +23,12 @@ public class SoundManager : Singleton<SoundManager>
 
     private void Start()
     {
-        CurBGMVolume = SaveManager.Instance.saveData.BGMvolume;
-        curSEVolume = SaveManager.Instance.saveData.SEvolume;
-
         DontDestroyOnLoad(gameObject);
         var s = gameObject.AddComponent<AudioSource>();
         s.loop = false;
         s.playOnAwake = false;
         s.outputAudioMixerGroup = SE_Mixer;
         SE_Source.Enqueue(s);
-        SetBGMVolume(CurBGMVolume);
-        SetSEVolume(CurSEVolume);
         foreach (var clip in BGM_clips)
         {
             BGM_Dic.Add(clip.name, clip);

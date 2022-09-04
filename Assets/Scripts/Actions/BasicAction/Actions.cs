@@ -135,7 +135,7 @@ public class AttackAllEnemies : Actions
 
 public enum DamageType
 {
-    Null,Normal,Thorn,LoseHP
+    Caculate,Normal,Thorn,LoseHP
 }
 public class DamageInfo
 {

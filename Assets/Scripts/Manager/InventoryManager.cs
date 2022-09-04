@@ -140,7 +140,7 @@ public class InventoryManager : Singleton<InventoryManager>
         int n1 = 16 * (_page - 1);
         for (int i = 0; i < 16; i++)
         {
-            Destroy(InventoryPanel.transform.GetChild(n1));
+            Destroy(InventoryPanel.transform.GetChild(n1).gameObject);
         }
 
     }

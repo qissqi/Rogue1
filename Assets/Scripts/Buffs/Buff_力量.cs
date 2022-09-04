@@ -22,7 +22,7 @@ public class Buff_力量 : Buff
 
     public override float AtDamageGive(DamageInfo info)
     {
-        if(info.source==null || info.damageType!=DamageType.Normal)
+        if(info.damageType!=DamageType.Normal&& info.damageType != DamageType.Caculate)
         {
             return info.commonDamage;
         }    

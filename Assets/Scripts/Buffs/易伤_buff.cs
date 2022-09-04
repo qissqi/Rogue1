@@ -22,7 +22,7 @@ public class 易伤_buff : Buff
 
     public override float AtDamageReceive(DamageInfo info)
     {
-        if(info.source == null || info.damageType!=DamageType.Normal)
+        if(info.damageType!=DamageType.Normal && info.damageType != DamageType.Caculate)
         {
             return info.commonDamage;
         }

@@ -91,7 +91,8 @@ public class BattleManager : Singleton<BattleManager>
             e.GetComponent<RectTransform>().anchoredPosition = new Vector2(-i * 150, 0);
             if(i>=2)
             {
-                e.GetComponent<RectTransform>().anchoredPosition = new Vector2(-(4 - i) * 150, 150);
+                int p = 6 - i;
+                e.GetComponent<RectTransform>().anchoredPosition = new Vector2(-(4 - p) * 150, 130);
             }
             e.GetComponent<EnemyBase>().BattleStart();
         }
@@ -220,7 +221,6 @@ public class BattleManager : Singleton<BattleManager>
             var scale = item.localScale;
             item.SetParent(inv.CarryPanel.transform);
             item.localScale = scale;
-            item.GetComponent<Item>().OriginParentReset();
         }
         for (int i = Relic.childCount; i >0 ; i--)
         {
