@@ -827,6 +827,7 @@ MonoBehaviour:
   hp: 0
   blocks: 0
   CanChoose: 0
+  dead: 0
   maxCost: 0
   cost: 3
   drawCardNum: 5

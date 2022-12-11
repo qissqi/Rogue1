@@ -11,11 +11,15 @@ public class AsycLoadingScene : MonoBehaviour
 	public TMP_Text text_Loading,text_DAO;
     void Start()
     {
-		SoundManager.Instance.StopBGM();
 		if(!debugMod)
+        {
+
+			SoundManager.Instance.StopBGM();
 			StartCoroutine(AsyncLoadScene());
+        }
 		text_DAO.DOColor(new Color(1,1,1,0f), 0.6f).SetLoops(-1, LoopType.Yoyo);
 		DOTween.To(() =>"", x => text_Loading.text ="Loading"+ x, "......", 3f).SetEase(Ease.Linear).SetLoops(-1, LoopType.Restart);
+		
     }
 
     private IEnumerator AsyncLoadScene()

@@ -1971,6 +1971,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+<<<<<<< HEAD
+    - target: {fileID: 217297361, guid: 7db94029de585f243b40d3338582da66, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -625
+      objectReference: {fileID: 0}
+=======
     - target: {fileID: 477134149, guid: 7db94029de585f243b40d3338582da66, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -1979,6 +1985,7 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 0bb8d0dbdc7f7d045a572446ea884357, type: 3}
+>>>>>>> parent of 07bce4ce (22/11/8 backup)
     - target: {fileID: 543922772, guid: 7db94029de585f243b40d3338582da66, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -2355,6 +2362,11 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1492012594}
+<<<<<<< HEAD
+    - target: {fileID: 8832200050456871193, guid: 7db94029de585f243b40d3338582da66, type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+=======
     - target: {fileID: 8832200050520543201, guid: 7db94029de585f243b40d3338582da66, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -2366,6 +2378,7 @@ PrefabInstance:
     - target: {fileID: 9066534113938410688, guid: 7db94029de585f243b40d3338582da66, type: 3}
       propertyPath: m_PreserveAspect
       value: 0
+>>>>>>> parent of 07bce4ce (22/11/8 backup)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7db94029de585f243b40d3338582da66, type: 3}

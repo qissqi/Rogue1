@@ -345,6 +345,7 @@
 -r:"Library/Bee/artifacts/1900b0aEDbg.dag/UnityEngine.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aEDbg.dag/VSSettingsProvider.ref.dll"
 "Assets/Library/Card.cs"
+"Assets/Library/CardBack_Mesh.cs"
 "Assets/Library/Enemies/F1/Slime/Slime.cs"
 "Assets/Library/Enemies/F1/骷髅护卫/Enemy_骷髅护卫.cs"
 "Assets/Scripts/Actions/BasicAction/Actions.cs"

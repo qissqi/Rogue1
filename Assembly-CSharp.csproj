@@ -128,6 +128,7 @@
     <Compile Include="Assets\Scripts\Card\Magician\Card_法阵制作.cs" />
     <Compile Include="Assets\Scripts\UI\Menu\SelectCharacter.cs" />
     <Compile Include="Assets\Scripts\Character\Player\PlayerInfo.cs" />
+    <Compile Include="Assets\Library\CardBack_Mesh.cs" />
     <Compile Include="Assets\Scripts\Character\Enemy\TestEnemy.cs" />
     <Compile Include="Assets\Scripts\Card\Test\Attack.cs" />
     <Compile Include="Assets\Scripts\Card\Test\Defend.cs" />

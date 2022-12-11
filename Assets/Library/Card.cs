@@ -60,6 +60,7 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterH
     [HideInInspector]public TMP_Text text_cardName;
     [HideInInspector]public TMP_Text text_description;
     [HideInInspector]public Text text_cost;
+    [HideInInspector]public Transform type_icon;
 
 
 
@@ -70,6 +71,8 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterH
     public int cost;
 
     #endregion
+
+
     /// <summary>
     /// 加载卡面信息
     /// </summary>
@@ -86,6 +89,14 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterH
         Initialize();
     }
 
+    private void Reset()
+    {
+        text_cardName = transform.Find("Name").GetComponent<TMP_Text>();
+        text_description = transform.Find("Description").GetComponent<TMP_Text>();
+        text_cost = transform.Find("Cost").GetComponent<Text>();
+        type_icon = transform.Find("Type");
+    }
+
     private void Start()
     {
         RefreshDescription();
@@ -96,9 +107,8 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterH
         text_cardName.text = cardName;
         RefreshDescription();
         text_cost.text = cost.ToString();
-
-        Transform _typeG = transform.Find("Type");
-        _typeG.GetChild((int)type)?.gameObject.SetActive(true);
+        type_icon = transform.Find("Type");
+        type_icon.GetChild((int)type)?.gameObject.SetActive(true);
         
     }
 
@@ -180,7 +190,7 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterH
         gameObject.transform.SetParent(BattleManager.Instance.cards_Pack.transform);
         gameObject.GetComponent<RectTransform>().anchorMin = new Vector2(0.5f, 0.5f);
         gameObject.GetComponent<RectTransform>().anchorMax = new Vector2(0.5f, 0.5f);
-        transform.localScale = new Vector3(1.5f, 1.5f);
+        transform.localScale = new Vector3(1.5f, 1.5f,1);
         inReward = false;
         inSelect = false;
         inShow = true;
@@ -219,6 +229,10 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterH
 
     public void DrawCard()
     {
+        transform.rotation = Quaternion.Euler(0, 180, 0);
+        transform.position = new Vector3(0, 0,100);
+        GameObject _back = transform.Find("Back").gameObject;
+        _back.SetActive(true);
         //UnFocus();
         gameObject.transform.SetParent(BattleManager.Instance.cards_Hand.transform, false);
         //gameObject.SetActive(true);
@@ -233,7 +247,22 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterH
     public void CardMoveBack(float time = 0.3f)
     {
         //transform.DOMove(targetPosition, time);
-        GetComponent<RectTransform>().DOAnchorPos(targetPosition, time);
+        GetComponent<RectTransform>().DOAnchorPos(targetPosition, time).OnComplete(()=>
+        {
+            if(Mathf.Abs( transform.rotation.eulerAngles.y)==180)
+            {
+                transform.DORotate(new Vector3(0, 90, 0), time/2).OnComplete(()=> 
+                {
+                    transform.Find("Back").gameObject.SetActive(false);
+                    transform.DORotate(new Vector3(0, 0, 0), time / 2);
+                });
+            }
+            else
+            {
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+                transform.Find("Back").gameObject.SetActive(false);
+            }
+        });
     }
 
 
@@ -428,10 +457,9 @@ public abstract class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterH
             Vector3 pos1 = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             yield return null;
             Vector3 pos2 = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Vector3 delt = pos2 - pos1;
-            //rect.anchoredPosition += delt;
+
+            Vector3 delt = (pos2 - pos1);
             transform.position += delt;
-            //Debug.Log(GetComponent<RectTransform>().anchoredPosition);
         }
         transform.position = oPos + new Vector3(0, -0.5f, 1);
 
